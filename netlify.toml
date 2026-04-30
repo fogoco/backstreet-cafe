@@ -2,6 +2,12 @@
   publish = "."
 
 [[redirects]]
+  from = "/backstreet-cafe.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/"
   to = "/backstreet-cafe.html"
   status = 200
