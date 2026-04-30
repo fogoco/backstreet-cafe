@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Backstreet Cafe — Mooloolaba Beach</title>
+<title>Backstreet Cafe - Mooloolaba Beach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
@@ -22,13 +22,44 @@
     --logo-black: #120902;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+  }
 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--warm-white);
     color: var(--espresso);
-    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+  }
+
+  #page-clip {
+    overflow-x: clip;
+    max-width: 100%;
+    position: relative;
+  }
+
+  img, video, svg {
+    max-width: 100%;
+  }
+
+  nav,
+  .hero,
+  .marquee-section,
+  .about,
+  .menu-section,
+  .info-section,
+  .gallery-section,
+  .cta-section,
+  footer {
+    width: 100%;
+    max-width: 100%;
   }
 
   /* NAV */
@@ -97,6 +128,36 @@
   }
 
   .nav-links a:hover { opacity: 1; }
+
+  .nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(196,168,130,0.35);
+    background: rgba(253,250,246,0.75);
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--espresso);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav-toggle-icon::before { transform: translateY(-5px); }
+  .nav-toggle-icon::after { transform: translateY(3.5px); }
+
+  nav.menu-open .nav-toggle-icon { background: transparent; }
+  nav.menu-open .nav-toggle-icon::before { transform: translateY(0) rotate(45deg); }
+  nav.menu-open .nav-toggle-icon::after { transform: translateY(-1.5px) rotate(-45deg); }
 
   .nav-cta {
     background: var(--logo-black);
@@ -288,6 +349,7 @@
     background: var(--sand);
     animation: fadeIn 1s 0.2s ease both;
     z-index: 1;
+    isolation: isolate;
   }
 
   .hero-video {
@@ -415,9 +477,10 @@
   .marquee-section {
     background: var(--logo-black);
     padding: 18px 0;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
     z-index: 1;
+    contain: layout paint;
   }
 
   .marquee-track {
@@ -468,6 +531,7 @@
     position: relative;
     background: var(--sand);
     overflow: hidden;
+    isolation: isolate;
   }
 
   .about-img {
@@ -778,6 +842,7 @@
     border-top: 1px solid rgba(196,168,130,0.16);
     border-bottom: 1px solid rgba(196,168,130,0.16);
     min-height: 520px;
+    isolation: isolate;
   }
 
   .fogo-banner::before {
@@ -1217,6 +1282,12 @@
     transition: opacity 0.2s;
     font-weight: 300;
   }
+  .footer-col ul li {
+    font-size: 0.88rem;
+    color: var(--cream);
+    opacity: 0.5;
+    font-weight: 300;
+  }
   .footer-col ul li a:hover { opacity: 1; }
 
   .footer-bottom {
@@ -1285,34 +1356,186 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 60px 24px; }
-    .hero-right { display: none; }
+    html,
+    body,
+    #page-clip {
+      overflow-x: clip !important;
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
+    }
+    nav,
+    .hero,
+    .marquee-section,
+    .about,
+    .menu-section,
+    .info-section,
+    .gallery-section,
+    .cta-section,
+    footer {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: clip;
+    }
+    .hero-video {
+      animation: none;
+    }
+    .about-img {
+      animation: none;
+    }
+    nav {
+      padding: 12px 16px;
+      min-height: 74px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
+    .nav-logo,
+    nav.scrolled .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-toggle {
+      display: inline-flex;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-width: 100vw;
+      width: auto;
+      margin-left: 0;
+      padding: 14px 16px 16px;
+      gap: 10px;
+      flex-direction: column;
+      align-items: stretch;
+      background: rgba(253,250,246,0.97);
+      border-bottom: 1px solid rgba(196,168,130,0.22);
+      backdrop-filter: blur(8px);
+    }
+    nav.menu-open .nav-links {
+      display: flex;
+    }
+    .nav-links a {
+      font-size: 0.62rem;
+      display: block;
+      padding: 8px 0;
+    }
+    .nav-cta {
+      text-align: center;
+      width: 100%;
+    }
+    .hero {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      padding-top: 92px;
+    }
+    .hero-right {
+      display: block;
+      order: -1;
+      height: 42vh;
+      min-height: 280px;
+      max-height: 440px;
+    }
+    .hero-video {
+      object-position: center 42%;
+      animation-duration: 10s;
+    }
+    .hero-badge { display: none; }
+    .hero-sound-toggle {
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      font-size: 0.56rem;
+    }
+    .hero-left { padding: 24px 20px 30px; }
+    .hero-title { font-size: clamp(2.35rem, 12vw, 3.3rem); }
+    .hero-subtitle { font-size: clamp(1.05rem, 5.6vw, 1.55rem); }
+    .hero-desc { max-width: none; font-size: 0.8rem; }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
+      align-items: flex-start;
+      margin-top: 28px;
+      padding-top: 16px;
+    }
+    .hero-meta-item.logo-only {
+      min-width: 0;
+      padding-right: 0;
+      grid-column: 1 / -1;
+    }
+    .google-review-logo { width: 92px; }
     .about { grid-template-columns: 1fr; }
-    .about-content { padding: 60px 24px; }
-    .menu-section { padding: 80px 24px; }
+    .about-content { padding: 56px 20px; }
+    .about-values { grid-template-columns: 1fr; gap: 22px; }
+    .menu-section { padding: 64px 20px; }
     .menu-grid { grid-template-columns: 1fr 1fr; }
     .menu-card-large { grid-row: auto; }
     .info-section { grid-template-columns: 1fr; }
-    .info-hours, .info-map { padding: 60px 24px; border: none; }
+    .info-hours, .info-map { padding: 50px 20px; border: none; }
     .fogo-showcase { padding: 0; }
-    .fogo-banner { min-height: 320px; }
-    .fogo-banner-content { max-width: 100%; padding: 26px 24px; }
-    .fogo-top { padding: 0 12px; margin-bottom: 14px; }
+    .fogo-banner { min-height: 280px; }
+    .fogo-top { padding: 0 6px; margin-bottom: 12px; }
     .fogo-top .fogo-title { font-size: clamp(1.45rem, 6vw, 2rem); line-height: 1.14; }
-    .gallery-section { padding: 60px 24px; }
+    .gallery-section { padding: 56px 20px; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .cta-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
-    footer { padding: 60px 24px 32px; }
+    .cta-section { grid-template-columns: 1fr; padding: 64px 20px; gap: 30px; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .cta-actions .btn-primary,
+    .cta-actions .btn-outline { width: 100%; text-align: center; justify-content: center; }
+    footer { padding: 56px 20px 32px; }
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .footer-meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .footer-top { text-align: center; }
+    .footer-brand, .footer-col { display: flex; flex-direction: column; align-items: center; }
+    .footer-col ul { align-items: center; }
+    .footer-tagline { max-width: none; }
+    .footer-google-review-logo { margin-left: auto; margin-right: auto; }
+    .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .footer-meta { flex-direction: column; align-items: center; gap: 4px; }
     .menu-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .section-body,
+    .cta-body,
+    .footer-col ul li,
+    .footer-col ul li a {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 600px) {
+    .hero { padding-top: 114px; }
+    .brand-logo-image { width: 124px; }
+    .hero-right {
+      min-height: 240px;
+      max-height: 320px;
+    }
+    .hero-eyebrow span { font-size: 0.64rem; letter-spacing: 0.2em; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .hero-meta-item .num { font-size: 1.1rem; }
+    .hero-meta-item .label { font-size: 0.52rem; }
+    .section-title { font-size: clamp(1.9rem, 9vw, 2.4rem); }
+    .section-body { font-size: 0.88rem; line-height: 1.75; }
+    .menu-grid,
+    .gallery-grid { grid-template-columns: 1fr; }
+    .menu-card { aspect-ratio: 1.05; }
+    .fogo-banner { min-height: 220px; }
+    .fogo-cta { font-size: 0.64rem; letter-spacing: 0.1em; padding: 10px 14px; }
+    .gallery-social { margin-top: 34px; }
+  }
+
+  @media (max-width: 1200px) and (min-width: 901px) {
     .hero {
       height: calc(100vh - 92px);
       min-height: 640px;
@@ -1323,18 +1546,22 @@
 </style>
 </head>
 <body>
+<div id="page-clip">
 
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
     <img class="brand-logo-image" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/logo%20bl.png" alt="Backstreet Cafe logo">
   </a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span class="nav-toggle-icon"></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">Our Story</a></li>
     <li><a href="#menu">Menu</a></li>
-    <li><a href="#hours">Hours</a></li>
-    <li><a href="#find-us">Find Us</a></li>
-    <li><a href="https://www.facebook.com/backstreetcafesc" target="_blank" class="nav-cta">Follow Us</a></li>
+    <li><a href="#fogo-banner">By FoGo&Co</a></li>
+    <li><a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer">Find Us</a></li>
+    <li><a href="https://www.instagram.com/backstreetcafesc/" target="_blank" rel="noopener noreferrer" class="nav-cta">Follow Us</a></li>
   </ul>
 </nav>
 
@@ -1348,11 +1575,11 @@
     <h1 class="hero-title">Where every<br><em>cup tells</em><br>a story.</h1>
     <p class="hero-subtitle">Backstreet Cafe</p>
     <p class="hero-desc">
-      Specialty coffee, seasonal breakfast & lunch — crafted with love, precision, and built on a deep respect for quality and local producers. Steps from Mooloolaba Beach, Sunshine Coast.
+      Specialty coffee, seasonal breakfast & lunch, crafted with love, precision, and built on a deep respect for quality and local producers. Steps from Mooloolaba Beach, Sunshine Coast.
     </p>
     <div class="hero-actions">
       <a href="#menu" class="btn-primary">Explore Menu</a>
-      <a href="#find-us" class="btn-ghost">
+      <a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer" class="btn-ghost">
         Find Us
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
       </a>
@@ -1432,7 +1659,7 @@
     <div class="section-label"><span>Our Story</span></div>
     <h2 class="section-title">More than a coffee.<br><em>A place to belong.</em></h2>
     <p class="section-body">
-      Since 2016, Backstreet Cafe has been the Sunshine Coast's best-kept secret — tucked away steps from Mooloolaba Beach. We're not just another café. We're a community gathering spot where quality is never compromised and every guest leaves feeling at home.
+      Since 2016, Backstreet Cafe has been the Sunshine Coast's best-kept secret, tucked away steps from Mooloolaba Beach. We're not just another café. We're a community gathering spot where quality is never compromised and every guest leaves feeling at home.
     </p>
     <p class="section-body" style="margin-top:-20px;">
       From our meticulously sourced beans to our seasonal menu built around local producers, every detail is intentional. Because we believe that great coffee and great food should be everyday luxuries.
@@ -1479,7 +1706,7 @@
       <div class="menu-card-content">
         <span class="menu-card-tag">Varieties</span>
         <span class="menu-card-name">Sweets, Coffee<br>& Burgers</span>
-        <p class="menu-card-desc">From sweet favorites to specialty coffee and signature burgers — made fresh and served all day.</p>
+        <p class="menu-card-desc">From sweet favorites to specialty coffee and signature burgers, made fresh and served all day.</p>
       </div>
     </div>
     <!-- Card 2 -->
@@ -1499,7 +1726,7 @@
       <div class="menu-card-content">
         <span class="menu-card-tag">All Day</span>
         <span class="menu-card-name">Breakfast</span>
-        <p class="menu-card-desc">From croissants to Continental-style plates — weekend specials you won't forget.</p>
+        <p class="menu-card-desc">From croissants to Continental-style plates, weekend specials you won't forget.</p>
       </div>
     </div>
     <!-- Card 4 -->
@@ -1509,7 +1736,7 @@
       <div class="menu-card-content">
         <span class="menu-card-tag">FoGo&Co</span>
         <span class="menu-card-name">Burguer</span>
-        <p class="menu-card-desc">Burguer powered by FoGo&Co — bold flavor and crafted comfort in every bite.</p>
+        <p class="menu-card-desc">Burguer powered by FoGo&Co, bold flavor and crafted comfort in every bite.</p>
       </div>
     </div>
     <!-- Card 5 -->
@@ -1519,7 +1746,7 @@
       <div class="menu-card-content">
         <span class="menu-card-tag">Menu</span>
         <span class="menu-card-name">Full Menu</span>
-        <p class="menu-card-desc">Browse our complete menu — seasonal, fresh, and always worth the trip.</p>
+        <p class="menu-card-desc">Browse our complete menu, seasonal, fresh, and always worth the trip.</p>
         <a class="menu-card-link" href="https://backstreetcafemenu.netlify.app/" target="_blank">Click to see more →</a>
       </div>
     </div>
@@ -1528,7 +1755,7 @@
 
 <!-- HOURS & FIND US -->
 <section class="info-section">
-  <div class="info-hours reveal" id="hours">
+  <div class="info-hours reveal" id="fogo-banner">
     <div class="fogo-showcase">
       <div class="fogo-top">
         <span class="fogo-kicker">FoGo Signature Grill</span>
@@ -1594,9 +1821,9 @@
     <h2 class="cta-title">Your morning<br>deserves<br><em>better coffee.</em></h2>
   </div>
   <div class="cta-right reveal">
-    <p class="cta-body">Whether you're a local regular or discovering us for the first time, there's a table waiting for you. Come as you are — we'll take care of the rest.</p>
+    <p class="cta-body">Whether you're a local regular or discovering us for the first time, there's a table waiting for you. Come as you are, and we'll take care of the rest.</p>
     <div class="cta-actions">
-      <a href="#find-us" class="btn-primary">Get Directions</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Directions</a>
       <a href="https://www.facebook.com/backstreetcafesc" target="_blank" class="btn-outline">See Our Posts</a>
     </div>
   </div>
@@ -1618,10 +1845,10 @@
     <div class="footer-col">
       <h5>Visit Us</h5>
       <ul>
-        <li><a href="#">Shop 3/121 Mooloolaba Espl</a></li>
-        <li><a href="#">Mooloolaba QLD 4557</a></li>
-        <li><a href="#">Monday to Thursday: 5:30am – 1pm</a></li>
-        <li><a href="#">Friday to Sunday: 5:30am – 2pm</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer">Shop 3/121 Mooloolaba Espl</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer">Mooloolaba QLD 4557</a></li>
+        <li>Monday to Thursday: 5:30am to 1pm</li>
+        <li>Friday to Sunday: 5:30am to 2pm</li>
         <li><a href="mailto:contact@fogoco.com.au">contact@fogoco.com.au</a></li>
       </ul>
     </div>
@@ -1643,6 +1870,7 @@
     <span class="footer-est">Est. 2016 · Sunshine Coast</span>
   </div>
 </footer>
+</div><!-- /#page-clip -->
 
 <script>
   // Scroll reveal
@@ -1662,11 +1890,34 @@
 
   // Nav scroll effect
   const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
   const heroVideo = document.getElementById('hero-video');
   const heroVideoArea = document.getElementById('hero-video-area');
   const heroSoundToggle = document.getElementById('hero-sound-toggle');
   const fogoBanner = document.querySelector('.fogo-banner');
   const fogoBannerImage = document.querySelector('.fogo-banner-image');
+
+  if (nav && navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && nav.classList.contains('menu-open')) {
+        nav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   if (heroVideo && heroSoundToggle) {
     const syncSoundButton = () => {
