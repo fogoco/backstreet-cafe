@@ -11,3 +11,4 @@
   from = "/"
   to = "/backstreet-cafe.html"
   status = 200
+  force = true
