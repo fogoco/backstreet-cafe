@@ -923,6 +923,39 @@
     filter: brightness(1.06);
   }
 
+  .fogo-cta-mobile {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    min-width: 236px;
+    background: rgba(26,18,8,0.82);
+    border: 1px solid rgba(247,243,238,0.42);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .fogo-cta-mobile:hover {
+    transform: translateX(-50%) translateY(-1px);
+    background: rgba(26,18,8,0.9);
+    border-color: rgba(247,243,238,0.58);
+  }
+
   @keyframes fogoBannerZoom {
     0% { transform: translate3d(0, var(--fogo-parallax, 0px), 0) scale(1.09); }
     100% { transform: translate3d(0, calc(var(--fogo-parallax, 0px) - 8px), 0) scale(1.14); }
@@ -1465,30 +1498,51 @@
     .hero-desc { max-width: none; font-size: 0.8rem; }
     .hero-meta {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px 16px;
-      align-items: flex-start;
+      grid-template-columns: minmax(82px, 0.9fr) repeat(3, minmax(0, 1fr));
+      column-gap: 14px;
+      row-gap: 0;
+      align-items: center;
       margin-top: 28px;
       padding-top: 16px;
+    }
+    .hero-meta-item {
+      align-items: center;
+      text-align: center;
     }
     .hero-meta-item.logo-only {
       min-width: 0;
       padding-right: 0;
-      grid-column: 1 / -1;
+      grid-column: auto;
+      justify-content: center;
     }
-    .google-review-logo { width: 92px; }
+    .google-review-logo { width: 72px; }
+    .hero-meta-item .num { font-size: 1rem; }
+    .hero-meta-item .label {
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      margin-top: 3px;
+      line-height: 1.25;
+    }
     .about { grid-template-columns: 1fr; }
     .about-content { padding: 56px 20px; }
     .about-values { grid-template-columns: 1fr; gap: 22px; }
     .menu-section { padding: 64px 20px; }
     .menu-grid { grid-template-columns: 1fr 1fr; }
     .menu-card-large { grid-row: auto; }
-    .info-section { grid-template-columns: 1fr; }
-    .info-hours, .info-map { padding: 50px 20px; border: none; }
+    .info-section {
+      grid-template-columns: 1fr;
+      background: var(--logo-black);
+    }
+    .info-hours, .info-map { border: none; }
     .fogo-showcase { padding: 0; }
-    .fogo-banner { min-height: 280px; }
-    .fogo-top { padding: 0 6px; margin-bottom: 12px; }
-    .fogo-top .fogo-title { font-size: clamp(1.45rem, 6vw, 2rem); line-height: 1.14; }
+    .fogo-banner {
+      min-height: 280px;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    .fogo-cta { display: flex; }
+    .fogo-cta-mobile { display: none; }
     .gallery-section { padding: 56px 20px; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .cta-section { grid-template-columns: 1fr; padding: 64px 20px; gap: 30px; }
@@ -1523,15 +1577,26 @@
     }
     .hero-eyebrow span { font-size: 0.64rem; letter-spacing: 0.2em; }
     .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .hero-meta-item .num { font-size: 1.1rem; }
-    .hero-meta-item .label { font-size: 0.52rem; }
+    .hero-meta {
+      grid-template-columns: minmax(76px, 0.85fr) repeat(3, minmax(0, 1fr));
+      column-gap: 10px;
+    }
+    .google-review-logo { width: 64px; }
+    .hero-meta-item .num { font-size: 0.95rem; }
+    .hero-meta-item .label { font-size: 0.46rem; letter-spacing: 0.08em; }
     .section-title { font-size: clamp(1.9rem, 9vw, 2.4rem); }
     .section-body { font-size: 0.88rem; line-height: 1.75; }
     .menu-grid,
     .gallery-grid { grid-template-columns: 1fr; }
     .menu-card { aspect-ratio: 1.05; }
     .fogo-banner { min-height: 220px; }
-    .fogo-cta { font-size: 0.64rem; letter-spacing: 0.1em; padding: 10px 14px; }
+    .fogo-cta-mobile {
+      min-width: 194px;
+      bottom: 12px;
+      font-size: 0.58rem;
+      letter-spacing: 0.09em;
+      padding: 10px 14px;
+    }
     .gallery-social { margin-top: 34px; }
   }
 
@@ -1762,7 +1827,11 @@
         <h2 class="fogo-title">Burgers Powered by <em>FoGo&Co</em></h2>
       </div>
       <div class="fogo-banner">
-        <img class="fogo-banner-image" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/burguer%20(1).jpg" alt="FoGo burger showcase" loading="lazy">
+        <picture>
+          <source media="(max-width: 900px)" srcset="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/burguer%20(1).jpg">
+          <img class="fogo-banner-image" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/burguer%20(1).jpg" alt="FoGo burger showcase" loading="lazy">
+        </picture>
+        <a class="fogo-cta-mobile" href="https://fogoco.netlify.app/" target="_blank">See more on FoGo website</a>
       </div>
       <a class="fogo-cta" href="https://fogoco.netlify.app/" target="_blank">See more on FoGo website</a>
     </div>
