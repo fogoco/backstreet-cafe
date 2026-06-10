@@ -20,7 +20,7 @@ const reviews = [
   "Every dish looks as good as it tastes.",
 ];
 
-const supabaseUrl = "https://zbiyaxtwyirezuxnwdul.supabase.co";
+const supabaseUrl = "https://qpqppnulhlsanreiwigk.supabase.co";
 const supabaseAnonKey =
   (typeof import.meta !== "undefined" && import.meta?.env?.VITE_SUPABASE_ANON_KEY) ||
   (typeof process !== "undefined" && process?.env?.REACT_APP_SUPABASE_ANON_KEY) ||
