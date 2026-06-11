@@ -67,7 +67,8 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 28px 32px;
+    padding: 14px 32px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,8 +80,9 @@
 
   .nav-logo {
     position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     gap: 0;
@@ -90,14 +92,24 @@
 
   nav.scrolled .nav-logo {
     left: 32px;
-    transform: translateX(0);
+    transform: translate(0, -50%);
   }
 
   .brand-logo-image {
-    width: 148px;
-    height: auto;
     object-fit: contain;
     display: block;
+  }
+
+  .nav-logo .brand-logo-image {
+    width: auto;
+    height: 72px;
+    max-height: 72px;
+    max-width: 136px;
+  }
+
+  .footer-logo .brand-logo-image {
+    width: 88px;
+    height: auto;
   }
 
   .nav-brand {
@@ -172,12 +184,12 @@
 
   /* HERO */
   .hero {
-    height: calc(100vh - 92px);
+    height: calc(100vh - 80px);
     min-height: 700px;
     max-height: 896px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 92px;
+    padding-top: 80px;
     position: relative;
     z-index: 2;
   }
@@ -263,13 +275,17 @@
   }
 
   .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: var(--espresso);
     color: var(--cream);
-    padding: 12px 20px;
+    padding: 14px 24px;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.64rem;
     font-weight: 500;
     letter-spacing: 0.15em;
+    line-height: 1;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 2px;
@@ -1201,15 +1217,19 @@
     font-weight: 300;
   }
 
-  .cta-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .cta-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 
   .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid var(--espresso);
     color: var(--espresso);
-    padding: 15px 32px;
+    padding: 14px 32px;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.12em;
+    line-height: 1;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 2px;
@@ -1419,8 +1439,8 @@
       animation: none;
     }
     nav {
-      padding: 12px 16px;
-      min-height: 74px;
+      padding: 10px 16px;
+      min-height: 78px;
       flex-direction: row;
       justify-content: center;
       align-items: center;
@@ -1429,8 +1449,14 @@
     .nav-logo,
     nav.scrolled .nav-logo {
       position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
+    }
+    .nav-logo .brand-logo-image {
+      height: 58px;
+      max-height: 58px;
+      max-width: 116px;
     }
     .nav-toggle {
       display: inline-flex;
@@ -1570,8 +1596,8 @@
   }
 
   @media (max-width: 600px) {
-    .hero { padding-top: 114px; }
-    .brand-logo-image { width: 124px; }
+    .hero { padding-top: 108px; }
+    .nav-logo .brand-logo-image { height: 52px; max-height: 52px; max-width: 104px; }
     .hero-right {
       min-height: 240px;
       max-height: 320px;
@@ -1624,7 +1650,7 @@
   </button>
   <ul class="nav-links">
     <li><a href="#about">Our Story</a></li>
-    <li><a href="#menu">Menu</a></li>
+    <li><a href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer">Menu</a></li>
     <li><a href="#fogo-banner">By FoGo&Co</a></li>
     <li><a href="https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557" target="_blank" rel="noopener noreferrer">Find Us</a></li>
     <li><a href="https://www.instagram.com/backstreetcafesc/" target="_blank" rel="noopener noreferrer" class="nav-cta">Follow Us</a></li>
@@ -1758,7 +1784,7 @@
       <div class="section-label"><span>What We Do Best</span></div>
       <h2 class="section-title">Our <em>Menu</em></h2>
     </div>
-    <a href="#" class="menu-header-right">
+    <a href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" class="menu-header-right">
       Full menu →
     </a>
   </div>
@@ -1813,7 +1839,7 @@
         <span class="menu-card-tag">Menu</span>
         <span class="menu-card-name">Full Menu</span>
         <p class="menu-card-desc">Browse our complete menu, seasonal, fresh, and always worth the trip.</p>
-        <a class="menu-card-link" href="https://backstreet-cafe-menu.netlify.app/" target="_blank">Click to see more →</a>
+        <a class="menu-card-link" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer">Click to see more →</a>
       </div>
     </div>
   </div>
