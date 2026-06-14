@@ -311,34 +311,43 @@
   .btn-ghost:hover svg { transform: translateX(4px); }
 
   .hero-meta {
-    display: flex;
-    gap: 34px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px 22px;
     margin-top: auto;
     padding-top: 12px;
     border-top: 1px solid var(--sand);
     animation: fadeUp 0.8s 0.5s ease both;
-    align-items: flex-end;
+    align-items: end;
   }
 
   .hero-meta-item {
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
-  .hero-meta-item.logo-only {
-    justify-content: center;
-    padding-right: 6px;
-    min-width: 132px;
+  .hero-meta-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
   }
 
   .hero-meta-item .num {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.36rem;
+    font-size: 1.24rem;
     font-weight: 500;
     letter-spacing: -0.01em;
     color: var(--espresso);
     line-height: 1;
-    display: block;
+  }
+
+  .hero-meta-item .star {
+    color: var(--latte);
+    font-size: 0.82rem;
+    line-height: 1;
+    transform: translateY(-1px);
   }
 
   .google-review-logo {
@@ -349,13 +358,14 @@
   }
 
   .hero-meta-item .label {
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
+    font-size: 0.54rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--mocha);
     opacity: 0.6;
     margin-top: 4px;
-    display: block;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   /* HERO RIGHT - visual collage */
@@ -1524,11 +1534,9 @@
     .hero-subtitle { font-size: clamp(1.05rem, 5.6vw, 1.55rem); }
     .hero-desc { max-width: none; font-size: 0.8rem; }
     .hero-meta {
-      display: grid;
-      grid-template-columns: minmax(82px, 0.9fr) repeat(3, minmax(0, 1fr));
-      column-gap: 14px;
-      row-gap: 0;
-      align-items: center;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 12px;
+      row-gap: 14px;
       margin-top: 28px;
       padding-top: 16px;
     }
@@ -1536,19 +1544,12 @@
       align-items: center;
       text-align: center;
     }
-    .hero-meta-item.logo-only {
-      min-width: 0;
-      padding-right: 0;
-      grid-column: auto;
-      justify-content: center;
-    }
-    .google-review-logo { width: 72px; }
     .hero-meta-item .num { font-size: 1rem; }
+    .hero-meta-item .star { font-size: 0.72rem; }
     .hero-meta-item .label {
-      font-size: 0.48rem;
-      letter-spacing: 0.1em;
+      font-size: 0.46rem;
+      letter-spacing: 0.08em;
       margin-top: 3px;
-      line-height: 1.25;
     }
     .about { grid-template-columns: 1fr; }
     .about-content { padding: 56px 20px; }
@@ -1605,12 +1606,13 @@
     .hero-eyebrow span { font-size: 0.64rem; letter-spacing: 0.2em; }
     .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
     .hero-meta {
-      grid-template-columns: minmax(76px, 0.85fr) repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 10px;
+      row-gap: 12px;
     }
-    .google-review-logo { width: 64px; }
     .hero-meta-item .num { font-size: 0.95rem; }
-    .hero-meta-item .label { font-size: 0.46rem; letter-spacing: 0.08em; }
+    .hero-meta-item .star { font-size: 0.68rem; }
+    .hero-meta-item .label { font-size: 0.42rem; letter-spacing: 0.07em; }
     .section-title { font-size: clamp(1.9rem, 9vw, 2.4rem); }
     .section-body { font-size: 0.88rem; line-height: 1.75; }
     .menu-grid,
@@ -1677,19 +1679,36 @@
       </a>
     </div>
     <div class="hero-meta">
-      <div class="hero-meta-item logo-only">
-        <img class="google-review-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 32' role='img' aria-label='Google Reviews'%3E%3Ctext x='0' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%234285F4'%3EG%3C/text%3E%3Ctext x='13' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%23EA4335'%3Eo%3C/text%3E%3Ctext x='26' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%23FBBC04'%3Eo%3C/text%3E%3Ctext x='39' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%234285F4'%3Eg%3C/text%3E%3Ctext x='52' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%2334A853'%3El%3C/text%3E%3Ctext x='64' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%23EA4335'%3Ee%3C/text%3E%3Ctext x='82' y='22' font-family='Arial,sans-serif' font-size='11' font-weight='600' fill='%236B4F35'%3EReviews%3C/text%3E%3C/svg%3E" alt="Google Reviews">
+      <div class="hero-meta-item">
+        <div class="hero-meta-score">
+          <span class="num">4.8</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <span class="label">Google</span>
       </div>
       <div class="hero-meta-item">
-        <span class="num">4.8</span>
-        <span class="label">Google Rating</span>
+        <div class="hero-meta-score">
+          <span class="num">4.9</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <span class="label">Facebook</span>
       </div>
       <div class="hero-meta-item">
-        <span class="num">619</span>
-        <span class="label">Google Reviews</span>
+        <div class="hero-meta-score">
+          <span class="num">5</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <span class="label">Uber Eats</span>
       </div>
       <div class="hero-meta-item">
-        <span class="num">8yrs</span>
+        <div class="hero-meta-score">
+          <span class="num">4.7</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <span class="label">Tripadvisor</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">10yrs</span>
         <span class="label">On the Coast</span>
       </div>
     </div>
@@ -1743,7 +1762,7 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-visual">
-    <img class="about-img" src="https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/cafe.png" alt="Backstreet Cafe interior" loading="lazy">
+    <img class="about-img" src="https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/award.png" alt="Backstreet Cafe interior" loading="lazy">
     <div class="about-visual-overlay"></div>
     <div class="about-visual-grain"></div>
   </div>
@@ -1751,7 +1770,7 @@
     <div class="section-label"><span>Our Story</span></div>
     <h2 class="section-title">More than a coffee.<br><em>A place to belong.</em></h2>
     <p class="section-body">
-      Since 2016, Backstreet Cafe has been the Sunshine Coast's best-kept secret, tucked away steps from Mooloolaba Beach. We're not just another café. We're a community gathering spot where quality is never compromised and every guest leaves feeling at home.
+      Award-winning specialty coffee, house-made food, and warm hospitality. Proudly serving Mooloolaba since 2016, with a passion for quality, local ingredients, and creating memorable experiences every day.
     </p>
     <p class="section-body" style="margin-top:-20px;">
       From our meticulously sourced beans to our seasonal menu built around local producers, every detail is intentional. Because we believe that great coffee and great food should be everyday luxuries.
