@@ -1534,22 +1534,59 @@
     .hero-subtitle { font-size: clamp(1.05rem, 5.6vw, 1.55rem); }
     .hero-desc { max-width: none; font-size: 0.8rem; }
     .hero-meta {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: 12px;
-      row-gap: 14px;
-      margin-top: 28px;
-      padding-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 10px;
+      row-gap: 18px;
+      margin-top: 24px;
+      padding-top: 18px;
     }
     .hero-meta-item {
+      position: relative;
       align-items: center;
       text-align: center;
     }
-    .hero-meta-item .num { font-size: 1rem; }
-    .hero-meta-item .star { font-size: 0.72rem; }
+    .hero-meta-item:nth-child(1) { grid-column: 1 / 3; }
+    .hero-meta-item:nth-child(2) { grid-column: 3 / 5; }
+    .hero-meta-item:nth-child(3) { grid-column: 5 / 7; }
+    .hero-meta-item:nth-child(4) { grid-column: 2 / 4; }
+    .hero-meta-item:nth-child(5) { grid-column: 4 / 6; }
+    .hero-meta-item:nth-child(-n+3)::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: 12%;
+      height: 76%;
+      width: 1px;
+      background: rgba(196,168,130,0.42);
+    }
+    .hero-meta-item:nth-child(3)::after {
+      display: none;
+    }
+    .hero-meta-item:nth-child(4)::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: 12%;
+      height: 76%;
+      width: 1px;
+      background: rgba(196,168,130,0.42);
+    }
+    .hero-meta-score {
+      justify-content: center;
+    }
+    .hero-meta-item .num { font-size: 1.08rem; }
+    .hero-meta-item .star { font-size: 0.74rem; }
     .hero-meta-item .label {
-      font-size: 0.46rem;
+      font-size: 0.48rem;
       letter-spacing: 0.08em;
-      margin-top: 3px;
+      margin-top: 5px;
+      white-space: normal;
+      line-height: 1.15;
+      max-width: 100%;
+    }
+    .footer-logo .brand-logo-image {
+      width: 132px;
     }
     .about { grid-template-columns: 1fr; }
     .about-content { padding: 56px 20px; }
@@ -1605,14 +1642,15 @@
     }
     .hero-eyebrow span { font-size: 0.64rem; letter-spacing: 0.2em; }
     .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .hero-meta {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 10px;
-      row-gap: 12px;
+    .hero-meta-item .num { font-size: 1rem; }
+    .hero-meta-item .star { font-size: 0.7rem; }
+    .hero-meta-item .label {
+      font-size: 0.46rem;
+      letter-spacing: 0.07em;
     }
-    .hero-meta-item .num { font-size: 0.95rem; }
-    .hero-meta-item .star { font-size: 0.68rem; }
-    .hero-meta-item .label { font-size: 0.42rem; letter-spacing: 0.07em; }
+    .footer-logo .brand-logo-image {
+      width: 148px;
+    }
     .section-title { font-size: clamp(1.9rem, 9vw, 2.4rem); }
     .section-body { font-size: 0.88rem; line-height: 1.75; }
     .menu-grid,
@@ -1708,7 +1746,9 @@
         <span class="label">Tripadvisor</span>
       </div>
       <div class="hero-meta-item">
-        <span class="num">10yrs</span>
+        <div class="hero-meta-score">
+          <span class="num">10yrs</span>
+        </div>
         <span class="label">On the Coast</span>
       </div>
     </div>
