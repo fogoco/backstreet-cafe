@@ -675,6 +675,73 @@
     font-weight: 300;
   }
 
+  /* MENU PARALLAX BREAK */
+  .menu-parallax-break {
+    position: relative;
+    min-height: 52vh;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-parallax-media {
+    position: absolute;
+    inset: -12% 0;
+    z-index: 0;
+  }
+
+  .menu-parallax-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: translate3d(0, var(--menu-parallax, 0px), 0) scale(1.12);
+    will-change: transform;
+  }
+
+  .menu-parallax-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(to bottom, rgba(26,18,8,0.58), rgba(26,18,8,0.48)),
+      rgba(0,0,0,0.18);
+    pointer-events: none;
+  }
+
+  .menu-parallax-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 72px 80px;
+    max-width: 760px;
+  }
+
+  .menu-parallax-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--latte);
+    opacity: 0.88;
+    margin-bottom: 18px;
+  }
+
+  .menu-parallax-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+
+  .menu-parallax-quote em {
+    font-style: italic;
+    color: var(--latte);
+  }
+
   /* MENU SECTION */
   .menu-section {
     padding: 120px 80px;
@@ -713,6 +780,9 @@
     overflow: hidden;
     aspect-ratio: 3/4;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
   .menu-card-img {
@@ -1139,6 +1209,9 @@
     aspect-ratio: 1;
     overflow: hidden;
     position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
   .gallery-img {
@@ -1431,6 +1504,7 @@
     .hero,
     .marquee-section,
     .about,
+    .menu-parallax-break,
     .menu-section,
     .info-section,
     .gallery-section,
@@ -1591,6 +1665,8 @@
     .about { grid-template-columns: 1fr; }
     .about-content { padding: 56px 20px; }
     .about-values { grid-template-columns: 1fr; gap: 22px; }
+    .menu-parallax-break { min-height: 44vh; }
+    .menu-parallax-content { padding: 56px 20px; }
     .menu-section { padding: 64px 20px; }
     .menu-grid { grid-template-columns: 1fr 1fr; }
     .menu-card-large { grid-row: auto; }
@@ -1836,6 +1912,23 @@
   </div>
 </section>
 
+<!-- MENU PARALLAX BREAK -->
+<section class="menu-parallax-break" aria-label="Backstreet Cafe atmosphere">
+  <div class="menu-parallax-media">
+    <img
+      class="menu-parallax-img"
+      src="https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/EL2A7548.jpg"
+      alt=""
+      loading="lazy"
+    >
+  </div>
+  <div class="menu-parallax-overlay"></div>
+  <div class="menu-parallax-content reveal">
+    <p class="menu-parallax-eyebrow">Est. 2016 · Mooloolaba Beach</p>
+    <h2 class="menu-parallax-quote">Crafted with care,<br>served with <em>heart</em>.</h2>
+  </div>
+</section>
+
 <!-- MENU SECTION -->
 <section class="menu-section" id="menu">
   <div class="menu-header">
@@ -1849,7 +1942,7 @@
   </div>
   <div class="menu-grid">
     <!-- Card 1 - Large -->
-    <div class="menu-card menu-card-large reveal">
+    <a class="menu-card menu-card-large reveal" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" aria-label="Open digital menu">
       <video class="menu-card-img" autoplay muted loop playsinline preload="auto" aria-label="Coffee menu video">
         <source src="https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/videos/video%20bs.mp4" type="video/mp4">
       </video>
@@ -1859,9 +1952,9 @@
         <span class="menu-card-name">Where Friends<br>& Family Gather</span>
         <p class="menu-card-desc">More than a menu — a corner of Mooloolaba where locals become regulars, families share the table, and friends linger over the moments that matter.</p>
       </div>
-    </div>
+    </a>
     <!-- Card 2 -->
-    <div class="menu-card reveal">
+    <a class="menu-card reveal" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" aria-label="Open digital menu — Breakfast">
       <img class="menu-card-img" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/break2.jpg" alt="Breakfast" loading="lazy">
       <div class="menu-card-overlay"></div>
       <div class="menu-card-content">
@@ -1869,9 +1962,9 @@
         <span class="menu-card-name">Breakfast</span>
         <p class="menu-card-desc">Start the day the Backstreet way — thoughtfully prepared, seasonal, and served with the warmth we're known for.</p>
       </div>
-    </div>
+    </a>
     <!-- Card 3 -->
-    <div class="menu-card reveal">
+    <a class="menu-card reveal" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" aria-label="Open digital menu — Lunch">
       <img class="menu-card-img" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/371A4132.jpg" alt="Lunch" loading="lazy">
       <div class="menu-card-overlay"></div>
       <div class="menu-card-content">
@@ -1879,9 +1972,9 @@
         <span class="menu-card-name">Lunch</span>
         <p class="menu-card-desc">A relaxed midday pause with honest flavours, local ingredients, and the same care behind every plate we serve.</p>
       </div>
-    </div>
+    </a>
     <!-- Card 4 -->
-    <div class="menu-card reveal">
+    <a class="menu-card reveal" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" aria-label="Open digital menu — Drinks">
       <img class="menu-card-img" src="https://zbiyaxtwyirezuxnwdul.supabase.co/storage/v1/object/public/media/371A0533.jpg" alt="Drinks" loading="lazy">
       <div class="menu-card-overlay" style="background:linear-gradient(to top, rgba(26,18,8,0.8) 0%, transparent 60%);"></div>
       <div class="menu-card-content">
@@ -1889,9 +1982,9 @@
         <span class="menu-card-name">Drinks</span>
         <p class="menu-card-desc">Specialty coffee and refreshments crafted with precision, consistency, and a deep respect for quality.</p>
       </div>
-    </div>
+    </a>
     <!-- Card 5 -->
-    <div class="menu-card reveal">
+    <a class="menu-card reveal" href="https://menulove.com.au/r/backstreet-cafe" target="_blank" rel="noopener noreferrer" aria-label="Open digital menu — Burger O FoGo">
       <img class="menu-card-img" src="https://backstreet-cafe-menu.netlify.app/images/BackStreet%20Burgers/Signature%20Smash.jpg" alt="Burger O FoGo" loading="lazy">
       <div class="menu-card-overlay" style="background:linear-gradient(to top, rgba(26,18,8,0.8) 0%, transparent 60%);"></div>
       <div class="menu-card-content">
@@ -1899,7 +1992,7 @@
         <span class="menu-card-name">Burger O FoGo</span>
         <p class="menu-card-desc">A partnership with FoGo&Co built on quality, bold flavour, and the comfort food spirit of the Sunshine Coast.</p>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1929,7 +2022,7 @@
     <div class="section-label" style="justify-content:center;"><span>Life at Backstreet</span></div>
     <h2 class="section-title" style="font-size:clamp(2rem,3vw,3rem);">Follow along on <em>Instagram</em></h2>
   </div>
-  <div class="gallery-grid">
+  <div class="gallery-grid" id="instagram-feed-grid" data-behold-feed="ZuDGz">
     <div class="gallery-item reveal">
       <img class="gallery-img" src="https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/1.png" alt="Backstreet Cafe gallery image 1" loading="lazy">
       <div class="gallery-item-overlay"></div>
@@ -2042,6 +2135,48 @@
 
   reveals.forEach(el => observer.observe(el));
 
+  const instagramFeedGrid = document.getElementById('instagram-feed-grid');
+  const BEHOLD_FEED_ID = instagramFeedGrid?.dataset.beholdFeed || 'ZuDGz';
+
+  function observeRevealElements(elements) {
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  function getBeholdPostImage(post) {
+    if (post.mediaType === 'VIDEO' && post.thumbnailUrl) return post.thumbnailUrl;
+    return post.sizes?.medium?.mediaUrl || post.sizes?.small?.mediaUrl || post.mediaUrl;
+  }
+
+  async function loadInstagramFeed() {
+    if (!instagramFeedGrid) return;
+
+    try {
+      const response = await fetch(`https://feeds.behold.so/${BEHOLD_FEED_ID}`);
+      if (!response.ok) throw new Error('Behold feed unavailable');
+
+      const data = await response.json();
+      const posts = (data.posts || []).slice(0, 8);
+      if (!posts.length) throw new Error('Behold feed empty');
+
+      instagramFeedGrid.innerHTML = posts.map((post) => {
+        const imageSrc = getBeholdPostImage(post);
+        const alt = post.altText || post.prunedCaption || 'Backstreet Cafe on Instagram';
+        return `
+          <a class="gallery-item reveal" href="${post.permalink}" target="_blank" rel="noopener noreferrer" aria-label="View Instagram post">
+            <img class="gallery-img" src="${imageSrc}" alt="${alt.replace(/"/g, '&quot;')}" loading="lazy">
+            <div class="gallery-item-overlay"></div>
+          </a>
+        `;
+      }).join('');
+
+      observeRevealElements(instagramFeedGrid.querySelectorAll('.reveal'));
+    } catch (error) {
+      observeRevealElements(instagramFeedGrid.querySelectorAll('.reveal'));
+    }
+  }
+
+  loadInstagramFeed();
+
   // Nav scroll effect
   const nav = document.querySelector('nav');
   const navToggle = document.querySelector('.nav-toggle');
@@ -2051,6 +2186,8 @@
   const heroSoundToggle = document.getElementById('hero-sound-toggle');
   const fogoBanner = document.querySelector('.fogo-banner');
   const fogoBannerImage = document.querySelector('.fogo-banner-image');
+  const menuParallaxBreak = document.querySelector('.menu-parallax-break');
+  const menuParallaxImage = document.querySelector('.menu-parallax-img');
 
   if (nav && navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
@@ -2130,6 +2267,16 @@
         const progress = ((viewport - rect.top) / (viewport + rect.height)) - 0.5;
         const parallaxOffset = progress * 64;
         fogoBannerImage.style.setProperty('--fogo-parallax', `${parallaxOffset.toFixed(2)}px`);
+      }
+    }
+
+    if (menuParallaxBreak && menuParallaxImage) {
+      const rect = menuParallaxBreak.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < viewport) {
+        const progress = ((viewport - rect.top) / (viewport + rect.height)) - 0.5;
+        const parallaxOffset = progress * 48;
+        menuParallaxImage.style.setProperty('--menu-parallax', `${parallaxOffset.toFixed(2)}px`);
       }
     }
   });
