@@ -1,6 +1,14 @@
 [build]
   publish = "."
 
+# Canonical domain: send the Netlify subdomain to backstreetcafe.com.au
+# so search engines never index duplicate copies of the site.
+[[redirects]]
+  from = "https://backstreet-cafe.netlify.app/*"
+  to = "https://backstreetcafe.com.au/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/backstreet-cafe.html"
   to = "/"
@@ -8,7 +16,58 @@
   force = true
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+# The whole repo root is published, so keep build/source files out of the
+# public site instead of serving them as static assets.
+[[redirects]]
+  from = "/src/*"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/vite.config.js"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/backstreet_cafe_landing_preview.jsx"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/"
   to = "/backstreet-cafe.html"
   status = 200
   force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
