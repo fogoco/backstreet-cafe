@@ -59,6 +59,73 @@
   status = 200
   force = true
 
+# Netlify checks these rules in order and applies the first one that matches,
+# so they run most specific to least specific and every rule repeats the
+# security headers. A rule that only added Cache-Control would drop them.
+
+# The menu manager is staff-only: keep it out of search results and caches.
+# Access itself is enforced by Supabase Auth plus Row Level Security.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+# These three decide which menu sections exist and hold the offline copy of
+# the menu. Their filenames never change, so a week-long cache would leave
+# returning visitors on an old menu, including sections the cafe has since
+# hidden. Revalidating keeps them honest and the ETag makes it a cheap 304.
+[[headers]]
+  for = "/assets/menu-browser.js"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/supabase-config.js"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/menu-data.json"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Photos and the hero video are large and their filenames never change,
+# so let browsers and the CDN hold on to them for a year.
+[[headers]]
+  for = "/assets/media/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Cache-Control = "public, max-age=604800"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -66,23 +133,3 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-# Photos and the hero video are large and their filenames never change,
-# so let browsers and the CDN hold on to them for a year.
-[[headers]]
-  for = "/assets/media/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# The menu manager is staff-only: keep it out of search results and caches.
-# Access itself is enforced by Supabase Auth plus Row Level Security.
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Cache-Control = "no-store"

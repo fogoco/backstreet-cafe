@@ -263,6 +263,15 @@
 
   .category-group-line { flex: 1; height: 1px; background: var(--sand); }
 
+  .category-group-note {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--danger);
+    background: rgba(163, 57, 44, 0.08);
+    padding: 9px 12px;
+    margin-bottom: 10px;
+  }
+
   .row {
     display: flex;
     align-items: center;
@@ -1350,12 +1359,26 @@ function renderMenu() {
     const items = menuItems.filter((item) => item.category === category);
     if (!items.length) return '';
 
+    // Every row below says "Hide", which reads as if the items were live.
+    // Say plainly that the section itself is off, or the whole list lies.
+    const sectionHidden = categories.some(
+      (entry) => entry.key === category && !entry.is_visible
+    );
+
     return `
       <div class="category-group">
         <div class="category-group-head">
           <h3>${escapeHtml(categoryLabel(category))}</h3>
+          ${sectionHidden ? '<span class="chip" data-kind="hidden">Hidden section</span>' : ''}
           <div class="category-group-line"></div>
         </div>
+        ${sectionHidden ? `
+          <p class="category-group-note">
+            This section is off the website, so none of these items show to
+            visitors. Use <strong>Add / delete</strong> next to Category to
+            switch it back on.
+          </p>
+        ` : ''}
         ${items.map(renderMenuRow).join('')}
       </div>
     `;
