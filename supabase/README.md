@@ -1,6 +1,6 @@
 # Menu manager setup
 
-The menu and the Instagram gallery live in Supabase (project `qpqppnulhlsanreiwigk`)
+The menu and the Instagram gallery live in Supabase (project `zbiyaxtwyirezuxnwdul`)
 and are edited at [backstreetcafe.com.au/admin](https://backstreetcafe.com.au/admin).
 
 Run these five steps once. Until step 4 is done the website keeps serving the
@@ -41,12 +41,13 @@ under **Authentication → URL Configuration → Redirect URLs**.
 
 ## 4. Connect the website
 
-**Project Settings → API keys** → copy the **publishable** key, then paste it
-into `assets/supabase-config.js`:
+Already done — `assets/supabase-config.js` holds this project's anon key. Only
+redo this if the key gets rotated: **Project Settings → API keys** → copy the
+**publishable** key and paste it in:
 
 ```js
 window.BACKSTREET_SUPABASE = {
-  url: 'https://qpqppnulhlsanreiwigk.supabase.co',
+  url: 'https://zbiyaxtwyirezuxnwdul.supabase.co',
   publishableKey: 'sb_publishable_...'
 };
 ```
@@ -59,6 +60,15 @@ to reading published rows, and it can never write anything.
 1. Open `/admin`, sign in, and change a price.
 2. Reload the homepage and confirm the new price shows in the menu.
 3. Sign out and confirm `/admin` asks for the login again.
+
+## Keeping the project awake
+
+This project was paused once before, which broke the site's photos for a while.
+Free Supabase projects pause after about a week with no requests. The website
+queries the menu on every visit, so normal traffic keeps it awake — but if the
+site goes quiet, check the dashboard and hit **Restore** if it paused. While
+paused the menu falls back to `assets/menu-data.json`, so visitors still see a
+menu; they just would not see the client's latest edits.
 
 ## Adding another staff member
 

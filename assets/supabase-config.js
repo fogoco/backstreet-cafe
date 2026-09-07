@@ -7,6 +7,6 @@
 // Paste the publishable key from:
 //   Supabase dashboard > Project Settings > API keys
 window.BACKSTREET_SUPABASE = {
-  url: 'https://qpqppnulhlsanreiwigk.supabase.co',
-  publishableKey: 'PASTE_PUBLISHABLE_KEY_HERE'
+  url: 'https://zbiyaxtwyirezuxnwdul.supabase.co',
+  publishableKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpiaXlheHR3eWlyZXp1eG53ZHVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwODg3NjMsImV4cCI6MjA5MjY2NDc2M30.dmh-nXHHYlDZxNKeQPWAh6AyOs42mmEevopCDT3taGk'
 };

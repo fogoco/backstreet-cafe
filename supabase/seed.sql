@@ -106,12 +106,12 @@ delete from public.gallery_images;
 
 insert into public.gallery_images (image_url, alt_text, sort_order)
 values
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/1.png', 'Backstreet Cafe gallery image 1', 10),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/2.png', 'Backstreet Cafe gallery image 2', 20),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/3.png', 'Backstreet Cafe gallery image 3', 30),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/4.png', 'Backstreet Cafe gallery image 4', 40),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/5.png', 'Backstreet Cafe gallery image 5', 50),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/6.png', 'Backstreet Cafe gallery image 6', 60),
-  ('https://qpqppnulhlsanreiwigk.supabase.co/storage/v1/object/public/media/cafe.png', 'Backstreet Cafe gallery image 7', 70);
+  ('/assets/media/gallery-1.png', 'Backstreet Cafe gallery image 1', 10),
+  ('/assets/media/gallery-2.png', 'Backstreet Cafe gallery image 2', 20),
+  ('/assets/media/gallery-3.png', 'Backstreet Cafe gallery image 3', 30),
+  ('/assets/media/gallery-4.png', 'Backstreet Cafe gallery image 4', 40),
+  ('/assets/media/gallery-5.png', 'Backstreet Cafe gallery image 5', 50),
+  ('/assets/media/gallery-6.png', 'Backstreet Cafe gallery image 6', 60),
+  ('/assets/media/cafe.png', 'Backstreet Cafe gallery image 7', 70);
 
 commit;

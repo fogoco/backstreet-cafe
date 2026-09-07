@@ -72,6 +72,13 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
+# Photos and the hero video are large and their filenames never change,
+# so let browsers and the CDN hold on to them for a year.
+[[headers]]
+  for = "/assets/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # The menu manager is staff-only: keep it out of search results and caches.
 # Access itself is enforced by Supabase Auth plus Row Level Security.
 [[headers]]
