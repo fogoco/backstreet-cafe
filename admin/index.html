@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Backstreet Cafe — Menu Manager</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --espresso: #1A1208;
+    --mocha: #4A3520;
+    --latte: #C4956A;
+    --sand: #E4D5C3;
+    --cream: #FDFBF7;
+    --warm-white: #F7F2EA;
+    --fog: #EDE4D8;
+    --danger: #A3392C;
+    --ok: #3F6B4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--espresso);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button { font-family: inherit; cursor: pointer; }
+  input, textarea, select { font-family: inherit; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  /* Buttons */
+  .btn {
+    border: 1px solid var(--espresso);
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 12px 20px;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--mocha);
+    border-color: var(--sand);
+  }
+  .btn-ghost:hover { border-color: var(--latte); opacity: 1; }
+
+  .btn-danger { background: var(--danger); border-color: var(--danger); }
+
+  .btn-sm { padding: 8px 12px; font-size: 0.68rem; }
+
+  /* Login */
+  .login-wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  .login-card {
+    width: min(420px, 100%);
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    padding: 40px 32px;
+  }
+
+  .login-card h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .login-card p.sub {
+    font-size: 0.85rem;
+    color: var(--mocha);
+    opacity: 0.7;
+    margin-bottom: 28px;
+  }
+
+  .field { margin-bottom: 18px; }
+
+  .field label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mocha);
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    border: 1px solid var(--sand);
+    background: var(--cream);
+    color: var(--espresso);
+    font-size: 0.92rem;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--latte);
+    box-shadow: 0 0 0 3px rgba(196, 149, 106, 0.16);
+  }
+
+  .field textarea { resize: vertical; min-height: 88px; line-height: 1.55; }
+
+  .field-hint {
+    font-size: 0.72rem;
+    color: var(--mocha);
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  .notice {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    border-left: 3px solid var(--latte);
+    background: var(--fog);
+  }
+  .notice[data-kind="error"] { border-left-color: var(--danger); color: var(--danger); }
+  .notice[data-kind="ok"] { border-left-color: var(--ok); color: var(--ok); }
+  .notice[hidden] { display: none; }
+
+  .login-actions { display: flex; flex-direction: column; gap: 12px; }
+
+  /* App shell */
+  .app[hidden] { display: none; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 20px 32px;
+    background: var(--espresso);
+    color: var(--cream);
+  }
+
+  .topbar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+
+  .topbar-user { font-size: 0.78rem; opacity: 0.75; }
+
+  .topbar .btn-ghost { color: var(--cream); border-color: rgba(253, 251, 247, 0.35); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+
+  .tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+
+  .tab {
+    border: 1px solid var(--sand);
+    background: var(--cream);
+    color: var(--mocha);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 11px 20px;
+  }
+  .tab.is-active { background: var(--espresso); border-color: var(--espresso); color: var(--cream); }
+
+  .panel[hidden] { display: none; }
+
+  .panel-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .panel-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+
+  .panel-head p {
+    font-size: 0.84rem;
+    color: var(--mocha);
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+
+  .filter {
+    border: 1px solid var(--sand);
+    background: var(--cream);
+    color: var(--mocha);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+  }
+  .filter.is-active { background: var(--latte); border-color: var(--latte); color: var(--espresso); font-weight: 600; }
+
+  .category-group { margin-bottom: 34px; }
+
+  .category-group-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .category-group-head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .category-group-line { flex: 1; height: 1px; background: var(--sand); }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    background: var(--cream);
+    border: 1px solid rgba(196, 149, 106, 0.2);
+    margin-bottom: 8px;
+  }
+
+  .row-thumb {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    background: var(--fog);
+    overflow: hidden;
+  }
+  .row-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .row-main { flex: 1; min-width: 0; }
+
+  .row-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .row-desc {
+    font-size: 0.78rem;
+    color: var(--mocha);
+    opacity: 0.72;
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .chip {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    font-weight: 600;
+    background: rgba(196, 149, 106, 0.2);
+    color: var(--mocha);
+  }
+  .chip[data-kind="badge"] { background: var(--latte); color: var(--espresso); }
+  .chip[data-kind="hidden"] { background: rgba(163, 57, 44, 0.14); color: var(--danger); }
+
+  .row-price {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--latte);
+    white-space: nowrap;
+  }
+
+  .row-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+  .empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--mocha);
+    opacity: 0.65;
+    font-size: 0.9rem;
+    background: var(--cream);
+    border: 1px dashed var(--sand);
+  }
+
+  /* Gallery grid */
+  .gallery-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .gallery-admin-card {
+    background: var(--cream);
+    border: 1px solid rgba(196, 149, 106, 0.2);
+    overflow: hidden;
+  }
+
+  .gallery-admin-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-admin-body { padding: 12px; }
+
+  .gallery-admin-alt {
+    font-size: 0.76rem;
+    color: var(--mocha);
+    opacity: 0.8;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    min-height: 2.2em;
+  }
+
+  .gallery-admin-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* Modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(26, 18, 8, 0.7);
+  }
+  .modal[hidden] { display: none; }
+
+  .modal-panel {
+    width: min(620px, 100%);
+    max-height: 88vh;
+    overflow: auto;
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    padding: 28px;
+  }
+
+  .modal-panel h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+
+  .checkbox-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .checkbox-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--espresso);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .checkbox-row input { width: auto; }
+
+  .photo-preview {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: var(--fog);
+    border: 1px solid var(--sand);
+    margin-bottom: 10px;
+  }
+  .photo-preview[hidden] { display: none; }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 26px;
+    flex-wrap: wrap;
+  }
+
+  .spinner-text { font-size: 0.82rem; color: var(--mocha); opacity: 0.7; }
+
+  @media (max-width: 720px) {
+    .topbar { padding: 16px 20px; }
+    main { padding: 20px; }
+    .field-grid { grid-template-columns: 1fr; }
+    .row { flex-wrap: wrap; }
+    .row-main { flex-basis: 100%; order: 3; }
+    .row-actions { margin-left: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="login-view">
+  <div class="login-card">
+    <h1>Backstreet Cafe</h1>
+    <p class="sub">Menu &amp; gallery manager</p>
+
+    <div class="notice" id="login-notice" hidden></div>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="login-actions">
+        <button class="btn" type="submit" id="login-submit">Sign in</button>
+        <button class="btn btn-ghost" type="button" id="login-reset">Email me a reset link</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app-view" hidden>
+  <header class="topbar">
+    <span class="topbar-title">Backstreet Cafe — Manager</span>
+    <div class="topbar-right">
+      <span class="topbar-user" id="current-user"></span>
+      <a class="btn btn-ghost btn-sm" href="/" target="_blank" rel="noopener">View site</a>
+      <button class="btn btn-ghost btn-sm" type="button" id="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice" id="app-notice" hidden></div>
+
+    <div class="tabs">
+      <button class="tab is-active" type="button" data-panel="menu">Menu</button>
+      <button class="tab" type="button" data-panel="gallery">Instagram gallery</button>
+    </div>
+
+    <!-- MENU PANEL -->
+    <section class="panel" id="panel-menu">
+      <div class="panel-head">
+        <div>
+          <h2>Menu items</h2>
+          <p id="menu-count"></p>
+        </div>
+        <button class="btn" type="button" id="add-item">+ Add item</button>
+      </div>
+
+      <div class="filters" id="menu-filters">
+        <button class="filter is-active" type="button" data-group="all">All</button>
+        <button class="filter" type="button" data-group="breakfast">Breakfast</button>
+        <button class="filter" type="button" data-group="lunch">Lunch</button>
+        <button class="filter" type="button" data-group="drinks">Drinks</button>
+      </div>
+
+      <div id="menu-list"><p class="spinner-text">Loading menu…</p></div>
+    </section>
+
+    <!-- GALLERY PANEL -->
+    <section class="panel" id="panel-gallery" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Instagram gallery</h2>
+          <p>Photos shown in the “Follow along on Instagram” section.</p>
+        </div>
+        <button class="btn" type="button" id="add-photo">+ Add photo</button>
+      </div>
+
+      <div id="gallery-list"><p class="spinner-text">Loading gallery…</p></div>
+    </section>
+  </main>
+</div>
+
+<!-- ITEM MODAL -->
+<div class="modal" id="item-modal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="item-modal-title">
+    <h2 id="item-modal-title">Add item</h2>
+
+    <div class="notice" id="item-notice" hidden></div>
+
+    <form id="item-form">
+      <input type="hidden" id="item-id">
+
+      <div class="field">
+        <label for="item-name">Name</label>
+        <input id="item-name" type="text" required maxlength="120">
+      </div>
+
+      <div class="field">
+        <label for="item-description">Description</label>
+        <textarea id="item-description" maxlength="600"></textarea>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="item-price">Price (AUD)</label>
+          <input id="item-price" type="number" min="0" step="0.10" required>
+        </div>
+        <div class="field">
+          <label for="item-category">Category</label>
+          <select id="item-category" required></select>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="item-badge">Highlight</label>
+          <select id="item-badge">
+            <option value="">No highlight</option>
+            <option value="Signature">Signature</option>
+            <option value="Backstreet Favourite">Backstreet Favourite</option>
+          </select>
+          <p class="field-hint">Highlighted items appear at the top of their tab.</p>
+        </div>
+        <div class="field">
+          <label for="item-sort">Order</label>
+          <input id="item-sort" type="number" step="10" value="0">
+          <p class="field-hint">Lower numbers show first.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Dietary tags</label>
+        <div class="checkbox-row" id="item-tags">
+          <label><input type="checkbox" value="gf"> Gluten Free</label>
+          <label><input type="checkbox" value="gfo"> GF Option</label>
+          <label><input type="checkbox" value="v"> Vegetarian</label>
+          <label><input type="checkbox" value="vg"> Vegan</label>
+          <label><input type="checkbox" value="df"> Dairy Free</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Photo</label>
+        <img class="photo-preview" id="item-photo-preview" alt="" hidden>
+        <input id="item-photo-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
+        <p class="field-hint">JPG, PNG or WebP up to 10 MB. Leave empty to keep the current photo.</p>
+        <input type="hidden" id="item-image-url">
+      </div>
+
+      <div class="field">
+        <label class="checkbox-row" style="margin:0;">
+          <input type="checkbox" id="item-available" checked style="width:auto;">
+          <span style="font-size:0.85rem;text-transform:none;letter-spacing:0;color:var(--espresso);">Show this item on the website</span>
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" data-close-modal>Cancel</button>
+        <button class="btn" type="submit" id="item-save">Save item</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- PHOTO MODAL -->
+<div class="modal" id="photo-modal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+    <h2 id="photo-modal-title">Add gallery photo</h2>
+
+    <div class="notice" id="photo-notice" hidden></div>
+
+    <form id="photo-form">
+      <input type="hidden" id="photo-id">
+
+      <div class="field">
+        <label>Photo</label>
+        <img class="photo-preview" id="photo-preview" alt="" hidden>
+        <input id="photo-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
+        <input type="hidden" id="photo-image-url">
+      </div>
+
+      <div class="field">
+        <label for="photo-alt">Description (for accessibility)</label>
+        <input id="photo-alt" type="text" maxlength="200" placeholder="Flat white on a timber table">
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="photo-link">Instagram link (optional)</label>
+          <input id="photo-link" type="url" placeholder="https://instagram.com/p/...">
+        </div>
+        <div class="field">
+          <label for="photo-sort">Order</label>
+          <input id="photo-sort" type="number" step="10" value="0">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="checkbox-row" style="margin:0;">
+          <input type="checkbox" id="photo-visible" checked style="width:auto;">
+          <span style="font-size:0.85rem;text-transform:none;letter-spacing:0;color:var(--espresso);">Show this photo on the website</span>
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" data-close-modal>Cancel</button>
+        <button class="btn" type="submit" id="photo-save">Save photo</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/assets/supabase-config.js"></script>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const CONFIG = window.BACKSTREET_SUPABASE || {};
+const CATEGORY_LABELS = {
+  BREAKFAST: 'Breakfast',
+  BIG_BREAKFAST: 'Big Breakfast',
+  SWEET_BREAKFAST: 'Sweet Breakfast',
+  KIDS_STUFF: 'Kids Stuff',
+  LUNCH: 'Lunch Menu',
+  BURGERS: 'BackStreet Burgers',
+  SIDES: 'Sides',
+  EXTRA_BITS: 'Extra Bits',
+  DRINKS_HOT: 'Hot Stuff',
+  DRINKS_COLD: 'Cold Stuff',
+  DRINKS_SWIRLS: 'Swirls',
+  BEER_COCKTAILS: 'Beer & Cocktails'
+};
+
+const GROUPS = {
+  breakfast: ['BREAKFAST', 'BIG_BREAKFAST', 'SWEET_BREAKFAST', 'KIDS_STUFF'],
+  lunch: ['LUNCH', 'BURGERS', 'SIDES', 'EXTRA_BITS'],
+  drinks: ['DRINKS_HOT', 'DRINKS_COLD', 'DRINKS_SWIRLS', 'BEER_COCKTAILS']
+};
+const ALL_CATEGORIES = [...GROUPS.breakfast, ...GROUPS.lunch, ...GROUPS.drinks];
+const BUCKET = 'menu-photos';
+
+const $ = (id) => document.getElementById(id);
+
+const loginView = $('login-view');
+const appView = $('app-view');
+const loginNotice = $('login-notice');
+const appNotice = $('app-notice');
+
+let supabase = null;
+let menuItems = [];
+let galleryImages = [];
+let activeGroup = 'all';
+
+function notify(el, message, kind = 'info') {
+  el.textContent = message;
+  el.dataset.kind = kind;
+  el.hidden = !message;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function encodeUrl(url) {
+  if (!url) return '';
+  try {
+    return new URL(url).href;
+  } catch {
+    return encodeURI(url);
+  }
+}
+
+function money(value) {
+  return `$${Number(value || 0).toFixed(2)}`;
+}
+
+if (!CONFIG.url || !CONFIG.publishableKey || CONFIG.publishableKey.startsWith('PASTE_')) {
+  notify(
+    loginNotice,
+    'Supabase key missing. Add the publishable key in assets/supabase-config.js before signing in.',
+    'error'
+  );
+  $('login-submit').disabled = true;
+  $('login-reset').disabled = true;
+} else {
+  supabase = createClient(CONFIG.url, CONFIG.publishableKey);
+  boot();
+}
+
+async function boot() {
+  const { data } = await supabase.auth.getSession();
+  applySession(data.session);
+  supabase.auth.onAuthStateChange((_event, session) => applySession(session));
+}
+
+function applySession(session) {
+  const signedIn = Boolean(session?.user);
+  loginView.hidden = signedIn;
+  appView.hidden = !signedIn;
+
+  if (signedIn) {
+    $('current-user').textContent = session.user.email;
+    loadMenu();
+    loadGallery();
+  }
+}
+
+// ---------------------------------------------------------------- auth
+
+$('login-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  notify(loginNotice, '');
+  const button = $('login-submit');
+  button.disabled = true;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: $('login-email').value.trim(),
+    password: $('login-password').value
+  });
+
+  button.disabled = false;
+  if (error) notify(loginNotice, error.message, 'error');
+});
+
+$('login-reset').addEventListener('click', async () => {
+  const email = $('login-email').value.trim();
+  if (!email) {
+    notify(loginNotice, 'Type your email first, then request the reset link.', 'error');
+    return;
+  }
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/admin/`
+  });
+
+  notify(
+    loginNotice,
+    error ? error.message : `Reset link sent to ${email}. Check your inbox.`,
+    error ? 'error' : 'ok'
+  );
+});
+
+$('sign-out').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  menuItems = [];
+  galleryImages = [];
+});
+
+// ---------------------------------------------------------------- tabs
+
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach((other) => {
+      other.classList.toggle('is-active', other === tab);
+    });
+    $('panel-menu').hidden = tab.dataset.panel !== 'menu';
+    $('panel-gallery').hidden = tab.dataset.panel !== 'gallery';
+  });
+});
+
+$('menu-filters').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-group]');
+  if (!button) return;
+  activeGroup = button.dataset.group;
+  $('menu-filters').querySelectorAll('[data-group]').forEach((other) => {
+    other.classList.toggle('is-active', other === button);
+  });
+  renderMenu();
+});
+
+// ---------------------------------------------------------------- menu
+
+async function loadMenu() {
+  const { data, error } = await supabase
+    .from('menu_items')
+    .select('*')
+    .order('category')
+    .order('sort_order')
+    .order('name');
+
+  if (error) {
+    notify(appNotice, `Could not load the menu: ${error.message}`, 'error');
+    return;
+  }
+
+  notify(appNotice, '');
+  menuItems = data || [];
+  renderMenu();
+}
+
+function renderMenu() {
+  const categories = activeGroup === 'all' ? ALL_CATEGORIES : GROUPS[activeGroup];
+  const listEl = $('menu-list');
+  const visibleCount = menuItems.filter((item) => categories.includes(item.category)).length;
+
+  $('menu-count').textContent =
+    `${menuItems.length} items in total · ${visibleCount} shown here`;
+
+  const blocks = categories.map((category) => {
+    const items = menuItems.filter((item) => item.category === category);
+    if (!items.length) return '';
+
+    return `
+      <div class="category-group">
+        <div class="category-group-head">
+          <h3>${escapeHtml(CATEGORY_LABELS[category])}</h3>
+          <div class="category-group-line"></div>
+        </div>
+        ${items.map(renderMenuRow).join('')}
+      </div>
+    `;
+  }).filter(Boolean);
+
+  listEl.innerHTML = blocks.length
+    ? blocks.join('')
+    : '<div class="empty">No items here yet. Use “+ Add item” to create the first one.</div>';
+}
+
+function renderMenuRow(item) {
+  const photo = encodeUrl(item.image_url);
+  return `
+    <div class="row">
+      <div class="row-thumb">
+        ${photo ? `<img src="${escapeHtml(photo)}" alt="" loading="lazy">` : ''}
+      </div>
+      <div class="row-main">
+        <div class="row-name">
+          ${escapeHtml(item.name)}
+          ${item.badge ? `<span class="chip" data-kind="badge">${escapeHtml(item.badge)}</span>` : ''}
+          ${item.is_available ? '' : '<span class="chip" data-kind="hidden">Hidden</span>'}
+          ${(item.tags || []).map((tag) => `<span class="chip">${escapeHtml(tag)}</span>`).join('')}
+        </div>
+        <div class="row-desc">${escapeHtml(item.description) || '—'}</div>
+      </div>
+      <span class="row-price">${money(item.price)}</span>
+      <div class="row-actions">
+        <button class="btn btn-ghost btn-sm" type="button" data-edit-item="${escapeHtml(item.id)}">Edit</button>
+        <button class="btn btn-danger btn-sm" type="button" data-delete-item="${escapeHtml(item.id)}">Delete</button>
+      </div>
+    </div>
+  `;
+}
+
+const categorySelect = $('item-category');
+categorySelect.innerHTML = ALL_CATEGORIES
+  .map((key) => `<option value="${key}">${escapeHtml(CATEGORY_LABELS[key])}</option>`)
+  .join('');
+
+$('menu-list').addEventListener('click', async (event) => {
+  const editId = event.target.closest('[data-edit-item]')?.dataset.editItem;
+  if (editId) {
+    openItemModal(menuItems.find((item) => item.id === editId));
+    return;
+  }
+
+  const deleteId = event.target.closest('[data-delete-item]')?.dataset.deleteItem;
+  if (!deleteId) return;
+
+  const item = menuItems.find((entry) => entry.id === deleteId);
+  if (!window.confirm(`Delete “${item?.name}” from the menu? This cannot be undone.`)) return;
+
+  const { error } = await supabase.from('menu_items').delete().eq('id', deleteId);
+  if (error) {
+    notify(appNotice, `Could not delete: ${error.message}`, 'error');
+    return;
+  }
+  notify(appNotice, `“${item?.name}” deleted.`, 'ok');
+  loadMenu();
+});
+
+$('add-item').addEventListener('click', () => openItemModal(null));
+
+function openItemModal(item) {
+  notify($('item-notice'), '');
+  $('item-modal-title').textContent = item ? 'Edit item' : 'Add item';
+  $('item-id').value = item?.id || '';
+  $('item-name').value = item?.name || '';
+  $('item-description').value = item?.description || '';
+  $('item-price').value = item ? Number(item.price).toFixed(2) : '';
+  $('item-category').value = item?.category || (activeGroup === 'all' ? 'BREAKFAST' : GROUPS[activeGroup][0]);
+  $('item-badge').value = item?.badge || '';
+  $('item-sort').value = item?.sort_order ?? 0;
+  $('item-available').checked = item ? item.is_available : true;
+  $('item-image-url').value = item?.image_url || '';
+  $('item-photo-file').value = '';
+
+  const preview = $('item-photo-preview');
+  const photo = encodeUrl(item?.image_url);
+  preview.src = photo;
+  preview.hidden = !photo;
+
+  $('item-tags').querySelectorAll('input').forEach((input) => {
+    input.checked = (item?.tags || []).includes(input.value);
+  });
+
+  $('item-modal').hidden = false;
+}
+
+$('item-photo-file').addEventListener('change', (event) => {
+  const file = event.target.files?.[0];
+  const preview = $('item-photo-preview');
+  if (!file) return;
+  preview.src = URL.createObjectURL(file);
+  preview.hidden = false;
+});
+
+$('item-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const notice = $('item-notice');
+  const saveButton = $('item-save');
+  notify(notice, '');
+  saveButton.disabled = true;
+
+  try {
+    let imageUrl = $('item-image-url').value || null;
+    const file = $('item-photo-file').files?.[0];
+
+    if (file) {
+      notify(notice, 'Uploading photo…');
+      imageUrl = await uploadPhoto(file, 'menu');
+    }
+
+    const tags = Array.from($('item-tags').querySelectorAll('input'))
+      .filter((input) => input.checked)
+      .map((input) => input.value);
+
+    const payload = {
+      name: $('item-name').value.trim(),
+      description: $('item-description').value.trim(),
+      price: Number($('item-price').value),
+      category: $('item-category').value,
+      badge: $('item-badge').value || null,
+      sort_order: Number($('item-sort').value) || 0,
+      is_available: $('item-available').checked,
+      tags,
+      image_url: imageUrl
+    };
+
+    const id = $('item-id').value;
+    const { error } = id
+      ? await supabase.from('menu_items').update(payload).eq('id', id)
+      : await supabase.from('menu_items').insert(payload);
+
+    if (error) throw error;
+
+    $('item-modal').hidden = true;
+    notify(appNotice, `“${payload.name}” saved.`, 'ok');
+    loadMenu();
+  } catch (error) {
+    notify(notice, error.message || 'Could not save this item.', 'error');
+  } finally {
+    saveButton.disabled = false;
+  }
+});
+
+// ---------------------------------------------------------------- gallery
+
+async function loadGallery() {
+  const { data, error } = await supabase
+    .from('gallery_images')
+    .select('*')
+    .order('sort_order')
+    .order('created_at');
+
+  if (error) {
+    notify(appNotice, `Could not load the gallery: ${error.message}`, 'error');
+    return;
+  }
+
+  galleryImages = data || [];
+  renderGallery();
+}
+
+function renderGallery() {
+  const listEl = $('gallery-list');
+
+  if (!galleryImages.length) {
+    listEl.innerHTML = '<div class="empty">No photos yet. Use “+ Add photo” to upload the first one.</div>';
+    return;
+  }
+
+  listEl.innerHTML = `
+    <div class="gallery-admin-grid">
+      ${galleryImages.map((image) => `
+        <div class="gallery-admin-card">
+          <img src="${escapeHtml(encodeUrl(image.image_url))}" alt="" loading="lazy">
+          <div class="gallery-admin-body">
+            <p class="gallery-admin-alt">
+              ${escapeHtml(image.alt_text) || '—'}
+              ${image.is_visible ? '' : '<span class="chip" data-kind="hidden">Hidden</span>'}
+            </p>
+            <div class="gallery-admin-actions">
+              <button class="btn btn-ghost btn-sm" type="button" data-edit-photo="${escapeHtml(image.id)}">Edit</button>
+              <button class="btn btn-danger btn-sm" type="button" data-delete-photo="${escapeHtml(image.id)}">Delete</button>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+$('gallery-list').addEventListener('click', async (event) => {
+  const editId = event.target.closest('[data-edit-photo]')?.dataset.editPhoto;
+  if (editId) {
+    openPhotoModal(galleryImages.find((image) => image.id === editId));
+    return;
+  }
+
+  const deleteId = event.target.closest('[data-delete-photo]')?.dataset.deletePhoto;
+  if (!deleteId) return;
+  if (!window.confirm('Delete this photo from the gallery?')) return;
+
+  const { error } = await supabase.from('gallery_images').delete().eq('id', deleteId);
+  if (error) {
+    notify(appNotice, `Could not delete: ${error.message}`, 'error');
+    return;
+  }
+  notify(appNotice, 'Photo deleted.', 'ok');
+  loadGallery();
+});
+
+$('add-photo').addEventListener('click', () => openPhotoModal(null));
+
+function openPhotoModal(image) {
+  notify($('photo-notice'), '');
+  $('photo-modal-title').textContent = image ? 'Edit gallery photo' : 'Add gallery photo';
+  $('photo-id').value = image?.id || '';
+  $('photo-alt').value = image?.alt_text || '';
+  $('photo-link').value = image?.link_url || '';
+  $('photo-sort').value = image?.sort_order ?? (galleryImages.length + 1) * 10;
+  $('photo-visible').checked = image ? image.is_visible : true;
+  $('photo-image-url').value = image?.image_url || '';
+  $('photo-file').value = '';
+
+  const preview = $('photo-preview');
+  const photo = encodeUrl(image?.image_url);
+  preview.src = photo;
+  preview.hidden = !photo;
+
+  $('photo-modal').hidden = false;
+}
+
+$('photo-file').addEventListener('change', (event) => {
+  const file = event.target.files?.[0];
+  const preview = $('photo-preview');
+  if (!file) return;
+  preview.src = URL.createObjectURL(file);
+  preview.hidden = false;
+});
+
+$('photo-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const notice = $('photo-notice');
+  const saveButton = $('photo-save');
+  notify(notice, '');
+  saveButton.disabled = true;
+
+  try {
+    let imageUrl = $('photo-image-url').value || null;
+    const file = $('photo-file').files?.[0];
+
+    if (file) {
+      notify(notice, 'Uploading photo…');
+      imageUrl = await uploadPhoto(file, 'gallery');
+    }
+
+    if (!imageUrl) throw new Error('Choose a photo to upload first.');
+
+    const payload = {
+      image_url: imageUrl,
+      alt_text: $('photo-alt').value.trim(),
+      link_url: $('photo-link').value.trim() || null,
+      sort_order: Number($('photo-sort').value) || 0,
+      is_visible: $('photo-visible').checked
+    };
+
+    const id = $('photo-id').value;
+    const { error } = id
+      ? await supabase.from('gallery_images').update(payload).eq('id', id)
+      : await supabase.from('gallery_images').insert(payload);
+
+    if (error) throw error;
+
+    $('photo-modal').hidden = true;
+    notify(appNotice, 'Gallery photo saved.', 'ok');
+    loadGallery();
+  } catch (error) {
+    notify(notice, error.message || 'Could not save this photo.', 'error');
+  } finally {
+    saveButton.disabled = false;
+  }
+});
+
+// ---------------------------------------------------------------- uploads
+
+async function uploadPhoto(file, folder) {
+  const extension = (file.name.split('.').pop() || 'jpg').toLowerCase();
+  const slug = file.name
+    .replace(/\.[^.]+$/, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 40) || 'photo';
+  const path = `${folder}/${Date.now()}-${slug}.${extension}`;
+
+  const { error } = await supabase.storage
+    .from(BUCKET)
+    .upload(path, file, { cacheControl: '604800', upsert: false });
+
+  if (error) throw error;
+
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
+  return data.publicUrl;
+}
+
+// ---------------------------------------------------------------- modals
+
+document.querySelectorAll('[data-close-modal]').forEach((button) => {
+  button.addEventListener('click', () => {
+    $('item-modal').hidden = true;
+    $('photo-modal').hidden = true;
+  });
+});
+
+document.querySelectorAll('.modal').forEach((modal) => {
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) modal.hidden = true;
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  $('item-modal').hidden = true;
+  $('photo-modal').hidden = true;
+});
+</script>
+</body>
+</html>

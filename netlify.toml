@@ -71,3 +71,11 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# The menu manager is staff-only: keep it out of search results and caches.
+# Access itself is enforced by Supabase Auth plus Row Level Security.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"

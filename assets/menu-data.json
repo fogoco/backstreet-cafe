@@ -1,0 +1,873 @@
+[
+  {
+    "id": "b1",
+    "name": "Eggs your way (gfo)",
+    "description": "Toasted sourdough, two poached eggs, relish (home-made), baby spinach.",
+    "price": 14.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Eggs your way (gfo).jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "b2",
+    "name": "Green Brekky Burrito",
+    "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
+    "price": 23.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Green Brekky Burrito.jpg",
+    "tags": []
+  },
+  {
+    "id": "b4",
+    "name": "Brekky Burger",
+    "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese blend, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
+    "price": 17.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Brekky Burger.jpg",
+    "tags": []
+  },
+  {
+    "id": "b6",
+    "name": "Smashed Avo (gfo)(v)",
+    "description": "Toasted sourdough,, all home-made radish, chilli, whipped feta, one poached egg, dukkah",
+    "price": 22.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Smashed-Avo.jpg",
+    "tags": [
+      "gfo",
+      "v"
+    ]
+  },
+  {
+    "id": "b7",
+    "name": "Eggs Benedict (gfo)",
+    "description": "Smashed avocado, poached eggs, baby spinach, house hollandaise, english muffin",
+    "price": 24.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Eggs Benedict (gfo).jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "b8",
+    "name": "Breadless Benedict (gf)",
+    "description": "Corn fritters, smashed avocado, poached eggs, baby spinach, house hollandaise",
+    "price": 25.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Breadless Benedict (gf).jpg",
+    "tags": [
+      "gf"
+    ]
+  },
+  {
+    "id": "b9",
+    "name": "Corn Fritters (gf)(v)",
+    "description": "Smashed avocado, whipped feta, one poached egg",
+    "price": 24.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Corn Fritters (gf)(v).jpg",
+    "tags": [
+      "gf",
+      "v"
+    ]
+  },
+  {
+    "id": "b10",
+    "name": "Mushroom Bruschetta (gfo)",
+    "description": "All home- made, Garlic and thyme mushrooms, one poached egg, baby spinach, whipped feta, basil pesto, dukkah, toasted sourdough",
+    "price": 23.9,
+    "category": "BREAKFAST",
+    "imageUrl": "/images/Breakfast/Mushroom Bruschetta (gfo).jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "bb1",
+    "name": "Big Breakfast (gfo)",
+    "description": "Two Poached eggs, bacon, roasted tomato, cheese Kransky sausage, relish (home-made), house baked beans, mushrooms, hash browns, toasted sourdough.",
+    "price": 29.9,
+    "category": "BIG_BREAKFAST",
+    "imageUrl": "/images/Big Breakfast/Big Breakfast (gfo).jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "bb2",
+    "name": "Big Vege (gfo)(v)",
+    "description": "Two Poached eggs, roasted tomato, relish (home-made), house baked beans, mushrooms, hash browns, smashed avocado, whipped feta, toasted sourdough.",
+    "price": 29.9,
+    "category": "BIG_BREAKFAST",
+    "imageUrl": "/images/Big Breakfast/Big Vege (gfo)(v).jpg",
+    "tags": [
+      "gfo",
+      "v"
+    ]
+  },
+  {
+    "id": "bb3",
+    "name": "House Made Baked Beans (gfo)",
+    "description": "Two fried eggs, cheese Kransky sausage, toasted sourdough, spinach and relish.",
+    "price": 26.9,
+    "category": "BIG_BREAKFAST",
+    "imageUrl": "/images/Big Breakfast/House Made Baked Beans (gfo).jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "sb1",
+    "name": "Berry Pancake",
+    "description": "Berry compote, maple syrup, ice cream",
+    "price": 22.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Berry Pancake.jpg",
+    "tags": [
+      "v"
+    ]
+  },
+  {
+    "id": "sb2",
+    "name": "Grilled banana (v) Pancake",
+    "description": "Grilled banana, crispy bacon, maple syrup, ice cream",
+    "price": 23.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Grilled banana (v) Pancake.jpg",
+    "tags": [
+      "v"
+    ]
+  },
+  {
+    "id": "sb3",
+    "name": "Sunshine fruit bowl (v)(gfo)",
+    "description": "Seasonal fresh fruits, homemade granola, COYO coconut yoghurt, honey, pepitas & shredded coconut",
+    "price": 19.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Sunshine Fruit bowl (v) (gfo).jpg",
+    "tags": [
+      "v",
+      "gfo"
+    ]
+  },
+  {
+    "id": "sb4",
+    "name": "Banana bread french toast",
+    "description": "Cinnamon vanilla banana bread, topped with creamy ice-cream, maple syrup and a berry compote",
+    "price": 22.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Banana Bread French Toast.jpg",
+    "tags": []
+  },
+  {
+    "id": "sb5",
+    "name": "Banana Bread (v)(gfo)",
+    "description": "Artisan banana bread by noosa gourmet, topped with creamy ice cream, maple syrup and berry compote.",
+    "price": 6.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Banana Bread (v)(gfo).jpg",
+    "tags": [
+      "v",
+      "gfo"
+    ]
+  },
+  {
+    "id": "sb6",
+    "name": "Biscoff Pancake",
+    "description": "Fluffy pancake topped with Biscoff crumble, rich Biscoff sauce, warm Biscoff drizzle and vanilla ice cream.",
+    "price": 24.9,
+    "category": "SWEET_BREAKFAST",
+    "imageUrl": "/images/Sweet Breakfast/Biscoff Pancake.jpg",
+    "tags": [
+      "v"
+    ]
+  },
+  {
+    "id": "k1",
+    "name": "Bacon + Egg",
+    "description": "poached egg and bacon w/ toasted sourdough (gfo)",
+    "price": 12.0,
+    "category": "KIDS_STUFF",
+    "imageUrl": "/images/Kids Stuff/Bacon + Egg.jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "k2",
+    "name": "Avocado toast",
+    "description": "Toast with smashed avocado and cherry tomato (gfo)",
+    "price": 12.0,
+    "category": "KIDS_STUFF",
+    "imageUrl": "/images/Kids Stuff/Avocado toast.jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "k3",
+    "name": "Pancakes (v)",
+    "description": "w/ maple syrup + ice cream",
+    "price": 15.0,
+    "category": "KIDS_STUFF",
+    "imageUrl": "/images/Kids Stuff/Pancakes (v).jpg",
+    "tags": [
+      "v"
+    ]
+  },
+  {
+    "id": "k4",
+    "name": "Kids fruit & Yoghurt Bowl",
+    "description": "Coconut yoghurt with seasonal fruit, house granola & a drizzle of honey",
+    "price": 12.0,
+    "category": "KIDS_STUFF",
+    "imageUrl": "/images/Kids Stuff/Kids fruit & Yoghurt Bowl.jpg",
+    "tags": []
+  },
+  {
+    "id": "k5",
+    "name": "Toast",
+    "description": "with jam, vegemite, or peanut butter (gfo)",
+    "price": 9.0,
+    "category": "KIDS_STUFF",
+    "imageUrl": "/images/Kids Stuff/Toast .jpg",
+    "tags": [
+      "gfo"
+    ]
+  },
+  {
+    "id": "bg1",
+    "name": "Signature Smash",
+    "description": "140g smashed beef patty, fresh lettuce, ripe tomato, onion, pickles and our house-made secret sauce",
+    "price": 19.9,
+    "category": "BURGERS",
+    "imageUrl": "/images/BackStreet Burgers/Signature Smash.jpg",
+    "tags": []
+  },
+  {
+    "id": "bg2",
+    "name": "Hot Chick",
+    "description": "Crispy deep-fried chicken breast, chipotle house-made sauce, iceberg lettuce, pickles and melted cheese",
+    "price": 19.9,
+    "category": "BURGERS",
+    "imageUrl": "/images/BackStreet Burgers/Hot Chick.jpg",
+    "tags": []
+  },
+  {
+    "id": "bg3",
+    "name": "Double Trouble",
+    "description": "Double smashed beef patties, double cheese, crispy bacon and our signature house sauce",
+    "price": 21.9,
+    "category": "BURGERS",
+    "imageUrl": "/images/BackStreet Burgers/Double Trouble.jpg",
+    "tags": []
+  },
+  {
+    "id": "bg4",
+    "name": "The Challenging Burger",
+    "description": "Stacked high with double smashed beef patties, double bacon, melted cheese, lettuce, tomato, onion and pickles, finished with our house sauce, crispy onion rings and a mozzarella stick",
+    "price": 27.9,
+    "category": "BURGERS",
+    "imageUrl": "/images/BackStreet Burgers/The Challenging Burger.jpg",
+    "tags": []
+  },
+  {
+    "id": "l1",
+    "name": "Fish Taco",
+    "description": "Crispy battered flathead, red cabbage slaw, house-made roasted garlic lemon aioli and Brazilian-style vinaigrette, served in a toasted flour tortilla. 1 for $7 or 3 for $19",
+    "price": 7.0,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Fish Taco.jpg",
+    "tags": []
+  },
+  {
+    "id": "l2",
+    "name": "Big Mac Taco",
+    "description": "All the Big Mac vibes, seasoned ground beef, iceberg lettuce, mexican cheese blend, onion, pickles and our signature Big Mac-style sauce. 1 for $7 or 3 for $19",
+    "price": 7.0,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Big Mac Taco.jpg",
+    "tags": []
+  },
+  {
+    "id": "l3",
+    "name": "Chicken Taco",
+    "description": "Grilled chicken, iceberg lettuce, Mexican cheese blend, crispy bacon and house-made chipotle sauce, served in a toasted flour tortilla. 1 for $7 or 3 for $19",
+    "price": 7.0,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Chicken Taco.jpg",
+    "tags": []
+  },
+  {
+    "id": "l4",
+    "name": "Fish & Chips",
+    "description": "Crispy battered flathead served with crunchy chips and house-made roasted garlic lemon aioli",
+    "price": 19.9,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Fish & Chips.jpg",
+    "tags": []
+  },
+  {
+    "id": "l5",
+    "name": "Toastie",
+    "description": "Grilled chicken, house-made pesto, roasted capsicum and signature melted cheese",
+    "price": 20.0,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Toastie.jpg",
+    "tags": []
+  },
+  {
+    "id": "l6",
+    "name": "Cobb Salad",
+    "description": "Red cabbage slaw, Brazilian-style vinaigrette salsa, boiled egg, Mexican cheese, corn, fresh avocado, cucumber and crispy bacon",
+    "price": 19.0,
+    "category": "LUNCH",
+    "imageUrl": "/images/Lunch Menu/Cobb Salad.jpg",
+    "tags": []
+  },
+  {
+    "id": "sd1",
+    "name": "Bowl of chips with aioli",
+    "description": "Crispy chips served with aioli",
+    "price": 9.0,
+    "category": "SIDES",
+    "imageUrl": "/images/Sides/Bowl of chips with aioli.jpg",
+    "tags": []
+  },
+  {
+    "id": "sd2",
+    "name": "Sweet potato chips",
+    "description": "Crispy sweet potato chips",
+    "price": 11.0,
+    "category": "SIDES",
+    "imageUrl": "/images/Sides/Sweet potato chips.jpg",
+    "tags": []
+  },
+  {
+    "id": "sd3",
+    "name": "Mozzarella sticks",
+    "description": "Golden fried mozzarella sticks",
+    "price": 12.0,
+    "category": "SIDES",
+    "imageUrl": "/images/Sides/Mozzarella sticks.jpg",
+    "tags": []
+  },
+  {
+    "id": "sd4",
+    "name": "Onion rings",
+    "description": "Crispy golden onion rings",
+    "price": 10.0,
+    "category": "SIDES",
+    "imageUrl": "/images/Sides/Onion rings.jpg",
+    "tags": []
+  },
+  {
+    "id": "e1",
+    "name": "Halloumi",
+    "description": "Premium grilled halloumi cheese",
+    "price": 7.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Halloumi.jpg",
+    "tags": []
+  },
+  {
+    "id": "e2",
+    "name": "Smoked Salmon",
+    "description": "Premium smoked salmon",
+    "price": 7.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Smoked Salmon.jpg",
+    "tags": []
+  },
+  {
+    "id": "e3",
+    "name": "Cheese Kransky",
+    "description": "Grilled cheese kransky sausage",
+    "price": 7.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Cheese Kransky.jpg",
+    "tags": []
+  },
+  {
+    "id": "e4",
+    "name": "Corn Fritter",
+    "description": "House-made corn fritter",
+    "price": 7.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Corn Fritter.jpg",
+    "tags": []
+  },
+  {
+    "id": "e5",
+    "name": "Bacon",
+    "description": "Crispy bacon strips",
+    "price": 6.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Bacon.jpg",
+    "tags": []
+  },
+  {
+    "id": "e6",
+    "name": "Hash Browns",
+    "description": "Crispy golden hash browns",
+    "price": 6.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Hash Browns.jpg",
+    "tags": []
+  },
+  {
+    "id": "e7",
+    "name": "Mushrooms",
+    "description": "Sautéed mushrooms",
+    "price": 6.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Mushrooms.jpg",
+    "tags": []
+  },
+  {
+    "id": "e8",
+    "name": "Smashed Avocado",
+    "description": "Fresh smashed avocado",
+    "price": 6.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Avo.jpg",
+    "tags": []
+  },
+  {
+    "id": "e9",
+    "name": "House Beans",
+    "description": "House-made baked beans",
+    "price": 6.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/House Beans.jpg",
+    "tags": []
+  },
+  {
+    "id": "e10",
+    "name": "Gluten Free Toast",
+    "description": "Gluten free bread toasted",
+    "price": 2.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+    "tags": [
+      "gf"
+    ]
+  },
+  {
+    "id": "e11",
+    "name": "Extra Poached Egg",
+    "description": "Perfectly poached egg",
+    "price": 3.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Extra Poached Egg.jpg",
+    "tags": []
+  },
+  {
+    "id": "e12",
+    "name": "Scrambled Egg",
+    "description": "Fluffy scrambled eggs",
+    "price": 1.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Scrambled.jpg",
+    "tags": []
+  },
+  {
+    "id": "e13",
+    "name": "Chips w/ aioli",
+    "description": "Crispy chips served with aioli",
+    "price": 9.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Chips w: Aioli.jpg",
+    "tags": []
+  },
+  {
+    "id": "e14",
+    "name": "Sweet Potato Fries w/ aioli",
+    "description": "Crispy sweet potato fries served with aioli",
+    "price": 11.0,
+    "category": "EXTRA_BITS",
+    "imageUrl": "/images/Extra Bits/Sweet Potatoes Fries w: Aioli.jpg",
+    "tags": []
+  },
+  {
+    "id": "h1",
+    "name": "Espresso",
+    "description": "GUN COTTON COFFEE - locally roasted",
+    "price": 4.5,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Espresso.jpg",
+    "tags": []
+  },
+  {
+    "id": "h2",
+    "name": "Macchiato / Piccolo",
+    "description": "GUN COTTON COFFEE - locally roasted",
+    "price": 4.8,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Macchiato or Piccolo.jpg",
+    "tags": []
+  },
+  {
+    "id": "h3",
+    "name": "Long Black / Flat White / Cappuccino / Mocha / Latte",
+    "description": "GUN COTTON COFFEE - locally roasted",
+    "price": 5.0,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Cappuccino.jpg",
+    "tags": []
+  },
+  {
+    "id": "h4",
+    "name": "Spiced Chai",
+    "description": "Traditional spiced chai latte (dirty +$0.5)",
+    "price": 5.0,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Spiced Chai.jpg",
+    "tags": []
+  },
+  {
+    "id": "h5",
+    "name": "Hot Chocolate",
+    "description": "Rich and creamy hot chocolate",
+    "price": 4.8,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Hot Chocolate.jpg",
+    "tags": []
+  },
+  {
+    "id": "h6",
+    "name": "Matcha S/L",
+    "description": "Small $6 or Large $6.9",
+    "price": 6.0,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Matcha.jpg",
+    "tags": []
+  },
+  {
+    "id": "h7",
+    "name": "Loose Leaf Tea - English Breakfast",
+    "description": "English breakfast tea served with milk",
+    "price": 4.5,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Loose Leaf Tea - English breakfast tea served with milk .jpg",
+    "tags": []
+  },
+  {
+    "id": "h8",
+    "name": "Loose Leaf Tea - Green Tea Mint + Rose",
+    "description": "Refreshing green tea with mint and rose",
+    "price": 4.5,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Loose Leaf Tea - Green Tea Mint + Rose.jpg",
+    "tags": []
+  },
+  {
+    "id": "h9",
+    "name": "Loose Leaf Tea - Peppermint",
+    "description": "Soothing peppermint tea",
+    "price": 4.5,
+    "category": "DRINKS_HOT",
+    "imageUrl": "/images/Drinks/Loose Leaf Tea - Peppermint .jpg",
+    "tags": []
+  },
+  {
+    "id": "s1",
+    "name": "Affogato",
+    "description": "Espresso poured over vanilla ice cream",
+    "price": 6.5,
+    "category": "DRINKS_SWIRLS",
+    "imageUrl": "/images/Drinks/Affogato.jpg",
+    "tags": []
+  },
+  {
+    "id": "s2",
+    "name": "Iced Coffee",
+    "description": "Served over ice, ice-cream and topped with whipped cream",
+    "price": 8.9,
+    "category": "DRINKS_SWIRLS",
+    "imageUrl": "/images/Drinks/Iced Coffee.jpg",
+    "tags": []
+  },
+  {
+    "id": "s3",
+    "name": "Iced Chocolate",
+    "description": "Served over ice, ice-cream and topped with whipped cream",
+    "price": 8.9,
+    "category": "DRINKS_SWIRLS",
+    "imageUrl": "/images/Drinks/Iced Chocolate.jpg",
+    "tags": []
+  },
+  {
+    "id": "s4",
+    "name": "Iced Mocha",
+    "description": "Served over ice, ice-cream and topped with whipped cream",
+    "price": 8.9,
+    "category": "DRINKS_SWIRLS",
+    "imageUrl": "/images/Drinks/Iced Mocha.jpg",
+    "tags": []
+  },
+  {
+    "id": "s5",
+    "name": "Coffee Frappe",
+    "description": "Blended espresso, ice, vanilla syrup, ice-cream & milk",
+    "price": 10.0,
+    "category": "DRINKS_SWIRLS",
+    "imageUrl": "/images/Drinks/Coffee Frappe.jpg",
+    "tags": []
+  },
+  {
+    "id": "c1",
+    "name": "Smoothie - Mango",
+    "description": "Coconut milk, honey and Greek natural yoghurt",
+    "price": 11.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Smoothies - Mango.jpg",
+    "tags": []
+  },
+  {
+    "id": "c2",
+    "name": "Smoothie - Banana",
+    "description": "Coconut milk, honey and Greek natural yoghurt",
+    "price": 11.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Smoothies - banana.jpg",
+    "tags": []
+  },
+  {
+    "id": "c3",
+    "name": "Smoothie - Mixed Berry",
+    "description": "Coconut milk, honey and Greek natural yoghurt",
+    "price": 11.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Smoothies - mix berry.jpg",
+    "tags": []
+  },
+  {
+    "id": "c4",
+    "name": "Açaí Smoothie",
+    "description": "Brazilian açaí, banana, honey and apple juice",
+    "price": 13.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Açaí Smoothie.jpg",
+    "tags": []
+  },
+  {
+    "id": "c5",
+    "name": "Milkshake - Caramel",
+    "description": "Classic caramel milkshake",
+    "price": 8.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Milkshakes - Caramelo.jpg",
+    "tags": []
+  },
+  {
+    "id": "c6",
+    "name": "Milkshake - Vanilla",
+    "description": "Classic vanilla milkshake",
+    "price": 8.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Milkshakes - vanilla.jpg",
+    "tags": []
+  },
+  {
+    "id": "c7",
+    "name": "Milkshake - Chocolate",
+    "description": "Classic chocolate milkshake",
+    "price": 8.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Milkshake - Chocolate.jpg",
+    "tags": []
+  },
+  {
+    "id": "c8",
+    "name": "Milkshake - Strawberry",
+    "description": "Classic strawberry milkshake",
+    "price": 8.9,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Milkshake - Strawberry.jpg",
+    "tags": []
+  },
+  {
+    "id": "c9",
+    "name": "Ultimate Oreo Shake",
+    "description": "Premium Oreo milkshake",
+    "price": 13.8,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Ultimate Oreo Shake.jpg",
+    "tags": []
+  },
+  {
+    "id": "c10",
+    "name": "Ultimate Pink Cloud",
+    "description": "Premium pink cloud milkshake",
+    "price": 13.8,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Ultimate Pink Cloud.jpg",
+    "tags": []
+  },
+  {
+    "id": "c11",
+    "name": "Iced Long Black",
+    "description": "Double shot espresso on ice, with water",
+    "price": 5.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Iced Long Black.jpg",
+    "tags": []
+  },
+  {
+    "id": "c12",
+    "name": "Iced Latte",
+    "description": "Double shot espresso on ice, with milk",
+    "price": 6.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Iced latte : Iced chai.jpg",
+    "tags": []
+  },
+  {
+    "id": "c13",
+    "name": "Iced Chai",
+    "description": "Double shot chai on ice, with milk",
+    "price": 6.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Iced latte : Iced chai.jpg",
+    "tags": []
+  },
+  {
+    "id": "c14",
+    "name": "Allies Cold Pressed Juice - Orange",
+    "description": "Fresh cold pressed orange juice",
+    "price": 8.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Allies cold pressed juices - Orange.jpg",
+    "tags": []
+  },
+  {
+    "id": "c15",
+    "name": "Allies Cold Pressed Juice - Ginger Apple",
+    "description": "Fresh cold pressed ginger apple juice",
+    "price": 8.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Allies cold pressed juices - Ginger apple.jpg",
+    "tags": []
+  },
+  {
+    "id": "c16",
+    "name": "Allies Cold Pressed Juice - Green Juice",
+    "description": "Fresh cold pressed green juice",
+    "price": 8.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Allies cold pressed juices - green juice.jpg",
+    "tags": []
+  },
+  {
+    "id": "c17",
+    "name": "Allies Cold Pressed Juice - Love Beets",
+    "description": "Fresh cold pressed beetroot juice",
+    "price": 8.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Allies cold pressed juices - lovebeets.jpg",
+    "tags": []
+  },
+  {
+    "id": "c18",
+    "name": "Allies Cold Pressed Juice - Sublime Pine",
+    "description": "Fresh cold pressed pineapple juice",
+    "price": 8.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Allies cold pressed juices - sublime pine.jpg",
+    "tags": []
+  },
+  {
+    "id": "c19",
+    "name": "House Iced Tea",
+    "description": "Green Tea Mint & Rose Peppermint blend, house-made passionfruit syrup, fresh mixed berries",
+    "price": 9.0,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/House Iced Tea.jpg",
+    "tags": []
+  },
+  {
+    "id": "c20",
+    "name": "Iced Matcha",
+    "description": "Choose your preferred milk and check with our staff for today's syrup options.",
+    "price": 7.2,
+    "category": "DRINKS_COLD",
+    "imageUrl": "/images/Drinks/Iced Matcha.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc1",
+    "name": "Corona",
+    "description": "Classic Mexican beer",
+    "price": 9.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/corona.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc2",
+    "name": "Great Northern Super Crisp",
+    "description": "Australian lager",
+    "price": 8.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Great Northern Super Crisp.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc3",
+    "name": "Matsos Ginger Beer",
+    "description": "Refreshing ginger beer",
+    "price": 10.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Matsos Ginger Beer.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc4",
+    "name": "Mimosa",
+    "description": "Classic champagne and orange juice cocktail",
+    "price": 9.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Mimosa.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc5",
+    "name": "Espresso Martini",
+    "description": "A classic caffeine kick with premium vodka and fresh espresso",
+    "price": 15.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Espresso Martini.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc6",
+    "name": "Aperol Spritz",
+    "description": "Italian aperitif cocktail",
+    "price": 12.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Aperol Spritz.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc7",
+    "name": "Frozen Piña Colada",
+    "description": "Tropical blend of pineapple, coconut and rum",
+    "price": 18.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/Frozen Pina Colada.jpg",
+    "tags": []
+  },
+  {
+    "id": "bc8",
+    "name": "House Spirits",
+    "description": "Selection of house spirits",
+    "price": 10.0,
+    "category": "BEER_COCKTAILS",
+    "imageUrl": "/images/Beer & Cocktails/House Spirits.jpg",
+    "tags": []
+  }
+]
