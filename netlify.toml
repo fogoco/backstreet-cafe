@@ -59,9 +59,11 @@
   status = 200
   force = true
 
-# Netlify checks these rules in order and applies the first one that matches,
-# so they run most specific to least specific and every rule repeats the
-# security headers. A rule that only added Cache-Control would drop them.
+# A request can match several rules at once, and which one wins for a given
+# header is not worth betting the menu on: an earlier attempt that set
+# Cache-Control on both "/assets/*" and "/assets/menu-browser.js" saw the
+# broad rule win in production. So no two rules below set Cache-Control for
+# the same path, and each repeats the security headers it needs.
 
 # The menu manager is staff-only: keep it out of search results and caches.
 # Access itself is enforced by Supabase Auth plus Row Level Security.
@@ -75,39 +77,13 @@
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
 
-# These three decide which menu sections exist and hold the offline copy of
-# the menu. Their filenames never change, so a week-long cache would leave
-# returning visitors on an old menu, including sections the cafe has since
-# hidden. Revalidating keeps them honest and the ETag makes it a cheap 304.
-[[headers]]
-  for = "/assets/menu-browser.js"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/assets/supabase-config.js"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/assets/menu-data.json"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# Photos and the hero video are large and their filenames never change,
-# so let browsers and the CDN hold on to them for a year.
+# The photos and the hero video are almost the whole weight of the page and
+# their filenames never change, so browsers and the CDN can keep them a year.
+# Everything else, including the menu scripts and the offline copy of the
+# menu, is left on Netlify's default of revalidating each visit. Those files
+# keep their names too, so a long cache would strand returning visitors on an
+# old menu, sections the cafe has since hidden included. The ETag keeps the
+# check down to a 304.
 [[headers]]
   for = "/assets/media/*"
   [headers.values]
@@ -116,15 +92,6 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
     Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
-    Cache-Control = "public, max-age=604800"
 
 [[headers]]
   for = "/*"
