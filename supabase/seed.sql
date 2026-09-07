@@ -84,8 +84,11 @@ values
   ('Ultimate Oreo Shake', 'Premium Oreo milkshake', 13.80, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Ultimate Oreo Shake.jpg', '{}', null, 90),
   ('Ultimate Pink Cloud', 'Premium pink cloud milkshake', 13.80, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Ultimate Pink Cloud.jpg', '{}', null, 100),
   ('Iced Long Black', 'Double shot espresso on ice, with water', 5.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Iced Long Black.jpg', '{}', null, 110),
-  ('Iced Latte', 'Double shot espresso on ice, with milk', 6.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Iced latte : Iced chai.jpg', '{}', null, 120),
-  ('Iced Chai', 'Double shot chai on ice, with milk', 6.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Iced latte : Iced chai.jpg', '{}', null, 130),
+  -- These two shared a file named "Iced latte / Iced chai.jpg". A slash cannot
+  -- appear in a filename, so it was stored as a colon and the address 404s.
+  -- Left without a photo until staff upload one from /admin.
+  ('Iced Latte', 'Double shot espresso on ice, with milk', 6.00, 'DRINKS_COLD', null, '{}', null, 120),
+  ('Iced Chai', 'Double shot chai on ice, with milk', 6.00, 'DRINKS_COLD', null, '{}', null, 130),
   ('Allies Cold Pressed Juice - Orange', 'Fresh cold pressed orange juice', 8.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Allies cold pressed juices - Orange.jpg', '{}', null, 140),
   ('Allies Cold Pressed Juice - Ginger Apple', 'Fresh cold pressed ginger apple juice', 8.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Allies cold pressed juices - Ginger apple.jpg', '{}', null, 150),
   ('Allies Cold Pressed Juice - Green Juice', 'Fresh cold pressed green juice', 8.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Allies cold pressed juices - green juice.jpg', '{}', null, 160),

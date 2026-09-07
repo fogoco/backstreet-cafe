@@ -682,7 +682,12 @@
         <label>Photo</label>
         <img class="photo-preview" id="item-photo-preview" alt="" hidden>
         <input id="item-photo-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
-        <p class="field-hint">JPG, PNG or WebP up to 10 MB. Leave empty to keep the current photo.</p>
+        <p class="field-hint">
+          JPG, PNG or WebP up to 10 MB. Leave empty to keep the current photo.
+        </p>
+        <button class="link-btn" type="button" id="item-photo-remove" hidden>
+          Remove photo
+        </button>
         <input type="hidden" id="item-image-url">
       </div>
 
@@ -1488,6 +1493,9 @@ function openItemModal(item) {
   const photo = encodeUrl(item?.image_url);
   preview.src = photo;
   preview.hidden = !photo;
+  // Keyed off the stored address, not the preview: a photo whose file has gone
+  // missing still needs the button, since that is the only way to clear it.
+  $('item-photo-remove').hidden = !photo;
 
   $('item-tags').querySelectorAll('input').forEach((input) => {
     input.checked = (item?.tags || []).includes(input.value);
@@ -1513,6 +1521,22 @@ $('item-photo-file').addEventListener('change', (event) => {
   if (!file) return;
   preview.src = URL.createObjectURL(file);
   preview.hidden = false;
+  $('item-photo-remove').hidden = false;
+});
+
+// A broken address would otherwise show an empty frame in the modal and on the
+// website, with no way back: the upload field can only replace a photo.
+$('item-photo-preview').addEventListener('error', () => {
+  $('item-photo-preview').hidden = true;
+});
+
+$('item-photo-remove').addEventListener('click', () => {
+  $('item-image-url').value = '';
+  $('item-photo-file').value = '';
+  const preview = $('item-photo-preview');
+  preview.removeAttribute('src');
+  preview.hidden = true;
+  $('item-photo-remove').hidden = true;
 });
 
 $('item-form').addEventListener('submit', async (event) => {
