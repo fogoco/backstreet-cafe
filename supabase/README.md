@@ -10,6 +10,12 @@ bundled copy in `assets/menu-data.json`, so nothing breaks in the meantime.
 
 Supabase dashboard → **SQL Editor** → paste all of `schema.sql` → **Run**.
 
+The editor warns about destructive operations and a table without RLS. Choose
+**Run without RLS**. The warning means `private.staff_emails`, and the private
+schema is not exposed by the Data API, so no client key can reach it. The
+"destructive" part is the `drop policy if exists` lines that let the script be
+re-run safely.
+
 This creates `menu_items`, `gallery_images`, the `menu-photos` storage bucket,
 Row Level Security policies, and the staff allowlist seeded with
 `heliocwoi@gmail.com`.

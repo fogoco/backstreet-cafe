@@ -1,5 +1,8 @@
 -- Backstreet Cafe — menu and gallery managed from /admin
--- Run this once in the Supabase SQL editor (project qpqppnulhlsanreiwigk).
+-- Run this once in the Supabase SQL editor (project zbiyaxtwyirezuxnwdul).
+-- The editor warns that private.staff_emails has no RLS: choose "Run without
+-- RLS". The private schema is not exposed by the Data API, so no client key can
+-- reach that table; the tables that are exposed enable RLS further down.
 
 -- ---------------------------------------------------------------------------
 -- Staff allowlist
