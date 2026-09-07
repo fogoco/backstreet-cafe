@@ -9,37 +9,53 @@
     b8: 'Signature'
   };
 
-  const CATEGORY_LABELS = {
-    BREAKFAST: 'Breakfast',
-    BIG_BREAKFAST: 'Big Breakfast',
-    SWEET_BREAKFAST: 'Sweet Breakfast',
-    KIDS_STUFF: 'Kids Stuff',
-    LUNCH: 'Lunch Menu',
-    BURGERS: 'BackStreet Burgers',
-    SIDES: 'Sides',
-    EXTRA_BITS: 'Extra Bits',
-    DRINKS_HOT: 'Hot Stuff',
-    DRINKS_COLD: 'Cold Stuff',
-    DRINKS_SWIRLS: 'Swirls',
-    BEER_COCKTAILS: 'Beer & Cocktails'
-  };
+  // Categories and dietary tags live in the database so the cafe can add and
+  // remove them from /admin. These lists mirror what is seeded there and are
+  // only used when Supabase is unreachable and the bundled JSON takes over.
+  const DEFAULT_CATEGORIES = [
+    { key: 'BREAKFAST', label: 'Breakfast', tab: 'breakfast', layout: 'cards' },
+    { key: 'BIG_BREAKFAST', label: 'Big Breakfast', tab: 'breakfast', layout: 'cards' },
+    { key: 'SWEET_BREAKFAST', label: 'Sweet Breakfast', tab: 'breakfast', layout: 'cards' },
+    { key: 'KIDS_STUFF', label: 'Kids Stuff', tab: 'breakfast', layout: 'cards' },
+    { key: 'LUNCH', label: 'Lunch Menu', tab: 'lunch', layout: 'cards' },
+    { key: 'BURGERS', label: 'BackStreet Burgers', tab: 'lunch', layout: 'cards' },
+    { key: 'SIDES', label: 'Sides', tab: 'lunch', layout: 'cards' },
+    // 'list' renders a plain name + price list, with no photos.
+    { key: 'EXTRA_BITS', label: 'Extra Bits', tab: 'lunch', layout: 'list' },
+    { key: 'DRINKS_HOT', label: 'Hot Stuff', tab: 'drinks', layout: 'cards' },
+    { key: 'DRINKS_COLD', label: 'Cold Stuff', tab: 'drinks', layout: 'cards' },
+    { key: 'DRINKS_SWIRLS', label: 'Swirls', tab: 'drinks', layout: 'cards' }
+  ];
 
-  const TAB_GROUPS = {
-    breakfast: ['BREAKFAST', 'BIG_BREAKFAST', 'SWEET_BREAKFAST', 'KIDS_STUFF'],
-    lunch: ['LUNCH', 'BURGERS', 'SIDES', 'EXTRA_BITS'],
-    drinks: ['DRINKS_HOT', 'DRINKS_COLD', 'DRINKS_SWIRLS', 'BEER_COCKTAILS']
-  };
-
-  // Rendered as a plain price list — no photos, no detail modal.
-  const LIST_ONLY_CATEGORIES = ['EXTRA_BITS'];
-
-  const TAG_LABELS = {
+  const DEFAULT_TAG_LABELS = {
     gf: 'Gluten Free',
     gfo: 'GF Option',
     v: 'Vegetarian',
     vg: 'Vegan',
     df: 'Dairy Free'
   };
+
+  let CATEGORY_LABELS = {};
+  let TAB_GROUPS = {};
+  let LIST_ONLY_CATEGORIES = [];
+  let TAG_LABELS = { ...DEFAULT_TAG_LABELS };
+
+  // Rows arrive already ordered by tab and sort_order, so pushing in sequence
+  // keeps each tab's categories in the order the cafe chose.
+  function applyCategories(rows) {
+    CATEGORY_LABELS = {};
+    TAB_GROUPS = { breakfast: [], lunch: [], drinks: [] };
+    LIST_ONLY_CATEGORIES = [];
+
+    rows.forEach((row) => {
+      CATEGORY_LABELS[row.key] = row.label;
+      if (!TAB_GROUPS[row.tab]) TAB_GROUPS[row.tab] = [];
+      TAB_GROUPS[row.tab].push(row.key);
+      if (row.layout === 'list') LIST_ONLY_CATEGORIES.push(row.key);
+    });
+  }
+
+  applyCategories(DEFAULT_CATEGORIES);
 
   const root = document.getElementById('menu-browser');
   if (!root) return;
@@ -264,18 +280,13 @@
     });
   }
 
-  async function fetchFromSupabase() {
+  async function supabaseGet(path) {
     const config = window.BACKSTREET_SUPABASE;
     if (!config?.url || !config.publishableKey || config.publishableKey.startsWith('PASTE_')) {
       return null;
     }
 
-    const endpoint = `${config.url}/rest/v1/menu_items`
-      + '?select=id,name,description,price,category,image_url,tags,badge'
-      + '&is_available=eq.true'
-      + '&order=category.asc,sort_order.asc,name.asc';
-
-    const response = await fetch(endpoint, {
+    const response = await fetch(`${config.url}/rest/v1/${path}`, {
       headers: {
         apikey: config.publishableKey,
         Authorization: `Bearer ${config.publishableKey}`
@@ -283,8 +294,39 @@
     });
 
     if (!response.ok) throw new Error(`Supabase responded ${response.status}`);
+    return response.json();
+  }
 
-    const rows = await response.json();
+  // The cafe's own categories and tags, when they are reachable. An empty
+  // answer keeps the defaults, because replacing them with nothing would hide
+  // every item on the page.
+  async function fetchTaxonomy() {
+    const [categories, tags] = await Promise.all([
+      supabaseGet(
+        'menu_categories?select=key,label,tab,layout'
+        + '&is_visible=eq.true'
+        + '&order=tab.asc,sort_order.asc,label.asc'
+      ),
+      supabaseGet('dietary_tags?select=code,label&order=sort_order.asc,code.asc')
+    ]);
+
+    if (Array.isArray(categories) && categories.length) {
+      applyCategories(categories);
+    }
+
+    if (Array.isArray(tags) && tags.length) {
+      TAG_LABELS = {};
+      tags.forEach((tag) => { TAG_LABELS[tag.code] = tag.label; });
+    }
+  }
+
+  async function fetchFromSupabase() {
+    const rows = await supabaseGet(
+      'menu_items?select=id,name,description,price,category,image_url,tags,badge'
+      + '&is_available=eq.true'
+      + '&order=category.asc,sort_order.asc,name.asc'
+    );
+
     if (!Array.isArray(rows) || !rows.length) return null;
 
     return rows.map((row) => ({
@@ -320,6 +362,14 @@
     bindInteractions();
 
     try {
+      // Categories decide the tab contents and section order, so they have to
+      // be in place before the items are grouped.
+      try {
+        await fetchTaxonomy();
+      } catch {
+        // Keep the bundled defaults and still try to load the items.
+      }
+
       menuItems = (await fetchFromSupabase()) || (await fetchFallback());
       renderCatalog();
     } catch (error) {

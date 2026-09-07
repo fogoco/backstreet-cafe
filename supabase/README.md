@@ -6,6 +6,11 @@ and are edited at [backstreetcafe.com.au/admin](https://backstreetcafe.com.au/ad
 Run these five steps once. Until step 4 is done the website keeps serving the
 bundled copy in `assets/menu-data.json`, so nothing breaks in the meantime.
 
+Already set up? The one thing left to run is
+`migration-01-categories-and-tags.sql`, which hands the categories and dietary
+tags over to the client and drops the Beer & Cocktails section. Paste it into
+the **SQL Editor** and **Run**. `/admin` shows an error until it has been run.
+
 ## 1. Create the tables
 
 Supabase dashboard → **SQL Editor** → paste all of `schema.sql` → **Run**.
@@ -98,16 +103,29 @@ delete from private.staff_emails where email = 'someone@example.com';
 | Signed in, not on allowlist | Reads published rows only | No access |
 | Signed in and on allowlist | Full add / edit / delete | Full upload / replace / delete |
 
-## Categories
+## Categories and dietary tags
 
-Item categories are fixed by a database constraint and must be one of:
+Both are rows in `menu_categories` and `dietary_tags`, managed from `/admin`
+under **Add / delete** next to the Category and Dietary tags fields. No code
+change is needed to add either.
 
-`BREAKFAST`, `BIG_BREAKFAST`, `SWEET_BREAKFAST`, `KIDS_STUFF`,
-`LUNCH`, `BURGERS`, `SIDES`, `EXTRA_BITS`,
-`DRINKS_HOT`, `DRINKS_COLD`, `DRINKS_SWIRLS`, `BEER_COCKTAILS`
+A category carries:
 
-The website groups them into the three tabs — Breakfast, Lunch, Drinks — in
-`assets/menu-browser.js`. `EXTRA_BITS` renders as a plain price list without
-photos. Adding a brand new category means updating the constraint in
-`schema.sql` plus `CATEGORY_LABELS` and `TAB_GROUPS` in that file and in
-`admin/index.html`.
+| Column | Meaning |
+|---|---|
+| `key` | what `menu_items.category` points at; set once from the name and never changes |
+| `label` | the section heading shown on the website |
+| `tab` | which tab it appears under: `breakfast`, `lunch` or `drinks` |
+| `layout` | `cards` shows photos, `list` is a plain name + price list |
+| `sort_order` | position within its tab, lower first |
+| `is_visible` | off hides the whole section from the website |
+
+`menu_items.category` is a foreign key with `on delete restrict`, so a category
+holding items cannot be deleted; the panel says so and offers Hide instead.
+Renaming a category is safe because the key stays put.
+
+Deleting a dietary tag also strips its code from every item that used it.
+
+The three tabs themselves are fixed in `assets/menu-browser.js` and the
+`menu_categories_tab_check` constraint. Adding a fourth tab is the one change
+here that still needs code.

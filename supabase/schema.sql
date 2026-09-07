@@ -44,6 +44,69 @@ revoke all on function private.is_staff() from public;
 grant execute on function private.is_staff() to authenticated;
 
 -- ---------------------------------------------------------------------------
+-- Categories and dietary tags
+--
+-- These are tables rather than constants so the client can add and remove
+-- them from /admin without a code change.
+--
+-- key      stays fixed once created; menu_items.category points at it
+-- tab      which of the three menu tabs the category shows under
+-- layout   'cards' shows photos, 'list' is a plain name + price list
+-- ---------------------------------------------------------------------------
+
+create table if not exists public.menu_categories (
+  id uuid primary key default gen_random_uuid(),
+  key text unique not null,
+  label text not null,
+  tab text not null,
+  layout text not null default 'cards',
+  sort_order integer not null default 0,
+  is_visible boolean not null default true,
+  created_at timestamptz not null default now(),
+  constraint menu_categories_tab_check
+    check (tab in ('breakfast', 'lunch', 'drinks')),
+  constraint menu_categories_layout_check
+    check (layout in ('cards', 'list')),
+  constraint menu_categories_key_check
+    check (key ~ '^[A-Z][A-Z0-9_]*$')
+);
+
+create index if not exists menu_categories_tab_sort_idx
+  on public.menu_categories (tab, sort_order, label);
+
+insert into public.menu_categories (key, label, tab, layout, sort_order) values
+  ('BREAKFAST',       'Breakfast',          'breakfast', 'cards', 10),
+  ('BIG_BREAKFAST',   'Big Breakfast',      'breakfast', 'cards', 20),
+  ('SWEET_BREAKFAST', 'Sweet Breakfast',    'breakfast', 'cards', 30),
+  ('KIDS_STUFF',      'Kids Stuff',         'breakfast', 'cards', 40),
+  ('LUNCH',           'Lunch Menu',         'lunch',     'cards', 10),
+  ('BURGERS',         'BackStreet Burgers', 'lunch',     'cards', 20),
+  ('SIDES',           'Sides',              'lunch',     'cards', 30),
+  ('EXTRA_BITS',      'Extra Bits',         'lunch',     'list',  40),
+  ('DRINKS_HOT',      'Hot Stuff',          'drinks',    'cards', 10),
+  ('DRINKS_COLD',     'Cold Stuff',         'drinks',    'cards', 20),
+  ('DRINKS_SWIRLS',   'Swirls',             'drinks',    'cards', 30)
+on conflict (key) do nothing;
+
+create table if not exists public.dietary_tags (
+  id uuid primary key default gen_random_uuid(),
+  code text unique not null,
+  label text not null,
+  sort_order integer not null default 0,
+  created_at timestamptz not null default now(),
+  -- menu_items.tags stores these codes, so keep them short and lowercase.
+  constraint dietary_tags_code_check check (code ~ '^[a-z][a-z0-9]*$')
+);
+
+insert into public.dietary_tags (code, label, sort_order) values
+  ('gf',  'Gluten Free', 10),
+  ('gfo', 'GF Option',   20),
+  ('v',   'Vegetarian',  30),
+  ('vg',  'Vegan',       40),
+  ('df',  'Dairy Free',  50)
+on conflict (code) do nothing;
+
+-- ---------------------------------------------------------------------------
 -- Tables
 -- ---------------------------------------------------------------------------
 
@@ -60,22 +123,13 @@ create table if not exists public.menu_items (
   sort_order integer not null default 0,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  constraint menu_items_category_check check (
-    category in (
-      'BREAKFAST',
-      'BIG_BREAKFAST',
-      'SWEET_BREAKFAST',
-      'KIDS_STUFF',
-      'LUNCH',
-      'BURGERS',
-      'SIDES',
-      'EXTRA_BITS',
-      'DRINKS_HOT',
-      'DRINKS_COLD',
-      'DRINKS_SWIRLS',
-      'BEER_COCKTAILS'
-    )
-  ),
+  -- A foreign key rather than a hand-written list, so the client can add
+  -- categories. on delete restrict stops a category holding items from being
+  -- deleted by accident; /admin turns that error into a readable message.
+  constraint menu_items_category_fkey
+    foreign key (category) references public.menu_categories (key)
+    on update cascade
+    on delete restrict,
   constraint menu_items_badge_check check (
     badge is null or badge in ('Signature', 'Backstreet Favourite')
   )
@@ -125,6 +179,47 @@ create trigger menu_items_set_updated_at
 
 alter table public.menu_items enable row level security;
 alter table public.gallery_images enable row level security;
+alter table public.menu_categories enable row level security;
+alter table public.dietary_tags enable row level security;
+
+drop policy if exists "Public reads visible categories" on public.menu_categories;
+create policy "Public reads visible categories"
+  on public.menu_categories for select
+  to anon
+  using (is_visible);
+
+-- Staff see hidden categories too, so they can switch them back on.
+drop policy if exists "Staff reads every category" on public.menu_categories;
+create policy "Staff reads every category"
+  on public.menu_categories for select
+  to authenticated
+  using (is_visible or private.is_staff());
+
+drop policy if exists "Staff writes categories" on public.menu_categories;
+create policy "Staff writes categories"
+  on public.menu_categories for all
+  to authenticated
+  using (private.is_staff())
+  with check (private.is_staff());
+
+drop policy if exists "Public reads dietary tags" on public.dietary_tags;
+create policy "Public reads dietary tags"
+  on public.dietary_tags for select
+  to anon
+  using (true);
+
+drop policy if exists "Signed in reads dietary tags" on public.dietary_tags;
+create policy "Signed in reads dietary tags"
+  on public.dietary_tags for select
+  to authenticated
+  using (true);
+
+drop policy if exists "Staff writes dietary tags" on public.dietary_tags;
+create policy "Staff writes dietary tags"
+  on public.dietary_tags for all
+  to authenticated
+  using (private.is_staff())
+  with check (private.is_staff());
 
 drop policy if exists "Public reads available menu items" on public.menu_items;
 create policy "Public reads available menu items"

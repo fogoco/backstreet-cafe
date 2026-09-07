@@ -66,6 +66,13 @@
   .btn-sm { padding: 8px 12px; font-size: 0.68rem; }
 
   /* Login */
+  .login-logo {
+    display: block;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 20px;
+  }
+
   .login-wrap {
     min-height: 100vh;
     display: grid;
@@ -166,6 +173,12 @@
     background: var(--espresso);
     color: var(--cream);
   }
+
+  .topbar-brand { display: flex; align-items: center; gap: 12px; }
+
+  /* The mark is a black disc with white lettering, so it reads on the dark
+     bar without needing a lighter backing. */
+  .topbar-logo { width: 36px; height: 36px; display: block; }
 
   .topbar-title {
     font-family: 'Cormorant Garamond', serif;
@@ -424,6 +437,82 @@
     flex-wrap: wrap;
   }
 
+  /* Sits on top of the item modal, so categories and tags can be managed
+     without losing a half-finished item. */
+  .modal-stacked { z-index: 110; }
+
+  .field-label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .link-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--latte);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .link-btn:hover { color: var(--mocha); }
+
+  .taxo-section + .taxo-section {
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid var(--sand);
+  }
+
+  .taxo-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .taxo-hint {
+    font-size: 0.78rem;
+    color: var(--mocha);
+    opacity: 0.72;
+    line-height: 1.5;
+    margin: 4px 0 14px;
+  }
+
+  .taxo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    background: var(--warm-white);
+    border: 1px solid rgba(196, 149, 106, 0.22);
+    margin-bottom: 6px;
+  }
+
+  .taxo-row-main { flex: 1; min-width: 0; }
+  .taxo-row-name { font-size: 0.9rem; font-weight: 500; }
+
+  .taxo-row-meta {
+    font-size: 0.68rem;
+    color: var(--mocha);
+    opacity: 0.75;
+    margin-top: 2px;
+  }
+
+  .taxo-add {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--sand);
+  }
+
+  .taxo-add-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 12px;
+  }
+
   .spinner-text { font-size: 0.82rem; color: var(--mocha); opacity: 0.7; }
 
   @media (max-width: 720px) {
@@ -441,6 +530,7 @@
 <!-- LOGIN -->
 <div class="login-wrap" id="login-view">
   <div class="login-card">
+    <img class="login-logo" src="/assets/media/logo-backstreet.png" alt="Backstreet Cafe">
     <h1>Backstreet Cafe</h1>
     <p class="sub">Menu &amp; gallery manager</p>
 
@@ -466,7 +556,10 @@
 <!-- APP -->
 <div class="app" id="app-view" hidden>
   <header class="topbar">
-    <span class="topbar-title">Backstreet Cafe — Manager</span>
+    <div class="topbar-brand">
+      <img class="topbar-logo" src="/assets/media/logo-backstreet.png" alt="">
+      <span class="topbar-title">Backstreet Cafe — Manager</span>
+    </div>
     <div class="topbar-right">
       <span class="topbar-user" id="current-user"></span>
       <a class="btn btn-ghost btn-sm" href="/" target="_blank" rel="noopener">View site</a>
@@ -543,7 +636,10 @@
           <input id="item-price" type="number" min="0" step="0.01" required>
         </div>
         <div class="field">
-          <label for="item-category">Category</label>
+          <div class="field-label-row">
+            <label for="item-category">Category</label>
+            <button class="link-btn" type="button" data-open-taxonomy="1">Add / delete</button>
+          </div>
           <select id="item-category" required></select>
         </div>
       </div>
@@ -566,23 +662,24 @@
       </div>
 
       <div class="field">
-        <label>Dietary tags</label>
-        <div class="checkbox-row" id="item-tags">
-          <label><input type="checkbox" value="gf"> Gluten Free</label>
-          <label><input type="checkbox" value="gfo"> GF Option</label>
-          <label><input type="checkbox" value="v"> Vegetarian</label>
-          <label><input type="checkbox" value="vg"> Vegan</label>
-          <label><input type="checkbox" value="df"> Dairy Free</label>
+        <div class="field-label-row">
+          <label>Dietary tags</label>
+          <button class="link-btn" type="button" data-open-taxonomy="1">Add / delete</button>
         </div>
+        <div class="checkbox-row" id="item-tags"></div>
       </div>
 
-      <div class="field">
+      <div class="field" id="item-photo-field">
         <label>Photo</label>
         <img class="photo-preview" id="item-photo-preview" alt="" hidden>
         <input id="item-photo-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
         <p class="field-hint">JPG, PNG or WebP up to 10 MB. Leave empty to keep the current photo.</p>
         <input type="hidden" id="item-image-url">
       </div>
+
+      <p class="field-hint" id="item-photo-note" hidden>
+        This category shows as a plain price list on the website, so it has no photos.
+      </p>
 
       <div class="field">
         <label class="checkbox-row" style="margin:0;">
@@ -647,33 +744,90 @@
   </div>
 </div>
 
+<!-- CATEGORIES & DIETARY TAGS MODAL -->
+<div class="modal modal-stacked" id="taxonomy-modal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="taxonomy-modal-title">
+    <h2 id="taxonomy-modal-title">Categories &amp; dietary tags</h2>
+
+    <div class="notice" id="taxonomy-notice" hidden></div>
+
+    <div class="taxo-section">
+      <h3>Menu categories</h3>
+      <p class="taxo-hint">
+        Each category is a section on the website, under the tab you pick.
+        “Price list only” sections show names and prices without photos.
+        A category that still holds items cannot be deleted — move or delete
+        those items first.
+      </p>
+
+      <div id="category-rows"></div>
+
+      <form class="taxo-add" id="category-add-form">
+        <div class="taxo-add-fields">
+          <div class="field">
+            <label for="category-label">New category</label>
+            <input id="category-label" type="text" maxlength="40" placeholder="Beer &amp; Cocktails" required>
+          </div>
+          <div class="field">
+            <label for="category-tab">Tab</label>
+            <select id="category-tab">
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="drinks">Drinks</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="category-layout">Style</label>
+            <select id="category-layout">
+              <option value="cards">With photos</option>
+              <option value="list">Price list only</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-sm" type="submit" id="category-add">Add category</button>
+      </form>
+    </div>
+
+    <div class="taxo-section">
+      <h3>Dietary tags</h3>
+      <p class="taxo-hint">
+        Small labels on an item, like Gluten Free. Deleting a tag also takes it
+        off every item that used it.
+      </p>
+
+      <div id="tag-rows"></div>
+
+      <form class="taxo-add" id="tag-add-form">
+        <div class="taxo-add-fields">
+          <div class="field">
+            <label for="tag-label">New tag</label>
+            <input id="tag-label" type="text" maxlength="30" placeholder="Nut Free" required>
+          </div>
+          <div class="field">
+            <label for="tag-code">Short code</label>
+            <input id="tag-code" type="text" maxlength="6" placeholder="nf" required>
+            <p class="field-hint">Lowercase letters only.</p>
+          </div>
+        </div>
+        <button class="btn btn-sm" type="submit" id="tag-add">Add tag</button>
+      </form>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn" type="button" data-close-modal>Done</button>
+    </div>
+  </div>
+</div>
+
 <script src="/assets/supabase-config.js"></script>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const CONFIG = window.BACKSTREET_SUPABASE || {};
-const CATEGORY_LABELS = {
-  BREAKFAST: 'Breakfast',
-  BIG_BREAKFAST: 'Big Breakfast',
-  SWEET_BREAKFAST: 'Sweet Breakfast',
-  KIDS_STUFF: 'Kids Stuff',
-  LUNCH: 'Lunch Menu',
-  BURGERS: 'BackStreet Burgers',
-  SIDES: 'Sides',
-  EXTRA_BITS: 'Extra Bits',
-  DRINKS_HOT: 'Hot Stuff',
-  DRINKS_COLD: 'Cold Stuff',
-  DRINKS_SWIRLS: 'Swirls',
-  BEER_COCKTAILS: 'Beer & Cocktails'
-};
-
-const GROUPS = {
-  breakfast: ['BREAKFAST', 'BIG_BREAKFAST', 'SWEET_BREAKFAST', 'KIDS_STUFF'],
-  lunch: ['LUNCH', 'BURGERS', 'SIDES', 'EXTRA_BITS'],
-  drinks: ['DRINKS_HOT', 'DRINKS_COLD', 'DRINKS_SWIRLS', 'BEER_COCKTAILS']
-};
-const ALL_CATEGORIES = [...GROUPS.breakfast, ...GROUPS.lunch, ...GROUPS.drinks];
 const BUCKET = 'menu-photos';
+
+const TAB_LABELS = { breakfast: 'Breakfast', lunch: 'Lunch', drinks: 'Drinks' };
+const LAYOUT_LABELS = { cards: 'With photos', list: 'Price list only' };
 
 const $ = (id) => document.getElementById(id);
 
@@ -685,7 +839,23 @@ const appNotice = $('app-notice');
 let supabase = null;
 let menuItems = [];
 let galleryImages = [];
+// Categories and dietary tags are rows the cafe controls, not fixed lists.
+let categories = [];
+let dietaryTags = [];
 let activeGroup = 'all';
+
+function categoryLabel(key) {
+  return categories.find((entry) => entry.key === key)?.label || key;
+}
+
+function categoryLayout(key) {
+  return categories.find((entry) => entry.key === key)?.layout || 'cards';
+}
+
+function categoryKeysFor(group) {
+  const rows = group === 'all' ? categories : categories.filter((entry) => entry.tab === group);
+  return rows.map((entry) => entry.key);
+}
 
 function notify(el, message, kind = 'info') {
   el.textContent = message;
@@ -740,10 +910,347 @@ function applySession(session) {
 
   if (signedIn) {
     $('current-user').textContent = session.user.email;
-    loadMenu();
     loadGallery();
+    // The categories decide the section order and the item form's dropdown, so
+    // they have to land before the menu is drawn. Drawing the menu without them
+    // would clear the error and show a bare "no items" screen instead.
+    loadTaxonomy().then((ready) => {
+      if (ready) loadMenu();
+    });
   }
 }
+
+// ---------------------------------------------------------------- categories
+
+const TAB_ORDER = ['breakfast', 'lunch', 'drinks'];
+
+async function loadTaxonomy() {
+  const [categoryResult, tagResult] = await Promise.all([
+    supabase.from('menu_categories').select('*'),
+    supabase.from('dietary_tags').select('*')
+  ]);
+
+  const failure = categoryResult.error || tagResult.error;
+  if (failure) {
+    notify(
+      appNotice,
+      `Could not load the categories: ${failure.message}.`
+      + ' If the tables are missing, run supabase/migration-01-categories-and-tags.sql'
+      + ' in the Supabase SQL editor.',
+      'error'
+    );
+    $('menu-list').innerHTML =
+      '<div class="empty">The menu cannot load until the categories table exists.</div>';
+    return false;
+  }
+
+  // Sorted here rather than in the query because the tabs run
+  // breakfast, lunch, drinks — not alphabetically.
+  categories = (categoryResult.data || []).sort((a, b) =>
+    TAB_ORDER.indexOf(a.tab) - TAB_ORDER.indexOf(b.tab)
+    || a.sort_order - b.sort_order
+    || a.label.localeCompare(b.label));
+
+  dietaryTags = (tagResult.data || []).sort((a, b) =>
+    a.sort_order - b.sort_order || a.code.localeCompare(b.code));
+
+  renderCategoryOptions();
+  renderTagCheckboxes();
+  renderTaxonomy();
+  return true;
+}
+
+function renderCategoryOptions() {
+  const select = $('item-category');
+  const previous = select.value;
+
+  select.innerHTML = categories
+    .map((entry) => `
+      <option value="${escapeHtml(entry.key)}">
+        ${escapeHtml(entry.label)}${entry.is_visible ? '' : ' (hidden)'}
+      </option>
+    `)
+    .join('');
+
+  if (previous && categories.some((entry) => entry.key === previous)) {
+    select.value = previous;
+  }
+}
+
+function renderTagCheckboxes() {
+  const container = $('item-tags');
+  const ticked = new Set(
+    [...container.querySelectorAll('input:checked')].map((input) => input.value)
+  );
+
+  container.innerHTML = dietaryTags.length
+    ? dietaryTags.map((tag) => `
+        <label>
+          <input type="checkbox" value="${escapeHtml(tag.code)}">
+          ${escapeHtml(tag.label)}
+        </label>
+      `).join('')
+    : '<p class="field-hint" style="margin:0;">No dietary tags yet. Add one with “Add / delete”.</p>';
+
+  // Keeps the ticks on a half-edited item when tags are added or removed
+  // from the manager without closing the item first.
+  container.querySelectorAll('input').forEach((input) => {
+    input.checked = ticked.has(input.value);
+  });
+}
+
+// ------------------------------------------- categories & tags manager modal
+
+function itemCountFor(categoryKey) {
+  return menuItems.filter((item) => item.category === categoryKey).length;
+}
+
+function renderTaxonomy() {
+  $('category-rows').innerHTML = categories.length
+    ? categories.map((entry) => {
+        const count = itemCountFor(entry.key);
+        return `
+          <div class="taxo-row">
+            <div class="taxo-row-main">
+              <div class="taxo-row-name">${escapeHtml(entry.label)}</div>
+              <div class="taxo-row-meta">
+                ${escapeHtml(TAB_LABELS[entry.tab] || entry.tab)} ·
+                ${escapeHtml(LAYOUT_LABELS[entry.layout] || entry.layout)} ·
+                ${count} ${count === 1 ? 'item' : 'items'}${entry.is_visible ? '' : ' · hidden'}
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" data-toggle-category="${escapeHtml(entry.key)}">
+              ${entry.is_visible ? 'Hide' : 'Show'}
+            </button>
+            <button class="btn btn-danger btn-sm" type="button"
+                    data-delete-category="${escapeHtml(entry.key)}" ${count ? 'disabled' : ''}>
+              Delete
+            </button>
+          </div>
+        `;
+      }).join('')
+    : '<p class="field-hint" style="margin:0;">No categories yet.</p>';
+
+  $('tag-rows').innerHTML = dietaryTags.length
+    ? dietaryTags.map((tag) => `
+        <div class="taxo-row">
+          <div class="taxo-row-main">
+            <div class="taxo-row-name">${escapeHtml(tag.label)}</div>
+            <div class="taxo-row-meta">Code: ${escapeHtml(tag.code)}</div>
+          </div>
+          <button class="btn btn-danger btn-sm" type="button" data-delete-tag="${escapeHtml(tag.code)}">
+            Delete
+          </button>
+        </div>
+      `).join('')
+    : '<p class="field-hint" style="margin:0;">No dietary tags yet.</p>';
+}
+
+document.querySelectorAll('[data-open-taxonomy]').forEach((button) => {
+  button.addEventListener('click', () => {
+    notify($('taxonomy-notice'), '');
+    renderTaxonomy();
+    $('taxonomy-modal').hidden = false;
+  });
+});
+
+// The key is what menu_items point at, so it is derived once from the name and
+// never changes afterwards, even if the client renames the category.
+function categoryKeyFrom(label) {
+  return label
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 40);
+}
+
+$('category-add-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const notice = $('taxonomy-notice');
+  notify(notice, '');
+
+  const label = $('category-label').value.trim();
+  const key = categoryKeyFrom(label);
+
+  if (!/^[A-Z]/.test(key)) {
+    notify(notice, 'Give the category a name that starts with a letter.', 'error');
+    return;
+  }
+
+  if (categories.some((entry) => entry.key === key)) {
+    notify(notice, `A category called “${label}” already exists.`, 'error');
+    return;
+  }
+
+  const tab = $('category-tab').value;
+  const lastInTab = Math.max(
+    0,
+    ...categories.filter((entry) => entry.tab === tab).map((entry) => entry.sort_order)
+  );
+
+  const button = $('category-add');
+  button.disabled = true;
+
+  const { error } = await supabase.from('menu_categories').insert({
+    key,
+    label,
+    tab,
+    layout: $('category-layout').value,
+    sort_order: lastInTab + 10
+  });
+
+  button.disabled = false;
+
+  if (error) {
+    notify(notice, `Could not add it: ${error.message}`, 'error');
+    return;
+  }
+
+  $('category-label').value = '';
+  notify(notice, `“${label}” added.`, 'ok');
+  await loadTaxonomy();
+  renderMenu();
+});
+
+$('category-rows').addEventListener('click', async (event) => {
+  const notice = $('taxonomy-notice');
+
+  const toggleKey = event.target.closest('[data-toggle-category]')?.dataset.toggleCategory;
+  if (toggleKey) {
+    const entry = categories.find((row) => row.key === toggleKey);
+    if (!entry) return;
+
+    const { error } = await supabase
+      .from('menu_categories')
+      .update({ is_visible: !entry.is_visible })
+      .eq('key', toggleKey);
+
+    if (error) {
+      notify(notice, `Could not update: ${error.message}`, 'error');
+      return;
+    }
+
+    notify(
+      notice,
+      entry.is_visible
+        ? `“${entry.label}” and its items are hidden from the website.`
+        : `“${entry.label}” is back on the website.`,
+      'ok'
+    );
+    await loadTaxonomy();
+    renderMenu();
+    return;
+  }
+
+  const deleteKey = event.target.closest('[data-delete-category]')?.dataset.deleteCategory;
+  if (!deleteKey) return;
+
+  const entry = categories.find((row) => row.key === deleteKey);
+  const count = itemCountFor(deleteKey);
+
+  if (count) {
+    notify(
+      notice,
+      `“${entry.label}” still holds ${count} ${count === 1 ? 'item' : 'items'}.`
+      + ' Move them to another category or delete them first.'
+      + ' To take the section off the website for now, use Hide.',
+      'error'
+    );
+    return;
+  }
+
+  if (!window.confirm(`Delete the “${entry.label}” category?`)) return;
+
+  const { error } = await supabase.from('menu_categories').delete().eq('key', deleteKey);
+  if (error) {
+    notify(notice, `Could not delete: ${error.message}`, 'error');
+    return;
+  }
+
+  notify(notice, `“${entry.label}” deleted.`, 'ok');
+  await loadTaxonomy();
+  renderMenu();
+});
+
+$('tag-add-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const notice = $('taxonomy-notice');
+  notify(notice, '');
+
+  const label = $('tag-label').value.trim();
+  const code = $('tag-code').value.trim().toLowerCase();
+
+  if (!/^[a-z][a-z0-9]*$/.test(code)) {
+    notify(notice, 'The short code should be lowercase letters or digits, starting with a letter.', 'error');
+    return;
+  }
+
+  const clash = dietaryTags.find((tag) => tag.code === code);
+  if (clash) {
+    notify(notice, `The code “${code}” is already used by “${clash.label}”.`, 'error');
+    return;
+  }
+
+  const button = $('tag-add');
+  button.disabled = true;
+
+  const { error } = await supabase.from('dietary_tags').insert({
+    code,
+    label,
+    sort_order: Math.max(0, ...dietaryTags.map((tag) => tag.sort_order)) + 10
+  });
+
+  button.disabled = false;
+
+  if (error) {
+    notify(notice, `Could not add it: ${error.message}`, 'error');
+    return;
+  }
+
+  $('tag-label').value = '';
+  $('tag-code').value = '';
+  notify(notice, `“${label}” added.`, 'ok');
+  await loadTaxonomy();
+});
+
+$('tag-rows').addEventListener('click', async (event) => {
+  const code = event.target.closest('[data-delete-tag]')?.dataset.deleteTag;
+  if (!code) return;
+
+  const notice = $('taxonomy-notice');
+  const tag = dietaryTags.find((entry) => entry.code === code);
+  const used = menuItems.filter((item) => (item.tags || []).includes(code));
+
+  const question = used.length
+    ? `Delete “${tag.label}”? It will also come off ${used.length} ${used.length === 1 ? 'item' : 'items'}.`
+    : `Delete “${tag.label}”?`;
+
+  if (!window.confirm(question)) return;
+
+  // The code is stored inside each item's tags array, so those have to be
+  // rewritten before the tag row itself can go.
+  for (const item of used) {
+    const { error } = await supabase
+      .from('menu_items')
+      .update({ tags: item.tags.filter((entry) => entry !== code) })
+      .eq('id', item.id);
+
+    if (error) {
+      notify(notice, `Could not update “${item.name}”: ${error.message}`, 'error');
+      return;
+    }
+  }
+
+  const { error } = await supabase.from('dietary_tags').delete().eq('code', code);
+  if (error) {
+    notify(notice, `Could not delete: ${error.message}`, 'error');
+    return;
+  }
+
+  notify(notice, `“${tag.label}” deleted.`, 'ok');
+  await loadTaxonomy();
+  loadMenu();
+});
 
 // ---------------------------------------------------------------- auth
 
@@ -826,24 +1333,27 @@ async function loadMenu() {
   notify(appNotice, '');
   menuItems = data || [];
   renderMenu();
+  // The manager shows how many items each category holds, which is only
+  // knowable once the items are in.
+  renderTaxonomy();
 }
 
 function renderMenu() {
-  const categories = activeGroup === 'all' ? ALL_CATEGORIES : GROUPS[activeGroup];
+  const categoryKeys = categoryKeysFor(activeGroup);
   const listEl = $('menu-list');
-  const visibleCount = menuItems.filter((item) => categories.includes(item.category)).length;
+  const visibleCount = menuItems.filter((item) => categoryKeys.includes(item.category)).length;
 
   $('menu-count').textContent =
     `${menuItems.length} items in total · ${visibleCount} shown here`;
 
-  const blocks = categories.map((category) => {
+  const blocks = categoryKeys.map((category) => {
     const items = menuItems.filter((item) => item.category === category);
     if (!items.length) return '';
 
     return `
       <div class="category-group">
         <div class="category-group-head">
-          <h3>${escapeHtml(CATEGORY_LABELS[category])}</h3>
+          <h3>${escapeHtml(categoryLabel(category))}</h3>
           <div class="category-group-line"></div>
         </div>
         ${items.map(renderMenuRow).join('')}
@@ -875,21 +1385,47 @@ function renderMenuRow(item) {
       <span class="row-price">${money(item.price)}</span>
       <div class="row-actions">
         <button class="btn btn-ghost btn-sm" type="button" data-edit-item="${escapeHtml(item.id)}">Edit</button>
+        <button class="btn btn-ghost btn-sm" type="button" data-toggle-item="${escapeHtml(item.id)}">
+          ${item.is_available ? 'Hide' : 'Show'}
+        </button>
         <button class="btn btn-danger btn-sm" type="button" data-delete-item="${escapeHtml(item.id)}">Delete</button>
       </div>
     </div>
   `;
 }
 
-const categorySelect = $('item-category');
-categorySelect.innerHTML = ALL_CATEGORIES
-  .map((key) => `<option value="${key}">${escapeHtml(CATEGORY_LABELS[key])}</option>`)
-  .join('');
-
 $('menu-list').addEventListener('click', async (event) => {
   const editId = event.target.closest('[data-edit-item]')?.dataset.editItem;
   if (editId) {
     openItemModal(menuItems.find((item) => item.id === editId));
+    return;
+  }
+
+  // Hiding keeps the item and its photo, so it can come back later without
+  // being typed in again.
+  const toggleId = event.target.closest('[data-toggle-item]')?.dataset.toggleItem;
+  if (toggleId) {
+    const item = menuItems.find((entry) => entry.id === toggleId);
+    if (!item) return;
+
+    const { error } = await supabase
+      .from('menu_items')
+      .update({ is_available: !item.is_available })
+      .eq('id', toggleId);
+
+    if (error) {
+      notify(appNotice, `Could not update: ${error.message}`, 'error');
+      return;
+    }
+
+    notify(
+      appNotice,
+      item.is_available
+        ? `“${item.name}” is hidden from the website.`
+        : `“${item.name}” is back on the website.`,
+      'ok'
+    );
+    loadMenu();
     return;
   }
 
@@ -917,7 +1453,8 @@ function openItemModal(item) {
   $('item-name').value = item?.name || '';
   $('item-description').value = item?.description || '';
   $('item-price').value = item ? Number(item.price).toFixed(2) : '';
-  $('item-category').value = item?.category || (activeGroup === 'all' ? 'BREAKFAST' : GROUPS[activeGroup][0]);
+  $('item-category').value =
+    item?.category || categoryKeysFor(activeGroup)[0] || categories[0]?.key || '';
   $('item-badge').value = item?.badge || '';
   $('item-sort').value = item?.sort_order ?? 0;
   $('item-available').checked = item ? item.is_available : true;
@@ -933,8 +1470,19 @@ function openItemModal(item) {
     input.checked = (item?.tags || []).includes(input.value);
   });
 
+  syncPhotoField();
   $('item-modal').hidden = false;
 }
+
+// A price-list category shows no photos on the website, so offering an upload
+// there would just be a field that does nothing.
+function syncPhotoField() {
+  const isList = categoryLayout($('item-category').value) === 'list';
+  $('item-photo-field').hidden = isList;
+  $('item-photo-note').hidden = !isList;
+}
+
+$('item-category').addEventListener('change', syncPhotoField);
 
 $('item-photo-file').addEventListener('change', (event) => {
   const file = event.target.files?.[0];
@@ -1031,6 +1579,9 @@ function renderGallery() {
             </p>
             <div class="gallery-admin-actions">
               <button class="btn btn-ghost btn-sm" type="button" data-edit-photo="${escapeHtml(image.id)}">Edit</button>
+              <button class="btn btn-ghost btn-sm" type="button" data-toggle-photo="${escapeHtml(image.id)}">
+                ${image.is_visible ? 'Hide' : 'Show'}
+              </button>
               <button class="btn btn-danger btn-sm" type="button" data-delete-photo="${escapeHtml(image.id)}">Delete</button>
             </div>
           </div>
@@ -1044,6 +1595,26 @@ $('gallery-list').addEventListener('click', async (event) => {
   const editId = event.target.closest('[data-edit-photo]')?.dataset.editPhoto;
   if (editId) {
     openPhotoModal(galleryImages.find((image) => image.id === editId));
+    return;
+  }
+
+  const toggleId = event.target.closest('[data-toggle-photo]')?.dataset.togglePhoto;
+  if (toggleId) {
+    const image = galleryImages.find((entry) => entry.id === toggleId);
+    if (!image) return;
+
+    const { error } = await supabase
+      .from('gallery_images')
+      .update({ is_visible: !image.is_visible })
+      .eq('id', toggleId);
+
+    if (error) {
+      notify(appNotice, `Could not update: ${error.message}`, 'error');
+      return;
+    }
+
+    notify(appNotice, image.is_visible ? 'Photo hidden.' : 'Photo is back on the website.', 'ok');
+    loadGallery();
     return;
   }
 
@@ -1158,8 +1729,7 @@ async function uploadPhoto(file, folder) {
 
 document.querySelectorAll('[data-close-modal]').forEach((button) => {
   button.addEventListener('click', () => {
-    $('item-modal').hidden = true;
-    $('photo-modal').hidden = true;
+    button.closest('.modal').hidden = true;
   });
 });
 
@@ -1169,10 +1739,13 @@ document.querySelectorAll('.modal').forEach((modal) => {
   });
 });
 
+// Only the top modal closes, so stepping into the category manager and back
+// out does not throw away a half-finished item. The manager is last in the
+// document, which makes it the last match here.
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
-  $('item-modal').hidden = true;
-  $('photo-modal').hidden = true;
+  const open = [...document.querySelectorAll('.modal:not([hidden])')];
+  if (open.length) open[open.length - 1].hidden = true;
 });
 </script>
 </body>
