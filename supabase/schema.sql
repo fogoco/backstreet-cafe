@@ -74,18 +74,21 @@ create table if not exists public.menu_categories (
 create index if not exists menu_categories_tab_sort_idx
   on public.menu_categories (tab, sort_order, label);
 
-insert into public.menu_categories (key, label, tab, layout, sort_order) values
-  ('BREAKFAST',       'Breakfast',          'breakfast', 'cards', 10),
-  ('BIG_BREAKFAST',   'Big Breakfast',      'breakfast', 'cards', 20),
-  ('SWEET_BREAKFAST', 'Sweet Breakfast',    'breakfast', 'cards', 30),
-  ('KIDS_STUFF',      'Kids Stuff',         'breakfast', 'cards', 40),
-  ('LUNCH',           'Lunch Menu',         'lunch',     'cards', 10),
-  ('BURGERS',         'BackStreet Burgers', 'lunch',     'cards', 20),
-  ('SIDES',           'Sides',              'lunch',     'cards', 30),
-  ('EXTRA_BITS',      'Extra Bits',         'lunch',     'list',  40),
-  ('DRINKS_HOT',      'Hot Stuff',          'drinks',    'cards', 10),
-  ('DRINKS_COLD',     'Cold Stuff',         'drinks',    'cards', 20),
-  ('DRINKS_SWIRLS',   'Swirls',             'drinks',    'cards', 30)
+-- Beer & Cocktails ships hidden: the alcohol is off the public website, but
+-- the drinks stay in the database and in /admin, one click from returning.
+insert into public.menu_categories (key, label, tab, layout, sort_order, is_visible) values
+  ('BREAKFAST',       'Breakfast',          'breakfast', 'cards', 10, true),
+  ('BIG_BREAKFAST',   'Big Breakfast',      'breakfast', 'cards', 20, true),
+  ('SWEET_BREAKFAST', 'Sweet Breakfast',    'breakfast', 'cards', 30, true),
+  ('KIDS_STUFF',      'Kids Stuff',         'breakfast', 'cards', 40, true),
+  ('LUNCH',           'Lunch Menu',         'lunch',     'cards', 10, true),
+  ('BURGERS',         'BackStreet Burgers', 'lunch',     'cards', 20, true),
+  ('SIDES',           'Sides',              'lunch',     'cards', 30, true),
+  ('EXTRA_BITS',      'Extra Bits',         'lunch',     'list',  40, true),
+  ('DRINKS_HOT',      'Hot Stuff',          'drinks',    'cards', 10, true),
+  ('DRINKS_COLD',     'Cold Stuff',         'drinks',    'cards', 20, true),
+  ('DRINKS_SWIRLS',   'Swirls',             'drinks',    'cards', 30, true),
+  ('BEER_COCKTAILS',  'Beer & Cocktails',   'drinks',    'cards', 40, false)
 on conflict (key) do nothing;
 
 create table if not exists public.dietary_tags (

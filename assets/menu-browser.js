@@ -25,6 +25,9 @@
     { key: 'DRINKS_HOT', label: 'Hot Stuff', tab: 'drinks', layout: 'cards' },
     { key: 'DRINKS_COLD', label: 'Cold Stuff', tab: 'drinks', layout: 'cards' },
     { key: 'DRINKS_SWIRLS', label: 'Swirls', tab: 'drinks', layout: 'cards' }
+    // Beer & Cocktails is missing on purpose. It exists in the database as a
+    // hidden category, and only categories listed here render, so leaving it
+    // out keeps the alcohol off the site in fallback mode too.
   ];
 
   const DEFAULT_TAG_LABELS = {

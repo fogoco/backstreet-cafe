@@ -92,13 +92,17 @@ values
   ('Allies Cold Pressed Juice - Love Beets', 'Fresh cold pressed beetroot juice', 8.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Allies cold pressed juices - lovebeets.jpg', '{}', null, 170),
   ('Allies Cold Pressed Juice - Sublime Pine', 'Fresh cold pressed pineapple juice', 8.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Allies cold pressed juices - sublime pine.jpg', '{}', null, 180),
   ('House Iced Tea', 'Green Tea Mint & Rose Peppermint blend, house-made passionfruit syrup, fresh mixed berries', 9.00, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/House Iced Tea.jpg', '{}', null, 190),
-  ('Iced Matcha', 'Choose your preferred milk and check with our staff for today''s syrup options.', 7.20, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Iced Matcha.jpg', '{}', null, 200);
-
--- The 2026 menu PDF also listed a Beer & Cocktails section: Corona $9.00,
--- Great Northern Super Crisp $8.00, Matsos Ginger Beer $10.00, Mimosa $9.00,
--- Espresso Martini $15.00, Aperol Spritz $12.00, Frozen Pina Colada $18.00 and
--- House Spirits $10.00. The client asked for that section to go and will add
--- it back from /admin if they serve those drinks again, so it is not seeded.
+  ('Iced Matcha', 'Choose your preferred milk and check with our staff for today''s syrup options.', 7.20, 'DRINKS_COLD', 'https://backstreet-cafe-menu.netlify.app/images/Drinks/Iced Matcha.jpg', '{}', null, 200),
+  -- The Beer & Cocktails category is seeded hidden, so these load but do not
+  -- show on the public website until staff switch the section back on.
+  ('Corona', 'Classic Mexican beer', 9.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/corona.jpg', '{}', null, 10),
+  ('Great Northern Super Crisp', 'Australian lager', 8.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Great Northern Super Crisp.jpg', '{}', null, 20),
+  ('Matsos Ginger Beer', 'Refreshing ginger beer', 10.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Matsos Ginger Beer.jpg', '{}', null, 30),
+  ('Mimosa', 'Classic champagne and orange juice cocktail', 9.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Mimosa.jpg', '{}', null, 40),
+  ('Espresso Martini', 'A classic caffeine kick with premium vodka and fresh espresso', 15.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Espresso Martini.jpg', '{}', null, 50),
+  ('Aperol Spritz', 'Italian aperitif cocktail', 12.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Aperol Spritz.jpg', '{}', null, 60),
+  ('Frozen Piña Colada', 'Tropical blend of pineapple, coconut and rum', 18.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/Frozen Pina Colada.jpg', '{}', null, 70),
+  ('House Spirits', 'Selection of house spirits', 10.00, 'BEER_COCKTAILS', 'https://backstreet-cafe-menu.netlify.app/images/Beer & Cocktails/House Spirits.jpg', '{}', null, 80);
 
 delete from public.gallery_images;
 

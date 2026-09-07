@@ -6,9 +6,9 @@
 -- change, which defeats the point of the manager. They are tables now.
 --
 -- Run this once in the SQL editor, on top of schema.sql + seed.sql.
--- Safe to run twice. The editor will warn about destructive operations
--- (the drop constraint and the Beer & Cocktails delete below) — that is
--- expected; choose "Run without RLS" if it also asks.
+-- Safe to run twice. No menu item is deleted anywhere in this file. The editor
+-- still warns about destructive operations because of the drop constraint near
+-- the end; that is expected. Choose "Run without RLS" if it also asks.
 
 -- ---------------------------------------------------------------------------
 -- Categories
@@ -39,20 +39,26 @@ create table if not exists public.menu_categories (
 create index if not exists menu_categories_tab_sort_idx
   on public.menu_categories (tab, sort_order, label);
 
--- The categories the menu already used. Beer & Cocktails is deliberately
--- absent: the client asked for it to go, and can recreate it from /admin.
-insert into public.menu_categories (key, label, tab, layout, sort_order) values
-  ('BREAKFAST',       'Breakfast',          'breakfast', 'cards', 10),
-  ('BIG_BREAKFAST',   'Big Breakfast',      'breakfast', 'cards', 20),
-  ('SWEET_BREAKFAST', 'Sweet Breakfast',    'breakfast', 'cards', 30),
-  ('KIDS_STUFF',      'Kids Stuff',         'breakfast', 'cards', 40),
-  ('LUNCH',           'Lunch Menu',         'lunch',     'cards', 10),
-  ('BURGERS',         'BackStreet Burgers', 'lunch',     'cards', 20),
-  ('SIDES',           'Sides',              'lunch',     'cards', 30),
-  ('EXTRA_BITS',      'Extra Bits',         'lunch',     'list',  40),
-  ('DRINKS_HOT',      'Hot Stuff',          'drinks',    'cards', 10),
-  ('DRINKS_COLD',     'Cold Stuff',         'drinks',    'cards', 20),
-  ('DRINKS_SWIRLS',   'Swirls',             'drinks',    'cards', 30)
+-- The categories the menu already used.
+--
+-- Beer & Cocktails comes in hidden rather than deleted: the client wanted the
+-- alcohol off the website, but the eight drinks and their photos are real menu
+-- data worth keeping. Hidden means the section and its items do not render for
+-- visitors, while staff still see them in /admin and can switch the section
+-- back on with one click.
+insert into public.menu_categories (key, label, tab, layout, sort_order, is_visible) values
+  ('BREAKFAST',       'Breakfast',          'breakfast', 'cards', 10, true),
+  ('BIG_BREAKFAST',   'Big Breakfast',      'breakfast', 'cards', 20, true),
+  ('SWEET_BREAKFAST', 'Sweet Breakfast',    'breakfast', 'cards', 30, true),
+  ('KIDS_STUFF',      'Kids Stuff',         'breakfast', 'cards', 40, true),
+  ('LUNCH',           'Lunch Menu',         'lunch',     'cards', 10, true),
+  ('BURGERS',         'BackStreet Burgers', 'lunch',     'cards', 20, true),
+  ('SIDES',           'Sides',              'lunch',     'cards', 30, true),
+  ('EXTRA_BITS',      'Extra Bits',         'lunch',     'list',  40, true),
+  ('DRINKS_HOT',      'Hot Stuff',          'drinks',    'cards', 10, true),
+  ('DRINKS_COLD',     'Cold Stuff',         'drinks',    'cards', 20, true),
+  ('DRINKS_SWIRLS',   'Swirls',             'drinks',    'cards', 30, true),
+  ('BEER_COCKTAILS',  'Beer & Cocktails',   'drinks',    'cards', 40, false)
 on conflict (key) do nothing;
 
 -- ---------------------------------------------------------------------------
@@ -76,17 +82,6 @@ insert into public.dietary_tags (code, label, sort_order) values
   ('vg',  'Vegan',       40),
   ('df',  'Dairy Free',  50)
 on conflict (code) do nothing;
-
--- ---------------------------------------------------------------------------
--- Drop Beer & Cocktails
---
--- This removes 8 items that came from the 2026 menu PDF: Corona, Great
--- Northern Super Crisp, Matsos Ginger Beer, Mimosa, Espresso Martini,
--- Aperol Spritz, Frozen Pina Colada and House Spirits. They are still in
--- seed.sql if they ever need to come back.
--- ---------------------------------------------------------------------------
-
-delete from public.menu_items where category = 'BEER_COCKTAILS';
 
 -- ---------------------------------------------------------------------------
 -- Point menu_items at the new table

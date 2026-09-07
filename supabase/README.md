@@ -8,8 +8,12 @@ bundled copy in `assets/menu-data.json`, so nothing breaks in the meantime.
 
 Already set up? The one thing left to run is
 `migration-01-categories-and-tags.sql`, which hands the categories and dietary
-tags over to the client and drops the Beer & Cocktails section. Paste it into
-the **SQL Editor** and **Run**. `/admin` shows an error until it has been run.
+tags over to the client. It deletes no menu items. Paste it into the **SQL
+Editor** and **Run**. `/admin` shows an error until it has been run.
+
+Beer & Cocktails arrives as a hidden category: the eight alcoholic drinks stay
+in the database and in `/admin`, but the section does not render on the website
+until staff press **Show** on it.
 
 ## 1. Create the tables
 
