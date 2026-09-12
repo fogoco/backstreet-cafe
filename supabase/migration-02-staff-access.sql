@@ -22,13 +22,14 @@
 -- ---------------------------------------------------------------------------
 -- 2. Authorise it
 --
--- Lowercase, one line per person. Uncomment the second line and put the real
--- address in it. Anyone not on this list can read the menu but not change it.
+-- Lowercase, one line per person. Anyone not on this list can read the menu
+-- but not change it. contact@fogoco.com.au is the address the cafe signs in
+-- with; confirmed against auth.users while reproducing the fault.
 -- ---------------------------------------------------------------------------
 
 insert into private.staff_emails (email) values
-  ('heliocwoi@gmail.com')
-  -- , ('the-cafe-address@example.com')
+  ('heliocwoi@gmail.com'),
+  ('contact@fogoco.com.au')
 on conflict (email) do nothing;
 
 -- ---------------------------------------------------------------------------
