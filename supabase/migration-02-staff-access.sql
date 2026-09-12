@@ -11,6 +11,32 @@
 -- Run in the SQL editor. Safe to run twice. Deletes nothing.
 
 -- ---------------------------------------------------------------------------
+-- 0. Am I in the right project?
+--
+-- This account has several Supabase projects, and the first attempt at this
+-- migration ran in the wrong one. That fails with "relation
+-- private.staff_emails does not exist", which reads like a broken script
+-- rather than a wrong browser tab. Say which it is.
+--
+-- The menu lives in the project whose URL is in assets/supabase-config.js:
+-- https://supabase.com/dashboard/project/zbiyaxtwyirezuxnwdul/sql/new
+-- ---------------------------------------------------------------------------
+
+do $$
+begin
+  if to_regclass('public.menu_items') is null then
+    raise exception
+      'Wrong project: public.menu_items is missing here. Open the SQL editor for zbiyaxtwyirezuxnwdul, the project assets/supabase-config.js points at.';
+  end if;
+
+  if to_regclass('private.staff_emails') is null then
+    raise exception
+      'private.staff_emails is missing. Run supabase/schema.sql in this project before this migration.';
+  end if;
+end
+$$;
+
+-- ---------------------------------------------------------------------------
 -- 1. Find the address the cafe actually signed in with
 --
 -- Run this line on its own first. The insert below needs the exact address,
