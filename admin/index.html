@@ -577,6 +577,8 @@
   </header>
 
   <main>
+    <!-- Kept apart from app-notice, which is cleared on every menu reload. -->
+    <div class="notice" id="access-notice" hidden></div>
     <div class="notice" id="app-notice" hidden></div>
 
     <div class="tabs">
@@ -877,6 +879,33 @@ function notify(el, message, kind = 'info') {
   el.hidden = !message;
 }
 
+const NOT_STAFF =
+  'This account can view the menu but not change it.'
+  + ' Its email address has to be added to the staff list in Supabase.';
+
+// Postgres reports a blocked insert plainly, and the wording is for developers.
+function describeError(error) {
+  if (error?.code === '42501') return NOT_STAFF;
+  return error?.message || 'Something went wrong.';
+}
+
+// Row Level Security refuses an update or a delete by matching no rows instead
+// of failing, so a blocked change arrives as a success that changed nothing.
+// Asking for the affected rows back is the only way to tell the two apart.
+async function applyChange(query, subject) {
+  const { data, error } = await query.select('id');
+  if (error) throw new Error(describeError(error));
+
+  if (!data?.length) {
+    throw new Error(
+      `${subject} did not change. Either this account is not on the staff list,`
+      + ' or someone else removed it. Reload the page to check.'
+    );
+  }
+
+  return data;
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -924,6 +953,7 @@ function applySession(session) {
 
   if (signedIn) {
     $('current-user').textContent = session.user.email;
+    checkWriteAccess(session.user.email);
     loadGallery();
     // The categories decide the section order and the item form's dropdown, so
     // they have to land before the menu is drawn. Drawing the menu without them
@@ -932,6 +962,27 @@ function applySession(session) {
       if (ready) loadMenu();
     });
   }
+}
+
+// Signing in is enough to read the menu, not to change it. Say so up front:
+// the alternative is the cafe editing prices all afternoon and only noticing
+// later that nothing stuck.
+async function checkWriteAccess(email) {
+  const notice = $('access-notice');
+  const { data, error } = await supabase.rpc('can_edit_menu');
+
+  if (error) {
+    notify(
+      notice,
+      `Could not check what this account is allowed to do (${error.message}).`
+      + ' If saving changes nothing, run supabase/migration-02-staff-access.sql'
+      + ' in the Supabase SQL editor.',
+      'error'
+    );
+    return;
+  }
+
+  notify(notice, data ? '' : `${email}: ${NOT_STAFF}`, data ? 'info' : 'error');
 }
 
 // ---------------------------------------------------------------- categories
@@ -1116,7 +1167,7 @@ $('category-add-form').addEventListener('submit', async (event) => {
   button.disabled = false;
 
   if (error) {
-    notify(notice, `Could not add it: ${error.message}`, 'error');
+    notify(notice, `Could not add it: ${describeError(error)}`, 'error');
     return;
   }
 
@@ -1134,13 +1185,16 @@ $('category-rows').addEventListener('click', async (event) => {
     const entry = categories.find((row) => row.key === toggleKey);
     if (!entry) return;
 
-    const { error } = await supabase
-      .from('menu_categories')
-      .update({ is_visible: !entry.is_visible })
-      .eq('key', toggleKey);
-
-    if (error) {
-      notify(notice, `Could not update: ${error.message}`, 'error');
+    try {
+      await applyChange(
+        supabase
+          .from('menu_categories')
+          .update({ is_visible: !entry.is_visible })
+          .eq('key', toggleKey),
+        `“${entry.label}”`
+      );
+    } catch (error) {
+      notify(notice, error.message, 'error');
       return;
     }
 
@@ -1175,9 +1229,13 @@ $('category-rows').addEventListener('click', async (event) => {
 
   if (!window.confirm(`Delete the “${entry.label}” category?`)) return;
 
-  const { error } = await supabase.from('menu_categories').delete().eq('key', deleteKey);
-  if (error) {
-    notify(notice, `Could not delete: ${error.message}`, 'error');
+  try {
+    await applyChange(
+      supabase.from('menu_categories').delete().eq('key', deleteKey),
+      `“${entry.label}”`
+    );
+  } catch (error) {
+    notify(notice, error.message, 'error');
     return;
   }
 
@@ -1217,7 +1275,7 @@ $('tag-add-form').addEventListener('submit', async (event) => {
   button.disabled = false;
 
   if (error) {
-    notify(notice, `Could not add it: ${error.message}`, 'error');
+    notify(notice, `Could not add it: ${describeError(error)}`, 'error');
     return;
   }
 
@@ -1243,21 +1301,23 @@ $('tag-rows').addEventListener('click', async (event) => {
 
   // The code is stored inside each item's tags array, so those have to be
   // rewritten before the tag row itself can go.
-  for (const item of used) {
-    const { error } = await supabase
-      .from('menu_items')
-      .update({ tags: item.tags.filter((entry) => entry !== code) })
-      .eq('id', item.id);
-
-    if (error) {
-      notify(notice, `Could not update “${item.name}”: ${error.message}`, 'error');
-      return;
+  try {
+    for (const item of used) {
+      await applyChange(
+        supabase
+          .from('menu_items')
+          .update({ tags: item.tags.filter((entry) => entry !== code) })
+          .eq('id', item.id),
+        `“${item.name}”`
+      );
     }
-  }
 
-  const { error } = await supabase.from('dietary_tags').delete().eq('code', code);
-  if (error) {
-    notify(notice, `Could not delete: ${error.message}`, 'error');
+    await applyChange(
+      supabase.from('dietary_tags').delete().eq('code', code),
+      `“${tag.label}”`
+    );
+  } catch (error) {
+    notify(notice, error.message, 'error');
     return;
   }
 
@@ -1436,13 +1496,16 @@ $('menu-list').addEventListener('click', async (event) => {
     const item = menuItems.find((entry) => entry.id === toggleId);
     if (!item) return;
 
-    const { error } = await supabase
-      .from('menu_items')
-      .update({ is_available: !item.is_available })
-      .eq('id', toggleId);
-
-    if (error) {
-      notify(appNotice, `Could not update: ${error.message}`, 'error');
+    try {
+      await applyChange(
+        supabase
+          .from('menu_items')
+          .update({ is_available: !item.is_available })
+          .eq('id', toggleId),
+        `“${item.name}”`
+      );
+    } catch (error) {
+      notify(appNotice, error.message, 'error');
       return;
     }
 
@@ -1463,9 +1526,13 @@ $('menu-list').addEventListener('click', async (event) => {
   const item = menuItems.find((entry) => entry.id === deleteId);
   if (!window.confirm(`Delete “${item?.name}” from the menu? This cannot be undone.`)) return;
 
-  const { error } = await supabase.from('menu_items').delete().eq('id', deleteId);
-  if (error) {
-    notify(appNotice, `Could not delete: ${error.message}`, 'error');
+  try {
+    await applyChange(
+      supabase.from('menu_items').delete().eq('id', deleteId),
+      `“${item?.name}”`
+    );
+  } catch (error) {
+    notify(appNotice, error.message, 'error');
     return;
   }
   notify(appNotice, `“${item?.name}” deleted.`, 'ok');
@@ -1572,11 +1639,16 @@ $('item-form').addEventListener('submit', async (event) => {
     };
 
     const id = $('item-id').value;
-    const { error } = id
-      ? await supabase.from('menu_items').update(payload).eq('id', id)
-      : await supabase.from('menu_items').insert(payload);
 
-    if (error) throw error;
+    if (id) {
+      await applyChange(
+        supabase.from('menu_items').update(payload).eq('id', id),
+        `“${payload.name}”`
+      );
+    } else {
+      const { error } = await supabase.from('menu_items').insert(payload);
+      if (error) throw new Error(describeError(error));
+    }
 
     $('item-modal').hidden = true;
     notify(appNotice, `“${payload.name}” saved.`, 'ok');
@@ -1650,13 +1722,16 @@ $('gallery-list').addEventListener('click', async (event) => {
     const image = galleryImages.find((entry) => entry.id === toggleId);
     if (!image) return;
 
-    const { error } = await supabase
-      .from('gallery_images')
-      .update({ is_visible: !image.is_visible })
-      .eq('id', toggleId);
-
-    if (error) {
-      notify(appNotice, `Could not update: ${error.message}`, 'error');
+    try {
+      await applyChange(
+        supabase
+          .from('gallery_images')
+          .update({ is_visible: !image.is_visible })
+          .eq('id', toggleId),
+        'That photo'
+      );
+    } catch (error) {
+      notify(appNotice, error.message, 'error');
       return;
     }
 
@@ -1669,9 +1744,13 @@ $('gallery-list').addEventListener('click', async (event) => {
   if (!deleteId) return;
   if (!window.confirm('Delete this photo from the gallery?')) return;
 
-  const { error } = await supabase.from('gallery_images').delete().eq('id', deleteId);
-  if (error) {
-    notify(appNotice, `Could not delete: ${error.message}`, 'error');
+  try {
+    await applyChange(
+      supabase.from('gallery_images').delete().eq('id', deleteId),
+      'That photo'
+    );
+  } catch (error) {
+    notify(appNotice, error.message, 'error');
     return;
   }
   notify(appNotice, 'Photo deleted.', 'ok');
@@ -1734,11 +1813,16 @@ $('photo-form').addEventListener('submit', async (event) => {
     };
 
     const id = $('photo-id').value;
-    const { error } = id
-      ? await supabase.from('gallery_images').update(payload).eq('id', id)
-      : await supabase.from('gallery_images').insert(payload);
 
-    if (error) throw error;
+    if (id) {
+      await applyChange(
+        supabase.from('gallery_images').update(payload).eq('id', id),
+        'That photo'
+      );
+    } else {
+      const { error } = await supabase.from('gallery_images').insert(payload);
+      if (error) throw new Error(describeError(error));
+    }
 
     $('photo-modal').hidden = true;
     notify(appNotice, 'Gallery photo saved.', 'ok');
@@ -1766,7 +1850,12 @@ async function uploadPhoto(file, folder) {
     .from(BUCKET)
     .upload(path, file, { cacheControl: '604800', upsert: false });
 
-  if (error) throw error;
+  // Storage guards the bucket with the same staff list as the tables, and
+  // answers a refusal with an unauthorized status rather than a useful reason.
+  if (error) {
+    const refused = /unauthor|not authorized|violates row-level/i.test(error.message || '');
+    throw new Error(refused ? `The photo was not uploaded. ${NOT_STAFF}` : error.message);
+  }
 
   const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
   return data.publicUrl;

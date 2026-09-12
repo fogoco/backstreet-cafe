@@ -43,6 +43,22 @@ $$;
 revoke all on function private.is_staff() from public;
 grant execute on function private.is_staff() to authenticated;
 
+-- The private schema is not exposed by the Data API, so the panel cannot call
+-- is_staff() directly. This wrapper lets it check at sign-in whether the
+-- account may edit, instead of discovering it when a save quietly does nothing.
+create or replace function public.can_edit_menu()
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select private.is_staff();
+$$;
+
+revoke all on function public.can_edit_menu() from public;
+grant execute on function public.can_edit_menu() to authenticated;
+
 -- ---------------------------------------------------------------------------
 -- Categories and dietary tags
 --

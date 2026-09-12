@@ -15,6 +15,10 @@ Beer & Cocktails arrives as a hidden category: the eight alcoholic drinks stay
 in the database and in `/admin`, but the section does not render on the website
 until staff press **Show** on it.
 
+Also run `migration-02-staff-access.sql`, which authorises the cafe's own
+account and adds the permission check the panel uses. Put the cafe's email in
+it before running.
+
 ## 1. Create the tables
 
 Supabase dashboard → **SQL Editor** → paste all of `schema.sql` → **Run**.
@@ -87,6 +91,10 @@ menu; they just would not see the client's latest edits.
 
 ## Adding another staff member
 
+**Creating the account is only half of it.** An account that exists but is not
+on this list can sign in, see the whole menu, and change nothing. Skipping the
+second step is what made the cafe's first attempt at editing prices fail.
+
 Create the user under **Authentication → Users**, then in the SQL Editor:
 
 ```sql
@@ -99,13 +107,30 @@ Removing access:
 delete from private.staff_emails where email = 'someone@example.com';
 ```
 
+To see who can edit, and which accounts exist but cannot:
+
+```sql
+select u.email, (s.email is not null) as can_edit
+from auth.users u
+left join private.staff_emails s on s.email = lower(u.email)
+order by u.created_at;
+```
+
+The panel checks this at sign-in through `public.can_edit_menu()` and shows a
+warning when the answer is no, so nobody has to find out by losing an edit.
+
 ## How access is enforced
 
 | Who | Menu &amp; gallery | Photo uploads |
 |---|---|---|
 | Website visitor | Reads published rows only | No access |
-| Signed in, not on allowlist | Reads published rows only | No access |
+| Signed in, not on allowlist | Reads everything, changes nothing | No access |
 | Signed in and on allowlist | Full add / edit / delete | Full upload / replace / delete |
+
+Row Level Security turns a refusal into "no rows matched", which for an update
+or a delete is indistinguishable from success. Every write in the panel goes
+through `applyChange()`, which asks for the affected rows back and treats an
+empty answer as the refusal it is.
 
 ## Categories and dietary tags
 
