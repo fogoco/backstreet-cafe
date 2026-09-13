@@ -14,7 +14,7 @@
     "id": "b2",
     "name": "Green Brekky Burrito",
     "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
-    "price": 23.9,
+    "price": 24.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Green Brekky Burrito.jpg",
     "tags": []
@@ -23,7 +23,7 @@
     "id": "b4",
     "name": "Brekky Burger",
     "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese blend, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
-    "price": 17.9,
+    "price": 18.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Brekky Burger.jpg",
     "tags": []
@@ -31,8 +31,8 @@
   {
     "id": "b6",
     "name": "Smashed Avo (gfo)(v)",
-    "description": "Toasted sourdough,, all home-made radish, chilli, whipped feta, one poached egg, dukkah",
-    "price": 22.9,
+    "description": "Toasted sourdough, home-made beetroot hommus, chilli, whipped feta, one poached egg and dukkah.",
+    "price": 23.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Smashed-Avo.jpg",
     "tags": [
@@ -44,7 +44,7 @@
     "id": "b7",
     "name": "Eggs Benedict (gfo)",
     "description": "Smashed avocado, poached eggs, baby spinach, house hollandaise, english muffin",
-    "price": 24.9,
+    "price": 23.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Eggs Benedict (gfo).jpg",
     "tags": [
@@ -55,30 +55,32 @@
     "id": "b8",
     "name": "Breadless Benedict (gf)",
     "description": "Corn fritters, smashed avocado, poached eggs, baby spinach, house hollandaise",
-    "price": 25.9,
+    "price": 26.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Breadless Benedict (gf).jpg",
     "tags": [
-      "gf"
+      "gf",
+      "cc"
     ]
   },
   {
     "id": "b9",
     "name": "Corn Fritters (gf)(v)",
-    "description": "Smashed avocado, whipped feta, one poached egg",
+    "description": "Smashed avocado, whipped feta, home-made beetroot hommus and one poached egg.",
     "price": 24.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Corn Fritters (gf)(v).jpg",
     "tags": [
       "gf",
-      "v"
+      "v",
+      "cc"
     ]
   },
   {
     "id": "b10",
     "name": "Mushroom Bruschetta (gfo)",
     "description": "All home- made, Garlic and thyme mushrooms, one poached egg, baby spinach, whipped feta, basil pesto, dukkah, toasted sourdough",
-    "price": 23.9,
+    "price": 24.9,
     "category": "BREAKFAST",
     "imageUrl": "/images/Breakfast/Mushroom Bruschetta (gfo).jpg",
     "tags": [
@@ -88,7 +90,7 @@
   {
     "id": "bb1",
     "name": "Big Breakfast (gfo)",
-    "description": "Two Poached eggs, bacon, roasted tomato, cheese Kransky sausage, relish (home-made), house baked beans, mushrooms, hash browns, toasted sourdough.",
+    "description": "Two poached eggs, bacon, roasted tomato, triple smoked chorizo, relish (home-made), house baked beans, mushrooms, hash browns, toasted sourdough.",
     "price": 29.9,
     "category": "BIG_BREAKFAST",
     "imageUrl": "/images/Big Breakfast/Big Breakfast (gfo).jpg",
@@ -99,7 +101,7 @@
   {
     "id": "bb2",
     "name": "Big Vege (gfo)(v)",
-    "description": "Two Poached eggs, roasted tomato, relish (home-made), house baked beans, mushrooms, hash browns, smashed avocado, whipped feta, toasted sourdough.",
+    "description": "Two poached eggs, roasted tomato, relish (home-made), house baked beans, mushrooms, hash browns, smashed avocado, whipped feta, home-made beetroot hommus, toasted sourdough.",
     "price": 29.9,
     "category": "BIG_BREAKFAST",
     "imageUrl": "/images/Big Breakfast/Big Vege (gfo)(v).jpg",
@@ -111,7 +113,7 @@
   {
     "id": "bb3",
     "name": "House Made Baked Beans (gfo)",
-    "description": "Two fried eggs, cheese Kransky sausage, toasted sourdough, spinach and relish.",
+    "description": "Two fried eggs, triple smoked chorizo, toasted sourdough and relish.",
     "price": 26.9,
     "category": "BIG_BREAKFAST",
     "imageUrl": "/images/Big Breakfast/House Made Baked Beans (gfo).jpg",
@@ -123,7 +125,7 @@
     "id": "sb1",
     "name": "Berry Pancake",
     "description": "Berry compote, maple syrup, ice cream",
-    "price": 22.9,
+    "price": 24.9,
     "category": "SWEET_BREAKFAST",
     "imageUrl": "/images/Sweet Breakfast/Berry Pancake.jpg",
     "tags": [
@@ -134,7 +136,7 @@
     "id": "sb2",
     "name": "Grilled banana (v) Pancake",
     "description": "Grilled banana, crispy bacon, maple syrup, ice cream",
-    "price": 23.9,
+    "price": 24.9,
     "category": "SWEET_BREAKFAST",
     "imageUrl": "/images/Sweet Breakfast/Grilled banana (v) Pancake.jpg",
     "tags": [
@@ -165,7 +167,7 @@
   {
     "id": "sb5",
     "name": "Banana Bread (v)(gfo)",
-    "description": "Artisan banana bread by noosa gourmet, topped with creamy ice cream, maple syrup and berry compote.",
+    "description": "Artisan banana bread by Noosa Gourmet, served toasted with your choice of butter or honey.",
     "price": 6.9,
     "category": "SWEET_BREAKFAST",
     "imageUrl": "/images/Sweet Breakfast/Banana Bread (v)(gfo).jpg",
@@ -178,7 +180,7 @@
     "id": "sb6",
     "name": "Biscoff Pancake",
     "description": "Fluffy pancake topped with Biscoff crumble, rich Biscoff sauce, warm Biscoff drizzle and vanilla ice cream.",
-    "price": 24.9,
+    "price": 25.9,
     "category": "SWEET_BREAKFAST",
     "imageUrl": "/images/Sweet Breakfast/Biscoff Pancake.jpg",
     "tags": [
@@ -260,7 +262,7 @@
     "id": "bg3",
     "name": "Double Trouble",
     "description": "Double smashed beef patties, double cheese, crispy bacon and our signature house sauce",
-    "price": 21.9,
+    "price": 22.9,
     "category": "BURGERS",
     "imageUrl": "/images/BackStreet Burgers/Double Trouble.jpg",
     "tags": []
@@ -269,7 +271,7 @@
     "id": "bg4",
     "name": "The Challenging Burger",
     "description": "Stacked high with double smashed beef patties, double bacon, melted cheese, lettuce, tomato, onion and pickles, finished with our house sauce, crispy onion rings and a mozzarella stick",
-    "price": 27.9,
+    "price": 28.9,
     "category": "BURGERS",
     "imageUrl": "/images/BackStreet Burgers/The Challenging Burger.jpg",
     "tags": []
@@ -496,7 +498,7 @@
     "id": "h1",
     "name": "Espresso",
     "description": "GUN COTTON COFFEE - locally roasted",
-    "price": 4.5,
+    "price": 4.8,
     "category": "DRINKS_HOT",
     "imageUrl": "/images/Drinks/Espresso.jpg",
     "tags": []
@@ -523,7 +525,7 @@
     "id": "h4",
     "name": "Spiced Chai",
     "description": "Traditional spiced chai latte (dirty +$0.5)",
-    "price": 5.0,
+    "price": 5.5,
     "category": "DRINKS_HOT",
     "imageUrl": "/images/Drinks/Spiced Chai.jpg",
     "tags": []
@@ -532,7 +534,7 @@
     "id": "h5",
     "name": "Hot Chocolate",
     "description": "Rich and creamy hot chocolate",
-    "price": 4.8,
+    "price": 6.9,
     "category": "DRINKS_HOT",
     "imageUrl": "/images/Drinks/Hot Chocolate.jpg",
     "tags": []
@@ -577,7 +579,7 @@
     "id": "s1",
     "name": "Affogato",
     "description": "Espresso poured over vanilla ice cream",
-    "price": 6.5,
+    "price": 6.9,
     "category": "DRINKS_SWIRLS",
     "imageUrl": "/images/Drinks/Affogato.jpg",
     "tags": []
@@ -613,7 +615,7 @@
     "id": "s5",
     "name": "Coffee Frappe",
     "description": "Blended espresso, ice, vanilla syrup, ice-cream & milk",
-    "price": 10.0,
+    "price": 10.9,
     "category": "DRINKS_SWIRLS",
     "imageUrl": "/images/Drinks/Coffee Frappe.jpg",
     "tags": []
@@ -712,7 +714,7 @@
     "id": "c11",
     "name": "Iced Long Black",
     "description": "Double shot espresso on ice, with water",
-    "price": 5.0,
+    "price": 5.5,
     "category": "DRINKS_COLD",
     "imageUrl": "/images/Drinks/Iced Long Black.jpg",
     "tags": []
@@ -793,7 +795,7 @@
     "id": "c20",
     "name": "Iced Matcha",
     "description": "Choose your preferred milk and check with our staff for today's syrup options.",
-    "price": 7.2,
+    "price": 7.9,
     "category": "DRINKS_COLD",
     "imageUrl": "/images/Drinks/Iced Matcha.jpg",
     "tags": []

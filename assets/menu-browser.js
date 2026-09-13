@@ -35,7 +35,8 @@
     gfo: 'GF Option',
     v: 'Vegetarian',
     vg: 'Vegan',
-    df: 'Dairy Free'
+    df: 'Dairy Free',
+    cc: 'Fryer may contain traces of gluten'
   };
 
   let CATEGORY_LABELS = {};
