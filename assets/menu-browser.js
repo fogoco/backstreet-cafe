@@ -381,11 +381,17 @@
         menuItems = await fetchFallback();
         renderCatalog();
       } catch {
-        catalogEl.innerHTML = `
-          <div class="menu-empty">
-            <p>Our menu is not loading right now. Please check back shortly.</p>
-          </div>
-        `;
+        // The page ships with the menu already rendered into it, so when both
+        // Supabase and the bundled copy are unreachable the right thing to do
+        // is leave what is on the page alone. Only an empty catalog needs the
+        // apology.
+        if (!catalogEl.textContent.trim()) {
+          catalogEl.innerHTML = `
+            <div class="menu-empty">
+              <p>Our menu is not loading right now. Please check back shortly.</p>
+            </div>
+          `;
+        }
       }
     }
   }
