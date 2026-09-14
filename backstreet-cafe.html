@@ -3145,6 +3145,80 @@
     .gallery-social { margin-top: 34px; }
   }
 
+  /* Touch and legibility, added 14/09/2026.
+     Measured on the live site at 375px: 20 interactive controls were under the
+     44x44 minimum, and the five hero rating labels sat at 7.36px - the
+     strongest social proof on the page, at roughly half legible size.
+
+     The labels were small for a reason, not by carelessness: five of them share
+     one row, and they carry white-space nowrap at full width. The grid already
+     wraps them 3 + 2 below 900px, which leaves room to size them properly.
+
+     Kept in its own block, after the others, so it overrides without editing
+     the original rules. Nothing here applies above 900px. */
+  @media (max-width: 900px) {
+    /* Targets you have to hit with a thumb. 44x44 is the WCAG minimum. */
+    .nav-toggle {
+      width: 44px;
+      height: 44px;
+    }
+
+    .btn-primary,
+    .btn-outline,
+    .fogo-cta,
+    .menu-tab,
+    .btn-ghost {
+      min-height: 44px;
+    }
+
+    .hero-sound-toggle {
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-credit-link {
+      display: inline-block;
+      padding: 14px 0;
+    }
+
+    /* Text small enough to be a barrier rather than a style choice. */
+    .hero-meta-item .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-meta-item .star { font-size: 0.8rem; }
+
+    /* Section eyebrows. Stylistic rather than load-bearing, but these three sit
+       a fraction under 12px for no benefit, so they come up too. The circular
+       SVG badge and the hero eyebrow are left alone: the first is artwork set
+       on a path, and the second is a single nowrap line that would overflow. */
+    .section-label span,
+    .menu-parallax-eyebrow,
+    .fogo-kicker {
+      font-size: 0.75rem;
+    }
+
+    .menu-item-tag,
+    .menu-featured-badge,
+    .menu-tab,
+    .nav-links a,
+    .nav-cta,
+    .hero-sound-toggle,
+    .fogo-cta,
+    .fogo-cta-mobile,
+    .footer-col h5,
+    .footer-credit-link,
+    .btn-primary,
+    .btn-outline,
+    .btn-ghost {
+      font-size: 0.75rem;
+    }
+  }
+
   @media (max-width: 1200px) and (min-width: 901px) {
     .hero {
       height: calc(100vh - 92px);
