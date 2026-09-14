@@ -307,7 +307,7 @@
     "id": "l4",
     "name": "Fish & Chips",
     "description": "Crispy battered flathead served with crunchy chips and house-made roasted garlic lemon aioli",
-    "price": 19.9,
+    "price": 19.0,
     "category": "LUNCH",
     "imageUrl": "/assets/menu-photos/fish-and-chips.jpg",
     "tags": []
@@ -507,7 +507,7 @@
     "id": "h2",
     "name": "Macchiato / Piccolo",
     "description": "GUN COTTON COFFEE - locally roasted",
-    "price": 4.8,
+    "price": 5.0,
     "category": "DRINKS_HOT",
     "imageUrl": "/assets/menu-photos/macchiato-or-piccolo.jpg",
     "tags": []
@@ -516,7 +516,7 @@
     "id": "h3",
     "name": "Long Black / Flat White / Cappuccino / Mocha / Latte",
     "description": "GUN COTTON COFFEE - locally roasted",
-    "price": 5.0,
+    "price": 5.5,
     "category": "DRINKS_HOT",
     "imageUrl": "/assets/menu-photos/cappuccino.jpg",
     "tags": []
@@ -543,7 +543,7 @@
     "id": "h6",
     "name": "Matcha S/L",
     "description": "Small $6 or Large $6.9",
-    "price": 6.0,
+    "price": 7.0,
     "category": "DRINKS_HOT",
     "imageUrl": "/assets/menu-photos/matcha.jpg",
     "tags": []
