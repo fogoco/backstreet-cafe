@@ -26,6 +26,7 @@ PAGE = os.path.join(ROOT, 'backstreet-cafe.html')
 OFFLINE = os.path.join(ROOT, 'assets', 'menu-data.json')
 CONFIG = os.path.join(ROOT, 'assets', 'supabase-config.js')
 
+SITE = 'https://backstreetcafe.com.au'
 MENU_IMG_BASE = 'https://backstreet-cafe-menu.netlify.app'
 # Matches what encodeURI() leaves alone, so the generated src attributes are
 # byte-identical to the ones the script produces in the browser.
@@ -153,6 +154,74 @@ def featured_card(item):
          esc(item['name']), esc(item.get('description') or ''), price(item['price']))
 
 
+# schema.org RestrictedDiet terms for the cafe's own dietary codes.
+#
+# Only two of the six map to a claim that is true of the dish as served:
+#   gfo  is a gluten-free *option*, so the dish as plated is not gluten free
+#   df   has no faithful schema.org term (LowLactoseDiet is a different claim)
+#   cc   is the fryer cross-contamination warning, not a diet
+#
+# cc also SUPPRESSES the gluten-free claim. A machine reading the markup cannot
+# see the warning chip on the page, so asserting GlutenFreeDiet for those two
+# dishes would hand a coeliac diner a bare claim with the caveat stripped off.
+DIET = {
+    'v': 'https://schema.org/VegetarianDiet',
+    'vg': 'https://schema.org/VeganDiet',
+    'gf': 'https://schema.org/GlutenFreeDiet',
+}
+
+
+def diets(tags):
+    tags = tags or []
+    out = []
+    for tag in tags:
+        if tag == 'gf' and 'cc' in tags:
+            continue
+        if tag in DIET:
+            out.append(DIET[tag])
+    return out
+
+
+def menu_schema(items, categories, site):
+    """The Menu as JSON-LD, so the menu is machine-readable as data."""
+    sections = []
+    for category in categories:
+        rows = [i for i in items if i['category'] == category['key']]
+        if not rows:
+            continue
+        entries = []
+        for row in rows:
+            entry = {
+                '@type': 'MenuItem',
+                'name': row['name'],
+                'offers': {
+                    '@type': 'Offer',
+                    'price': '%.2f' % float(row['price'] or 0),
+                    'priceCurrency': 'AUD',
+                },
+            }
+            if row.get('description'):
+                entry['description'] = row['description']
+            suitable = diets(row.get('tags'))
+            if suitable:
+                entry['suitableForDiet'] = suitable
+            entries.append(entry)
+        sections.append({
+            '@type': 'MenuSection',
+            'name': category['label'],
+            'hasMenuItem': entries,
+        })
+
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Menu',
+        '@id': site + '/#menu',
+        'name': 'Backstreet Cafe menu',
+        'inLanguage': 'en-AU',
+        'hasMenuSection': sections,
+    }
+
+
 def replace_between(text, marker, body):
     """Swap what sits between <!-- marker:start --> and <!-- marker:end -->."""
     start = '<!-- %s:start -->' % marker
@@ -242,9 +311,15 @@ def main():
         + sections_for('lunch') + sections_for('drinks')
         + '    </div>\n')
 
+    schema = json.dumps(menu_schema(items, categories, SITE),
+                        indent=2, ensure_ascii=False)
+    schema_html = ('<script type="application/ld+json">\n'
+                   + schema + '\n</script>\n')
+
     page = open(PAGE, encoding='utf-8').read()
     page = replace_between(page, 'menu:featured', featured_html)
     page = replace_between(page, 'menu:catalog', catalog_html)
+    page = replace_between(page, 'menu:schema', schema_html)
     open(PAGE, 'w', encoding='utf-8').write(page)
 
     rendered = sum(1 for i in items
@@ -254,6 +329,9 @@ def main():
           % (rendered, len(categories), len(featured)))
     print('assets/menu-data.json %d field(s) brought back in line'
           % offline_changes)
+    print('Menu JSON-LD         %d sections, %d items carrying a diet claim'
+          % (len(menu_schema(items, categories, SITE)['hasMenuSection']),
+             sum(1 for i in items if diets(i.get('tags')))))
 
 
 if __name__ == '__main__':
