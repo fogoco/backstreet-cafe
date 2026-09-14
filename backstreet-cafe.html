@@ -40,7 +40,7 @@
   "name": "Backstreet Cafe",
   "url": "https://backstreetcafe.com.au/",
   "image": "https://backstreetcafe.com.au/assets/og-image.jpg",
-  "description": "Specialty coffee, seasonal breakfast and lunch at Mooloolaba Beach, Sunshine Coast. Serving since 2016. Voted second in the Courier-Mail's 2026 Sunshine Coast best cafes readers' poll, and featured by Urban List among the coast's best breakfasts in 2026.",
+  "description": "Specialty coffee, seasonal breakfast and lunch at Mooloolaba Beach, Sunshine Coast. Serving since 2016. Voted equal second in the Courier-Mail's 2026 Sunshine Coast best cafes readers' poll, and featured by Urban List among the coast's best breakfasts in 2026.",
   "email": "contact@fogoco.com.au",
   "foundingDate": "2016",
   "priceRange": "$$",
@@ -54,6 +54,12 @@
     "addressCountry": "AU"
   },
   "hasMap": "https://www.google.com/maps/search/?api=1&query=Shop%203%2F121%20Mooloolaba%20Espl%2C%20Mooloolaba%20QLD%204557",
+  "award": [
+    "Voted equal second among the Sunshine Coast's best cafes — The Courier-Mail readers' poll, May 2026",
+    "Selected as one of the 50 best cafes on the Sunshine Coast — The Urban List, 2026",
+    "Named in The Urban List's guide to the best Mooloolaba cafes for brunching, 2026",
+    "Finalist, Local Business Awards 2026"
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
@@ -1703,6 +1709,59 @@
     font-weight: 300;
   }
 
+  /* Recognition. The awards used to exist only inside award.png, which no
+     search engine or AI assistant can read. These are the same claims as
+     text, each next to the source it rests on. */
+  .about-awards {
+    margin-top: 40px;
+    border-top: 1px solid var(--sand);
+    padding-top: 18px;
+  }
+
+  .about-awards h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    margin-bottom: 14px;
+  }
+
+  .award-list {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+  }
+
+  .award-list li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--mocha);
+    font-weight: 300;
+  }
+
+  .award-list cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    opacity: 0.65;
+    margin-top: 2px;
+  }
+
+  .award-list a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .award-list a:hover {
+    color: var(--terracotta);
+    opacity: 1;
+  }
+
   /* MENU PARALLAX BREAK */
   .menu-parallax-break {
     position: relative;
@@ -3251,6 +3310,27 @@
         <h4>Hospitality</h4>
         <p>Warm service, genuine connections and an experience designed to make every visit memorable.</p>
       </div>
+    </div>
+
+    <div class="about-awards">
+      <h4>Recognition</h4>
+      <ul class="award-list">
+        <li>
+          Voted equal second among the Sunshine Coast&rsquo;s best cafes.
+          <cite>The Courier-Mail readers&rsquo; poll, May 2026</cite>
+        </li>
+        <li>
+          Selected as one of the <a href="https://www.theurbanlist.com/sunshinecoast/a-list/best-cafes-on-the-sunshine-coast1" target="_blank" rel="noopener noreferrer">50 best cafes on the Sunshine Coast</a>.
+          <cite>The Urban List, 2026</cite>
+        </li>
+        <li>
+          Named in the guide to <a href="https://www.theurbanlist.com/sunshinecoast/a-list/mooloolaba-cafes" target="_blank" rel="noopener noreferrer">the best Mooloolaba cafes for brunching</a>.
+          <cite>The Urban List, 2026</cite>
+        </li>
+        <li>
+          Finalist, Local Business Awards 2026.
+        </li>
+      </ul>
     </div>
   </div>
 </section>
