@@ -54,9 +54,50 @@
   force = true
 
 [[redirects]]
+  from = "/build-pages.py"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/backstreet_cafe_landing_preview.jsx"
   to = "/"
   status = 404
+  force = true
+
+# One URL per subject. The 200s serve the file without changing the address;
+# the 301s stop the .html twin being indexed alongside it.
+[[redirects]]
+  from = "/menu"
+  to = "/menu.html"
+  status = 200
+
+[[redirects]]
+  from = "/menu.html"
+  to = "/menu"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/find-us"
+  to = "/find-us.html"
+  status = 200
+
+[[redirects]]
+  from = "/find-us.html"
+  to = "/find-us"
+  status = 301
   force = true
 
 [[redirects]]

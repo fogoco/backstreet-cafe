@@ -215,7 +215,7 @@ def menu_schema(items, categories, site):
     return {
         '@context': 'https://schema.org',
         '@type': 'Menu',
-        '@id': site + '/#menu',
+        '@id': site + '/menu',
         'name': 'Backstreet Cafe menu',
         'inLanguage': 'en-AU',
         'hasMenuSection': sections,
