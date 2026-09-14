@@ -5,7 +5,7 @@
     "description": "Toasted sourdough, two poached eggs, relish (home-made), baby spinach.",
     "price": 14.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Eggs your way (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/eggs-your-way-gfo.jpg",
     "tags": [
       "gfo"
     ]
@@ -16,7 +16,7 @@
     "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
     "price": 24.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Green Brekky Burrito.jpg",
+    "imageUrl": "/assets/menu-photos/green-brekky-burrito.jpg",
     "tags": []
   },
   {
@@ -25,7 +25,7 @@
     "description": "Scrambled eggs, crispy bacon, baby spinach & Mexican melted cheese blend, all wrapped in a spinach tortilla, with our house-made chipotle & romesco sauce.",
     "price": 18.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Brekky Burger.jpg",
+    "imageUrl": "/assets/menu-photos/brekky-burger.jpg",
     "tags": []
   },
   {
@@ -34,7 +34,7 @@
     "description": "Toasted sourdough, home-made beetroot hommus, chilli, whipped feta, one poached egg and dukkah.",
     "price": 23.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Smashed-Avo.jpg",
+    "imageUrl": "/assets/menu-photos/smashed-avo.jpg",
     "tags": [
       "gfo",
       "v"
@@ -46,7 +46,7 @@
     "description": "Smashed avocado, poached eggs, baby spinach, house hollandaise, english muffin",
     "price": 23.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Eggs Benedict (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/eggs-benedict-gfo.jpg",
     "tags": [
       "gfo"
     ]
@@ -57,7 +57,7 @@
     "description": "Corn fritters, smashed avocado, poached eggs, baby spinach, house hollandaise",
     "price": 26.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Breadless Benedict (gf).jpg",
+    "imageUrl": "/assets/menu-photos/breadless-benedict-gf.jpg",
     "tags": [
       "gf",
       "cc"
@@ -69,7 +69,7 @@
     "description": "Smashed avocado, whipped feta, home-made beetroot hommus and one poached egg.",
     "price": 24.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Corn Fritters (gf)(v).jpg",
+    "imageUrl": "/assets/menu-photos/corn-fritters-gf-v.jpg",
     "tags": [
       "gf",
       "v",
@@ -82,7 +82,7 @@
     "description": "All home- made, Garlic and thyme mushrooms, one poached egg, baby spinach, whipped feta, basil pesto, dukkah, toasted sourdough",
     "price": 24.9,
     "category": "BREAKFAST",
-    "imageUrl": "/images/Breakfast/Mushroom Bruschetta (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/mushroom-bruschetta-gfo.jpg",
     "tags": [
       "gfo"
     ]
@@ -93,7 +93,7 @@
     "description": "Two poached eggs, bacon, roasted tomato, triple smoked chorizo, relish (home-made), house baked beans, mushrooms, hash browns, toasted sourdough.",
     "price": 29.9,
     "category": "BIG_BREAKFAST",
-    "imageUrl": "/images/Big Breakfast/Big Breakfast (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/big-breakfast-gfo.jpg",
     "tags": [
       "gfo"
     ]
@@ -104,7 +104,7 @@
     "description": "Two poached eggs, roasted tomato, relish (home-made), house baked beans, mushrooms, hash browns, smashed avocado, whipped feta, home-made beetroot hommus, toasted sourdough.",
     "price": 29.9,
     "category": "BIG_BREAKFAST",
-    "imageUrl": "/images/Big Breakfast/Big Vege (gfo)(v).jpg",
+    "imageUrl": "/assets/menu-photos/big-vege-gfo-v.jpg",
     "tags": [
       "gfo",
       "v"
@@ -116,7 +116,7 @@
     "description": "Two fried eggs, triple smoked chorizo, toasted sourdough and relish.",
     "price": 26.9,
     "category": "BIG_BREAKFAST",
-    "imageUrl": "/images/Big Breakfast/House Made Baked Beans (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/house-made-baked-beans-gfo.jpg",
     "tags": [
       "gfo"
     ]
@@ -127,7 +127,7 @@
     "description": "Berry compote, maple syrup, ice cream",
     "price": 24.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Berry Pancake.jpg",
+    "imageUrl": "/assets/menu-photos/berry-pancake.jpg",
     "tags": [
       "v"
     ]
@@ -138,7 +138,7 @@
     "description": "Grilled banana, crispy bacon, maple syrup, ice cream",
     "price": 24.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Grilled banana (v) Pancake.jpg",
+    "imageUrl": "/assets/menu-photos/grilled-banana-v-pancake.jpg",
     "tags": [
       "v"
     ]
@@ -149,7 +149,7 @@
     "description": "Seasonal fresh fruits, homemade granola, COYO coconut yoghurt, honey, pepitas & shredded coconut",
     "price": 19.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Sunshine Fruit bowl (v) (gfo).jpg",
+    "imageUrl": "/assets/menu-photos/sunshine-fruit-bowl-v-gfo.jpg",
     "tags": [
       "v",
       "gfo"
@@ -161,7 +161,7 @@
     "description": "Cinnamon vanilla banana bread, topped with creamy ice-cream, maple syrup and a berry compote",
     "price": 22.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Banana Bread French Toast.jpg",
+    "imageUrl": "/assets/menu-photos/banana-bread-french-toast.jpg",
     "tags": []
   },
   {
@@ -170,7 +170,7 @@
     "description": "Artisan banana bread by Noosa Gourmet, served toasted with your choice of butter or honey.",
     "price": 6.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Banana Bread (v)(gfo).jpg",
+    "imageUrl": "/assets/menu-photos/banana-bread-v-gfo.jpg",
     "tags": [
       "v",
       "gfo"
@@ -182,7 +182,7 @@
     "description": "Fluffy pancake topped with Biscoff crumble, rich Biscoff sauce, warm Biscoff drizzle and vanilla ice cream.",
     "price": 25.9,
     "category": "SWEET_BREAKFAST",
-    "imageUrl": "/images/Sweet Breakfast/Biscoff Pancake.jpg",
+    "imageUrl": "/assets/menu-photos/biscoff-pancake.jpg",
     "tags": [
       "v"
     ]
@@ -193,7 +193,7 @@
     "description": "poached egg and bacon w/ toasted sourdough (gfo)",
     "price": 12.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/images/Kids Stuff/Bacon + Egg.jpg",
+    "imageUrl": "/assets/menu-photos/bacon-egg.jpg",
     "tags": [
       "gfo"
     ]
@@ -204,7 +204,7 @@
     "description": "Toast with smashed avocado and cherry tomato (gfo)",
     "price": 12.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/images/Kids Stuff/Avocado toast.jpg",
+    "imageUrl": "/assets/menu-photos/avocado-toast.jpg",
     "tags": [
       "gfo"
     ]
@@ -215,7 +215,7 @@
     "description": "w/ maple syrup + ice cream",
     "price": 15.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/images/Kids Stuff/Pancakes (v).jpg",
+    "imageUrl": "/assets/menu-photos/pancakes-v.jpg",
     "tags": [
       "v"
     ]
@@ -226,7 +226,7 @@
     "description": "Coconut yoghurt with seasonal fruit, house granola & a drizzle of honey",
     "price": 12.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/images/Kids Stuff/Kids fruit & Yoghurt Bowl.jpg",
+    "imageUrl": "/assets/menu-photos/kids-fruit-and-yoghurt-bowl.jpg",
     "tags": []
   },
   {
@@ -235,7 +235,7 @@
     "description": "with jam, vegemite, or peanut butter (gfo)",
     "price": 9.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/images/Kids Stuff/Toast .jpg",
+    "imageUrl": "/assets/menu-photos/toast.jpg",
     "tags": [
       "gfo"
     ]
@@ -246,7 +246,7 @@
     "description": "140g smashed beef patty, fresh lettuce, ripe tomato, onion, pickles and our house-made secret sauce",
     "price": 19.9,
     "category": "BURGERS",
-    "imageUrl": "/images/BackStreet Burgers/Signature Smash.jpg",
+    "imageUrl": "/assets/menu-photos/signature-smash.jpg",
     "tags": []
   },
   {
@@ -255,7 +255,7 @@
     "description": "Crispy deep-fried chicken breast, chipotle house-made sauce, iceberg lettuce, pickles and melted cheese",
     "price": 19.9,
     "category": "BURGERS",
-    "imageUrl": "/images/BackStreet Burgers/Hot Chick.jpg",
+    "imageUrl": "/assets/menu-photos/hot-chick.jpg",
     "tags": []
   },
   {
@@ -264,7 +264,7 @@
     "description": "Double smashed beef patties, double cheese, crispy bacon and our signature house sauce",
     "price": 22.9,
     "category": "BURGERS",
-    "imageUrl": "/images/BackStreet Burgers/Double Trouble.jpg",
+    "imageUrl": "/assets/menu-photos/double-trouble.jpg",
     "tags": []
   },
   {
@@ -273,7 +273,7 @@
     "description": "Stacked high with double smashed beef patties, double bacon, melted cheese, lettuce, tomato, onion and pickles, finished with our house sauce, crispy onion rings and a mozzarella stick",
     "price": 28.9,
     "category": "BURGERS",
-    "imageUrl": "/images/BackStreet Burgers/The Challenging Burger.jpg",
+    "imageUrl": "/assets/menu-photos/the-challenging-burger.jpg",
     "tags": []
   },
   {
@@ -282,7 +282,7 @@
     "description": "Crispy battered flathead, red cabbage slaw, house-made roasted garlic lemon aioli and Brazilian-style vinaigrette, served in a toasted flour tortilla. 1 for $7 or 3 for $19",
     "price": 7.0,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Fish Taco.jpg",
+    "imageUrl": "/assets/menu-photos/fish-taco.jpg",
     "tags": []
   },
   {
@@ -291,7 +291,7 @@
     "description": "All the Big Mac vibes, seasoned ground beef, iceberg lettuce, mexican cheese blend, onion, pickles and our signature Big Mac-style sauce. 1 for $7 or 3 for $19",
     "price": 7.0,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Big Mac Taco.jpg",
+    "imageUrl": "/assets/menu-photos/big-mac-taco.jpg",
     "tags": []
   },
   {
@@ -300,7 +300,7 @@
     "description": "Grilled chicken, iceberg lettuce, Mexican cheese blend, crispy bacon and house-made chipotle sauce, served in a toasted flour tortilla. 1 for $7 or 3 for $19",
     "price": 7.0,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Chicken Taco.jpg",
+    "imageUrl": "/assets/menu-photos/chicken-taco.jpg",
     "tags": []
   },
   {
@@ -309,7 +309,7 @@
     "description": "Crispy battered flathead served with crunchy chips and house-made roasted garlic lemon aioli",
     "price": 19.9,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Fish & Chips.jpg",
+    "imageUrl": "/assets/menu-photos/fish-and-chips.jpg",
     "tags": []
   },
   {
@@ -318,7 +318,7 @@
     "description": "Grilled chicken, house-made pesto, roasted capsicum and signature melted cheese",
     "price": 20.0,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Toastie.jpg",
+    "imageUrl": "/assets/menu-photos/toastie.jpg",
     "tags": []
   },
   {
@@ -327,7 +327,7 @@
     "description": "Red cabbage slaw, Brazilian-style vinaigrette salsa, boiled egg, Mexican cheese, corn, fresh avocado, cucumber and crispy bacon",
     "price": 19.0,
     "category": "LUNCH",
-    "imageUrl": "/images/Lunch Menu/Cobb Salad.jpg",
+    "imageUrl": "/assets/menu-photos/cobb-salad.jpg",
     "tags": []
   },
   {
@@ -336,7 +336,7 @@
     "description": "Crispy chips served with aioli",
     "price": 9.0,
     "category": "SIDES",
-    "imageUrl": "/images/Sides/Bowl of chips with aioli.jpg",
+    "imageUrl": "/assets/menu-photos/bowl-of-chips-with-aioli.jpg",
     "tags": []
   },
   {
@@ -345,7 +345,7 @@
     "description": "Crispy sweet potato chips",
     "price": 11.0,
     "category": "SIDES",
-    "imageUrl": "/images/Sides/Sweet potato chips.jpg",
+    "imageUrl": "/assets/menu-photos/sweet-potato-chips.jpg",
     "tags": []
   },
   {
@@ -354,7 +354,7 @@
     "description": "Golden fried mozzarella sticks",
     "price": 12.0,
     "category": "SIDES",
-    "imageUrl": "/images/Sides/Mozzarella sticks.jpg",
+    "imageUrl": "/assets/menu-photos/mozzarella-sticks.jpg",
     "tags": []
   },
   {
@@ -363,7 +363,7 @@
     "description": "Crispy golden onion rings",
     "price": 10.0,
     "category": "SIDES",
-    "imageUrl": "/images/Sides/Onion rings.jpg",
+    "imageUrl": "/assets/menu-photos/onion-rings.jpg",
     "tags": []
   },
   {
@@ -372,7 +372,7 @@
     "description": "Premium grilled halloumi cheese",
     "price": 7.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Halloumi.jpg",
+    "imageUrl": "/assets/menu-photos/halloumi.jpg",
     "tags": []
   },
   {
@@ -381,7 +381,7 @@
     "description": "Premium smoked salmon",
     "price": 7.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Smoked Salmon.jpg",
+    "imageUrl": "/assets/menu-photos/smoked-salmon.jpg",
     "tags": []
   },
   {
@@ -390,7 +390,7 @@
     "description": "Grilled cheese kransky sausage",
     "price": 7.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Cheese Kransky.jpg",
+    "imageUrl": "/assets/menu-photos/cheese-kransky.jpg",
     "tags": []
   },
   {
@@ -399,7 +399,7 @@
     "description": "House-made corn fritter",
     "price": 7.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Corn Fritter.jpg",
+    "imageUrl": "/assets/menu-photos/corn-fritter.jpg",
     "tags": []
   },
   {
@@ -408,7 +408,7 @@
     "description": "Crispy bacon strips",
     "price": 6.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Bacon.jpg",
+    "imageUrl": "/assets/menu-photos/bacon.jpg",
     "tags": []
   },
   {
@@ -417,7 +417,7 @@
     "description": "Crispy golden hash browns",
     "price": 6.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Hash Browns.jpg",
+    "imageUrl": "/assets/menu-photos/hash-browns.jpg",
     "tags": []
   },
   {
@@ -426,7 +426,7 @@
     "description": "Sautéed mushrooms",
     "price": 6.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Mushrooms.jpg",
+    "imageUrl": "/assets/menu-photos/mushrooms.jpg",
     "tags": []
   },
   {
@@ -435,7 +435,7 @@
     "description": "Fresh smashed avocado",
     "price": 6.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Avo.jpg",
+    "imageUrl": "/assets/menu-photos/avo.jpg",
     "tags": []
   },
   {
@@ -444,7 +444,7 @@
     "description": "House-made baked beans",
     "price": 6.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/House Beans.jpg",
+    "imageUrl": "/assets/menu-photos/house-beans.jpg",
     "tags": []
   },
   {
@@ -453,7 +453,7 @@
     "description": "Gluten free bread toasted",
     "price": 2.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+    "imageUrl": "/assets/menu-photos/gluten-free-toast.jpg",
     "tags": [
       "gf"
     ]
@@ -464,7 +464,7 @@
     "description": "Perfectly poached egg",
     "price": 3.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Extra Poached Egg.jpg",
+    "imageUrl": "/assets/menu-photos/extra-poached-egg.jpg",
     "tags": []
   },
   {
@@ -473,7 +473,7 @@
     "description": "Fluffy scrambled eggs",
     "price": 1.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Scrambled.jpg",
+    "imageUrl": "/assets/menu-photos/scrambled.jpg",
     "tags": []
   },
   {
@@ -482,7 +482,7 @@
     "description": "Crispy chips served with aioli",
     "price": 9.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Chips w: Aioli.jpg",
+    "imageUrl": "/assets/menu-photos/chips-w-aioli.jpg",
     "tags": []
   },
   {
@@ -491,7 +491,7 @@
     "description": "Crispy sweet potato fries served with aioli",
     "price": 11.0,
     "category": "EXTRA_BITS",
-    "imageUrl": "/images/Extra Bits/Sweet Potatoes Fries w: Aioli.jpg",
+    "imageUrl": "/assets/menu-photos/sweet-potatoes-fries-w-aioli.jpg",
     "tags": []
   },
   {
@@ -500,7 +500,7 @@
     "description": "GUN COTTON COFFEE - locally roasted",
     "price": 4.8,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Espresso.jpg",
+    "imageUrl": "/assets/menu-photos/espresso.jpg",
     "tags": []
   },
   {
@@ -509,7 +509,7 @@
     "description": "GUN COTTON COFFEE - locally roasted",
     "price": 4.8,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Macchiato or Piccolo.jpg",
+    "imageUrl": "/assets/menu-photos/macchiato-or-piccolo.jpg",
     "tags": []
   },
   {
@@ -518,7 +518,7 @@
     "description": "GUN COTTON COFFEE - locally roasted",
     "price": 5.0,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Cappuccino.jpg",
+    "imageUrl": "/assets/menu-photos/cappuccino.jpg",
     "tags": []
   },
   {
@@ -527,7 +527,7 @@
     "description": "Traditional spiced chai latte (dirty +$0.5)",
     "price": 5.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Spiced Chai.jpg",
+    "imageUrl": "/assets/menu-photos/spiced-chai.jpg",
     "tags": []
   },
   {
@@ -536,7 +536,7 @@
     "description": "Rich and creamy hot chocolate",
     "price": 6.9,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Hot Chocolate.jpg",
+    "imageUrl": "/assets/menu-photos/hot-chocolate.jpg",
     "tags": []
   },
   {
@@ -545,7 +545,7 @@
     "description": "Small $6 or Large $6.9",
     "price": 6.0,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Matcha.jpg",
+    "imageUrl": "/assets/menu-photos/matcha.jpg",
     "tags": []
   },
   {
@@ -554,7 +554,7 @@
     "description": "English breakfast tea served with milk",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Loose Leaf Tea - English breakfast tea served with milk .jpg",
+    "imageUrl": "/assets/menu-photos/loose-leaf-tea-english-breakfast-tea-served-with-milk.jpg",
     "tags": []
   },
   {
@@ -563,7 +563,7 @@
     "description": "Refreshing green tea with mint and rose",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Loose Leaf Tea - Green Tea Mint + Rose.jpg",
+    "imageUrl": "/assets/menu-photos/loose-leaf-tea-green-tea-mint-rose.jpg",
     "tags": []
   },
   {
@@ -572,7 +572,7 @@
     "description": "Soothing peppermint tea",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/images/Drinks/Loose Leaf Tea - Peppermint .jpg",
+    "imageUrl": "/assets/menu-photos/loose-leaf-tea-peppermint.jpg",
     "tags": []
   },
   {
@@ -581,7 +581,7 @@
     "description": "Espresso poured over vanilla ice cream",
     "price": 6.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/images/Drinks/Affogato.jpg",
+    "imageUrl": "/assets/menu-photos/affogato.jpg",
     "tags": []
   },
   {
@@ -590,7 +590,7 @@
     "description": "Served over ice, ice-cream and topped with whipped cream",
     "price": 8.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/images/Drinks/Iced Coffee.jpg",
+    "imageUrl": "/assets/menu-photos/iced-coffee.jpg",
     "tags": []
   },
   {
@@ -599,7 +599,7 @@
     "description": "Served over ice, ice-cream and topped with whipped cream",
     "price": 8.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/images/Drinks/Iced Chocolate.jpg",
+    "imageUrl": "/assets/menu-photos/iced-chocolate.jpg",
     "tags": []
   },
   {
@@ -608,7 +608,7 @@
     "description": "Served over ice, ice-cream and topped with whipped cream",
     "price": 8.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/images/Drinks/Iced Mocha.jpg",
+    "imageUrl": "/assets/menu-photos/iced-mocha.jpg",
     "tags": []
   },
   {
@@ -617,7 +617,7 @@
     "description": "Blended espresso, ice, vanilla syrup, ice-cream & milk",
     "price": 10.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/images/Drinks/Coffee Frappe.jpg",
+    "imageUrl": "/assets/menu-photos/coffee-frappe.jpg",
     "tags": []
   },
   {
@@ -626,7 +626,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Smoothies - Mango.jpg",
+    "imageUrl": "/assets/menu-photos/smoothies-mango.jpg",
     "tags": []
   },
   {
@@ -635,7 +635,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Smoothies - banana.jpg",
+    "imageUrl": "/assets/menu-photos/smoothies-banana.jpg",
     "tags": []
   },
   {
@@ -644,7 +644,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Smoothies - mix berry.jpg",
+    "imageUrl": "/assets/menu-photos/smoothies-mix-berry.jpg",
     "tags": []
   },
   {
@@ -653,7 +653,7 @@
     "description": "Brazilian açaí, banana, honey and apple juice",
     "price": 13.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Açaí Smoothie.jpg",
+    "imageUrl": "/assets/menu-photos/acai-smoothie.jpg",
     "tags": []
   },
   {
@@ -662,7 +662,7 @@
     "description": "Classic caramel milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Milkshakes - Caramelo.jpg",
+    "imageUrl": "/assets/menu-photos/milkshakes-caramelo.jpg",
     "tags": []
   },
   {
@@ -671,7 +671,7 @@
     "description": "Classic vanilla milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Milkshakes - vanilla.jpg",
+    "imageUrl": "/assets/menu-photos/milkshakes-vanilla.jpg",
     "tags": []
   },
   {
@@ -680,7 +680,7 @@
     "description": "Classic chocolate milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Milkshake - Chocolate.jpg",
+    "imageUrl": "/assets/menu-photos/milkshake-chocolate.jpg",
     "tags": []
   },
   {
@@ -689,7 +689,7 @@
     "description": "Classic strawberry milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Milkshake - Strawberry.jpg",
+    "imageUrl": "/assets/menu-photos/milkshake-strawberry.jpg",
     "tags": []
   },
   {
@@ -698,7 +698,7 @@
     "description": "Premium Oreo milkshake",
     "price": 13.8,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Ultimate Oreo Shake.jpg",
+    "imageUrl": "/assets/menu-photos/ultimate-oreo-shake.jpg",
     "tags": []
   },
   {
@@ -707,7 +707,7 @@
     "description": "Premium pink cloud milkshake",
     "price": 13.8,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Ultimate Pink Cloud.jpg",
+    "imageUrl": "/assets/menu-photos/ultimate-pink-cloud.jpg",
     "tags": []
   },
   {
@@ -716,7 +716,7 @@
     "description": "Double shot espresso on ice, with water",
     "price": 5.5,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Iced Long Black.jpg",
+    "imageUrl": "/assets/menu-photos/iced-long-black.jpg",
     "tags": []
   },
   {
@@ -725,7 +725,7 @@
     "description": "Double shot espresso on ice, with milk",
     "price": 6.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Iced latte : Iced chai.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -734,7 +734,7 @@
     "description": "Double shot chai on ice, with milk",
     "price": 6.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Iced latte : Iced chai.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -743,7 +743,7 @@
     "description": "Fresh cold pressed orange juice",
     "price": 8.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Allies cold pressed juices - Orange.jpg",
+    "imageUrl": "/assets/menu-photos/allies-cold-pressed-juices-orange.jpg",
     "tags": []
   },
   {
@@ -752,7 +752,7 @@
     "description": "Fresh cold pressed ginger apple juice",
     "price": 8.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Allies cold pressed juices - Ginger apple.jpg",
+    "imageUrl": "/assets/menu-photos/allies-cold-pressed-juices-ginger-apple.jpg",
     "tags": []
   },
   {
@@ -761,7 +761,7 @@
     "description": "Fresh cold pressed green juice",
     "price": 8.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Allies cold pressed juices - green juice.jpg",
+    "imageUrl": "/assets/menu-photos/allies-cold-pressed-juices-green-juice.jpg",
     "tags": []
   },
   {
@@ -770,7 +770,7 @@
     "description": "Fresh cold pressed beetroot juice",
     "price": 8.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Allies cold pressed juices - lovebeets.jpg",
+    "imageUrl": "/assets/menu-photos/allies-cold-pressed-juices-lovebeets.jpg",
     "tags": []
   },
   {
@@ -779,7 +779,7 @@
     "description": "Fresh cold pressed pineapple juice",
     "price": 8.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Allies cold pressed juices - sublime pine.jpg",
+    "imageUrl": "/assets/menu-photos/allies-cold-pressed-juices-sublime-pine.jpg",
     "tags": []
   },
   {
@@ -788,7 +788,7 @@
     "description": "Green Tea Mint & Rose Peppermint blend, house-made passionfruit syrup, fresh mixed berries",
     "price": 9.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/House Iced Tea.jpg",
+    "imageUrl": "/assets/menu-photos/house-iced-tea.jpg",
     "tags": []
   },
   {
@@ -797,7 +797,7 @@
     "description": "Choose your preferred milk and check with our staff for today's syrup options.",
     "price": 7.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/images/Drinks/Iced Matcha.jpg",
+    "imageUrl": "/assets/menu-photos/iced-matcha.jpg",
     "tags": []
   },
   {
@@ -806,7 +806,7 @@
     "description": "Classic Mexican beer",
     "price": 9.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/corona.jpg",
+    "imageUrl": "/assets/menu-photos/corona.jpg",
     "tags": []
   },
   {
@@ -815,7 +815,7 @@
     "description": "Australian lager",
     "price": 8.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Great Northern Super Crisp.jpg",
+    "imageUrl": "/assets/menu-photos/great-northern-super-crisp.jpg",
     "tags": []
   },
   {
@@ -824,7 +824,7 @@
     "description": "Refreshing ginger beer",
     "price": 10.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Matsos Ginger Beer.jpg",
+    "imageUrl": "/assets/menu-photos/matsos-ginger-beer.jpg",
     "tags": []
   },
   {
@@ -833,7 +833,7 @@
     "description": "Classic champagne and orange juice cocktail",
     "price": 9.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Mimosa.jpg",
+    "imageUrl": "/assets/menu-photos/mimosa.jpg",
     "tags": []
   },
   {
@@ -842,7 +842,7 @@
     "description": "A classic caffeine kick with premium vodka and fresh espresso",
     "price": 15.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Espresso Martini.jpg",
+    "imageUrl": "/assets/menu-photos/espresso-martini.jpg",
     "tags": []
   },
   {
@@ -851,7 +851,7 @@
     "description": "Italian aperitif cocktail",
     "price": 12.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Aperol Spritz.jpg",
+    "imageUrl": "/assets/menu-photos/aperol-spritz.jpg",
     "tags": []
   },
   {
@@ -860,7 +860,7 @@
     "description": "Tropical blend of pineapple, coconut and rum",
     "price": 18.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/Frozen Pina Colada.jpg",
+    "imageUrl": "/assets/menu-photos/frozen-pina-colada.jpg",
     "tags": []
   },
   {
@@ -869,7 +869,7 @@
     "description": "Selection of house spirits",
     "price": 10.0,
     "category": "BEER_COCKTAILS",
-    "imageUrl": "/images/Beer & Cocktails/House Spirits.jpg",
+    "imageUrl": "/assets/menu-photos/house-spirits.jpg",
     "tags": []
   }
 ]

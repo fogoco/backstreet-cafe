@@ -1,5 +1,9 @@
 (function () {
-  const MENU_IMG_BASE = 'https://backstreet-cafe-menu.netlify.app';
+  // Menu photography lives on this domain now, under assets/menu-photos.
+  // It used to load from a separate Netlify project on the same team, which
+  // meant the food photos went down with the site. Kept as a prefix so a
+  // stored path can still be relative; absolute URLs pass through untouched.
+  const MENU_IMG_BASE = '';
   const FALLBACK_URL = '/assets/menu-data.json';
 
   // Badges live in the database. The bundled JSON is only a safety net for when
