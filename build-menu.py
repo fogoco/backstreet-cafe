@@ -27,7 +27,7 @@ OFFLINE = os.path.join(ROOT, 'assets', 'menu-data.json')
 CONFIG = os.path.join(ROOT, 'assets', 'supabase-config.js')
 
 SITE = 'https://backstreetcafe.com.au'
-MENU_IMG_BASE = 'https://backstreet-cafe-menu.netlify.app'
+MENU_IMG_BASE = ''
 # Matches what encodeURI() leaves alone, so the generated src attributes are
 # byte-identical to the ones the script produces in the browser.
 ENCODE_URI_SAFE = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -250,12 +250,15 @@ def refresh_offline(items):
             continue
         for offline_key, live_key in (('price', 'price'),
                                       ('description', 'description'),
-                                      ('tags', 'tags')):
+                                      ('tags', 'tags'),
+                                      ('imageUrl', 'image_url')):
             value = current.get(live_key)
             if live_key == 'price':
                 value = float(value)
             elif live_key == 'description':
                 value = value or ''
+            elif live_key == 'image_url':
+                value = value or None
             else:
                 value = value or []
             if row.get(offline_key) != value:
