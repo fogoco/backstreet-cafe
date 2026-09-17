@@ -193,7 +193,7 @@
     "description": "poached egg and bacon w/ toasted sourdough (gfo)",
     "price": 12.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/assets/menu-photos/bacon-egg.jpg",
+    "imageUrl": null,
     "tags": [
       "gfo"
     ]
@@ -215,7 +215,7 @@
     "description": "w/ maple syrup + ice cream",
     "price": 15.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/assets/menu-photos/pancakes-v.jpg",
+    "imageUrl": null,
     "tags": [
       "v"
     ]
@@ -226,7 +226,7 @@
     "description": "Coconut yoghurt with seasonal fruit, house granola & a drizzle of honey",
     "price": 12.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/assets/menu-photos/kids-fruit-and-yoghurt-bowl.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -235,7 +235,7 @@
     "description": "with jam, vegemite, or peanut butter (gfo)",
     "price": 9.0,
     "category": "KIDS_STUFF",
-    "imageUrl": "/assets/menu-photos/toast.jpg",
+    "imageUrl": null,
     "tags": [
       "gfo"
     ]
@@ -318,7 +318,7 @@
     "description": "Grilled chicken, house-made pesto, roasted capsicum and signature melted cheese",
     "price": 20.0,
     "category": "LUNCH",
-    "imageUrl": "/assets/menu-photos/toastie.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -336,7 +336,7 @@
     "description": "Crispy chips served with aioli",
     "price": 9.0,
     "category": "SIDES",
-    "imageUrl": "/assets/menu-photos/bowl-of-chips-with-aioli.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -354,7 +354,7 @@
     "description": "Golden fried mozzarella sticks",
     "price": 12.0,
     "category": "SIDES",
-    "imageUrl": "/assets/menu-photos/mozzarella-sticks.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -363,7 +363,7 @@
     "description": "Crispy golden onion rings",
     "price": 10.0,
     "category": "SIDES",
-    "imageUrl": "/assets/menu-photos/onion-rings.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -554,7 +554,7 @@
     "description": "English breakfast tea served with milk",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/assets/menu-photos/loose-leaf-tea-english-breakfast-tea-served-with-milk.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -563,7 +563,7 @@
     "description": "Refreshing green tea with mint and rose",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/assets/menu-photos/loose-leaf-tea-green-tea-mint-rose.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -572,7 +572,7 @@
     "description": "Soothing peppermint tea",
     "price": 4.5,
     "category": "DRINKS_HOT",
-    "imageUrl": "/assets/menu-photos/loose-leaf-tea-peppermint.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -590,7 +590,7 @@
     "description": "Served over ice, ice-cream and topped with whipped cream",
     "price": 8.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/assets/menu-photos/iced-coffee.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -599,7 +599,7 @@
     "description": "Served over ice, ice-cream and topped with whipped cream",
     "price": 8.9,
     "category": "DRINKS_SWIRLS",
-    "imageUrl": "/assets/menu-photos/iced-chocolate.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -626,7 +626,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/smoothies-mango.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -635,7 +635,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/smoothies-banana.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -644,7 +644,7 @@
     "description": "Coconut milk, honey and Greek natural yoghurt",
     "price": 11.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/smoothies-mix-berry.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -653,7 +653,7 @@
     "description": "Brazilian açaí, banana, honey and apple juice",
     "price": 13.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/acai-smoothie.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -662,7 +662,7 @@
     "description": "Classic caramel milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/milkshakes-caramelo.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -671,7 +671,7 @@
     "description": "Classic vanilla milkshake",
     "price": 8.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/milkshakes-vanilla.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -788,7 +788,7 @@
     "description": "Green Tea Mint & Rose Peppermint blend, house-made passionfruit syrup, fresh mixed berries",
     "price": 9.0,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/house-iced-tea.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
@@ -797,7 +797,7 @@
     "description": "Choose your preferred milk and check with our staff for today's syrup options.",
     "price": 7.9,
     "category": "DRINKS_COLD",
-    "imageUrl": "/assets/menu-photos/iced-matcha.jpg",
+    "imageUrl": null,
     "tags": []
   },
   {
