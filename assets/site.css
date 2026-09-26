@@ -565,15 +565,15 @@
      .about-img is built for a photo - it cover-crops to fill the column and
      drifts slowly - and the About grid stretches that column to match the
      text beside it. On a poster that cuts the wording off, and it got worse
-     every time the text column grew. Show this one whole, at its own aspect
-     ratio, and let the column shrink to it. */
+     every time the text column grew. Show this one whole instead. The column
+     still fills its half of the grid, but on black: the poster's own
+     background is pure #000 at every edge, so the panel reads as one piece
+     rather than as artwork floating on a cream gap. */
   .about-visual--poster {
-    align-self: center;
+    background: #000;
   }
 
   .about-img--poster {
-    height: auto;
-    min-height: 0;
     object-fit: contain;
     transform: none;
     animation: none;
