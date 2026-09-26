@@ -561,6 +561,24 @@
     animation: aboutPhotoDrift 14s ease-in-out infinite alternate;
   }
 
+  /* The awards poster is artwork with type on it, not an atmospheric photo.
+     .about-img is built for a photo - it cover-crops to fill the column and
+     drifts slowly - and the About grid stretches that column to match the
+     text beside it. On a poster that cuts the wording off, and it got worse
+     every time the text column grew. Show this one whole, at its own aspect
+     ratio, and let the column shrink to it. */
+  .about-visual--poster {
+    align-self: center;
+  }
+
+  .about-img--poster {
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    transform: none;
+    animation: none;
+  }
+
   .about-visual-overlay {
     position: absolute;
     inset: 0;
