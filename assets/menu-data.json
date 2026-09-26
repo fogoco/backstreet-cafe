@@ -660,7 +660,7 @@
     "id": "c5",
     "name": "Milkshake - Caramel",
     "description": "Classic caramel milkshake",
-    "price": 8.9,
+    "price": 9.5,
     "category": "DRINKS_COLD",
     "imageUrl": null,
     "tags": []
@@ -669,7 +669,7 @@
     "id": "c6",
     "name": "Milkshake - Vanilla",
     "description": "Classic vanilla milkshake",
-    "price": 8.9,
+    "price": 9.5,
     "category": "DRINKS_COLD",
     "imageUrl": null,
     "tags": []
@@ -678,7 +678,7 @@
     "id": "c7",
     "name": "Milkshake - Chocolate",
     "description": "Classic chocolate milkshake",
-    "price": 8.9,
+    "price": 9.5,
     "category": "DRINKS_COLD",
     "imageUrl": "/assets/menu-photos/milkshake-chocolate.jpg",
     "tags": []
@@ -687,7 +687,7 @@
     "id": "c8",
     "name": "Milkshake - Strawberry",
     "description": "Classic strawberry milkshake",
-    "price": 8.9,
+    "price": 9.5,
     "category": "DRINKS_COLD",
     "imageUrl": "/assets/menu-photos/milkshake-strawberry.jpg",
     "tags": []
@@ -696,7 +696,7 @@
     "id": "c9",
     "name": "Ultimate Oreo Shake",
     "description": "Premium Oreo milkshake",
-    "price": 13.8,
+    "price": 14.4,
     "category": "DRINKS_COLD",
     "imageUrl": "/assets/menu-photos/ultimate-oreo-shake.jpg",
     "tags": []
@@ -705,7 +705,7 @@
     "id": "c10",
     "name": "Ultimate Pink Cloud",
     "description": "Premium pink cloud milkshake",
-    "price": 13.8,
+    "price": 14.4,
     "category": "DRINKS_COLD",
     "imageUrl": "/assets/menu-photos/ultimate-pink-cloud.jpg",
     "tags": []
@@ -723,7 +723,7 @@
     "id": "c12",
     "name": "Iced Latte",
     "description": "Double shot espresso on ice, with milk",
-    "price": 6.0,
+    "price": 6.5,
     "category": "DRINKS_COLD",
     "imageUrl": null,
     "tags": []
@@ -732,7 +732,7 @@
     "id": "c13",
     "name": "Iced Chai",
     "description": "Double shot chai on ice, with milk",
-    "price": 6.0,
+    "price": 6.5,
     "category": "DRINKS_COLD",
     "imageUrl": null,
     "tags": []
