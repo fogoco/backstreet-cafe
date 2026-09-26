@@ -761,11 +761,13 @@
     opacity: 0.82;
   }
 
+  /* Matched on HEIGHT, never on width: the three badges are a square, a
+     portrait and a fixed-size third-party widget, so a common height is the
+     only thing that makes them a row rather than three odd shapes. */
   .award-badge img {
     display: block;
-    width: 134px;
+    width: auto;
     height: 134px;
-    border-radius: 3px;
   }
 
   /* MENU PARALLAX BREAK */
