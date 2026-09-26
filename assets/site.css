@@ -737,6 +737,37 @@
     opacity: 1;
   }
 
+  /* The two badges sit on one row. The Restaurant Guru widget is third-party
+     and arrives at a fixed 180x134, so the finalist badge is matched to its
+     HEIGHT rather than given a size of its own - side by side they read as a
+     pair, and the Recognition column grows by a single list item instead of
+     by a whole badge. That matters here: this column sets the height of the
+     About grid, and the poster in the other column is shown whole on black,
+     so every row added to this side becomes more empty black over there. */
+  .award-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .award-badge {
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .award-badge:hover {
+    opacity: 0.82;
+  }
+
+  .award-badge img {
+    display: block;
+    width: 134px;
+    height: 134px;
+    border-radius: 3px;
+  }
+
   /* MENU PARALLAX BREAK */
   .menu-parallax-break {
     position: relative;
